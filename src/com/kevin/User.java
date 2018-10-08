@@ -2,11 +2,11 @@ package com.kevin;
 
 public class User {
     private String nume;
-    private int varsta;
+    private int age;
 
-    public User(String nume, int varsta) {
+    public User(String nume, int age) {
         this.nume = nume;
-        this.varsta = varsta;
+        this.age = age;
     }
 
     public String getNume() {
@@ -17,11 +17,11 @@ public class User {
         this.nume = nume;
     }
 
-    public int getVarsta() {
-        return varsta;
+    public int getAge() {
+        return age;
     }
 
-    public void setVarsta(int varsta) {
-        this.varsta = varsta;
+    public void setAge(int age) {
+        this.age = age;
     }
 }
