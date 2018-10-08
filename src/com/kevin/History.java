@@ -39,6 +39,15 @@ public class History {
     }
 
     @Override
+    public String toString() {
+        return "History{" +
+                "result=" + result +
+                ", level=" + level +
+                ", date='" + date + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof History)) return false;
