@@ -9,6 +9,7 @@ public class History {
     private int result;
     private int level;
     private String date;
+    private RunedGame runedGame;
 
 
     private String getDate(){
