@@ -1,6 +1,20 @@
 package com.kevin;
 
-public class RunedGame extends GameDefinition {
+public class RunnedGame extends GameDefinition {
+    private int level;
+
+    public RunnedGame() {
+        this.level=20;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     private int numberOfCorrectAnswers =0;
 
     private int totalNumberOfResults;

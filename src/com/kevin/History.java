@@ -7,9 +7,9 @@ import java.util.Objects;
 
 public class History {
     private int result;
-    private int level;
+
     private String date;
-    private RunedGame runedGame;
+    private RunnedGame runnedGame;
 
 
     private String getDate(){
@@ -20,7 +20,7 @@ public class History {
 
     public History() {
         this.date=getDate();
-        this.level=20;
+
     }
 
     public int getResult() {
@@ -31,19 +31,11 @@ public class History {
         this.result = result;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
 
     @Override
     public String toString() {
         return "History{" +
                 "result=" + result +
-                ", level=" + level +
                 ", date='" + date + '\'' +
                 '}';
     }
@@ -54,12 +46,11 @@ public class History {
         if (!(o instanceof History)) return false;
         History history = (History) o;
         return getResult() == history.getResult() &&
-                getLevel() == history.getLevel() &&
                 Objects.equals(getDate(), history.getDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getResult(), getLevel(), getDate());
+        return Objects.hash(getResult(), getDate());
     }
 }
