@@ -8,11 +8,11 @@ import java.util.Map;
 public class Performance {
     private Map<String, History> resultList =new HashMap();
 
-    public void printMap(Map map){
-        Iterator it=map.entrySet().iterator();
-        while(it.hasNext()){
-            Map.Entry pair=(Map.Entry) it.next();
-            System.out.println(pair.getKey()+" = "+pair.getValue());
+    public void printMap(Map<String,History> map){
+        for(Map.Entry<String, History> entry:map.entrySet()){
+            String key=entry.getKey();
+            Object value=entry.getValue();
+            System.out.println(key+" ---> "+value);
         }
     }
 
