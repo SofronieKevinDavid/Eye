@@ -1,15 +1,12 @@
 package com.kevin;
 
-import java.util.HashMap;
-
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class Performance {
-    private Map<String, History> resultList =new HashMap();
-
-    public void printMap(Map<String,History> map){
-        for(Map.Entry<String, History> entry:map.entrySet()){
+    private Map<String, List<History>> resultList =new HashMap();
+    private RunnedGame runnedGame;
+    public void printMap(Map<String,List<History>> map){
+        for(Map.Entry<String, List<History>> entry:map.entrySet()){
             String key=entry.getKey();
             Object value=entry.getValue();
             System.out.println(key+" ---> "+value);
@@ -26,6 +23,9 @@ public class Performance {
     }
 
     public void addPerformance(String string, History history){
-        resultList.put(string, history);
+        if(resultList.get(string)==null){
+            resultList.put(string, new ArrayList<>());
+        }
+        resultList.put(string, (List<History>) history);
     }
 }

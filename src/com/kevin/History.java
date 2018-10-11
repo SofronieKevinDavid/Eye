@@ -20,7 +20,6 @@ public class History {
 
     public History() {
         this.date=getDate();
-
     }
 
     public int getResult() {

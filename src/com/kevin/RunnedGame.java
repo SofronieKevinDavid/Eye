@@ -1,7 +1,8 @@
 package com.kevin;
 
-public class RunnedGame extends GameDefinition {
+public class RunnedGame {
     private int level;
+    private GameDefinition gameDefinition;
 
     public RunnedGame() {
         this.level=20;
@@ -25,18 +26,4 @@ public class RunnedGame extends GameDefinition {
     public String stringMedium(){
         return numberOfCorrectAnswers +"/"+ totalNumberOfResults;
     }
-
-    private boolean ifCorrect(boolean raspuns){
-        if(raspuns){
-            numberOfCorrectAnswers++;
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-
-
-
-
 }
