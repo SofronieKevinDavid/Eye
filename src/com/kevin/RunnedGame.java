@@ -3,6 +3,7 @@ package com.kevin;
 public class RunnedGame {
     private int level;
     private GameDefinition gameDefinition;
+    private User user;
 
     public RunnedGame() {
         this.level=20;
