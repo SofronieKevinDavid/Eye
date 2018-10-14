@@ -23,9 +23,14 @@ public class Performance {
     }
 
     public void addPerformance(String string, History history){
-        if(resultList.get(string)==null){
-            resultList.put(string, new ArrayList<>());
+
+        if(resultList.containsKey(string)){
+            List<History> performance=new ArrayList<>();
+            resultList.put(string, performance);
+            performance.add(history);
         }
-        resultList.put(string, (List<History>) history);
+        List<History> list=resultList.get(string);
+        list.add(history);
+
     }
 }
