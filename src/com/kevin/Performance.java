@@ -28,9 +28,10 @@ public class Performance {
             List<History> performance=new ArrayList<>();
             resultList.put(string, performance);
             performance.add(history);
+        }else {
+            List<History> list = resultList.get(string);
+            list.add(history);
         }
-        List<History> list=resultList.get(string);
-        list.add(history);
 
     }
 }
