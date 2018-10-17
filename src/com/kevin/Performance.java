@@ -8,8 +8,11 @@ public class Performance {
     public void printMap(Map<String,List<History>> map){
         for(Map.Entry<String, List<History>> entry:map.entrySet()){
             String key=entry.getKey();
-            Object value=entry.getValue();
-            System.out.println(key+" ---> "+value);
+            List<History> list=entry.getValue();
+            System.out.print(key+" ---> ");
+            for(int i=0;i<list.size();i++){
+                System.out.println(list.get(i).getResult()+", ");
+            }
         }
     }
 
