@@ -28,12 +28,12 @@ public class Performance {
     public void addPerformance(String string, History history){
 
         if(resultList.containsKey(string)){
+            List<History> list = resultList.get(string);
+            list.add(history);
+        }else {
             List<History> performance=new ArrayList<>();
             resultList.put(string, performance);
             performance.add(history);
-        }else {
-            List<History> list = resultList.get(string);
-            list.add(history);
         }
 
     }
