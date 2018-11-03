@@ -6,7 +6,4 @@ public class GameDefinition {
     public boolean validateAnswer(String answer){
         return true;
     }
-
-
-
 }

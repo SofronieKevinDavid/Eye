@@ -1,22 +1,23 @@
 package com.kevin;
 
+
 public class User {
-    private static int ID=0;
-    private String nume;
+    private static int ID = 0;
+    private String name;
     private int age;
 
     public User(String nume, int age) {
-        this.nume = nume;
+        this.name = nume;
         this.age = age;
         this.ID++;
     }
 
-    public String getNume() {
-        return nume;
+    public String getName() {
+        return name;
     }
 
-    public void setNume(String nume) {
-        this.nume = nume;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
