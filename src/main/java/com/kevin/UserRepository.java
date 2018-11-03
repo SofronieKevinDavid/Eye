@@ -113,7 +113,6 @@ public class UserRepository{
         pSt.close();
         getConnection().close();
     }
-
     public void demoDelete(String name,int age)throws ClassNotFoundException, SQLException{
         PreparedStatement pSt = getConnection().prepareStatement("DELETE FROM USERS WHERE name=? and age=?");
         pSt.setString(1, name);
@@ -125,5 +124,4 @@ public class UserRepository{
         pSt.close();
         getConnection().close();
     }
-
 }
