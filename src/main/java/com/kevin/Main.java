@@ -10,8 +10,8 @@ public class Main {
         UserRepository userRepository=new UserRepository();
         try {
             //userRepository.getConnection();
-            //userRepository.createUser("Andreiu",1222);
-            userRepository.deleteUser("Andreiu",1222);
+            userRepository.createUser(user);
+            //userRepository.deleteUser("Andreiu",1222);
 
 
 

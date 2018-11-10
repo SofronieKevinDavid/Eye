@@ -2,10 +2,6 @@ package com.kevin;
 
 
         /*
-
-        2. Metoda createUser ar putea primi ca parametru un obiect de tip User, asa incat, daca pe viitor te hotarasti sa adaugi si alte field-uri in clasa User,
-        sa iti fie usor sa actualizezi si metoda asta, fara a fi nevoit sa ii schimbi semnatura.
-
         3. In metoda findAllUserRepository, la linia 41 din clasa UserRepository, instantiezi un obiect User cu nume si varsta temporare, pe care apoi le inlocuiesti cu
         datele citite din db. Ai putea evita numele si varsta temporare, daca mai intai ai citi din db, ai stoca numele si varsta in cate o variabila si doar apoi sa instantiezi userul.
 
@@ -34,10 +30,10 @@ public class UserRepository{
         return conn;
 
     }
-    public void createUser(String name, int age) throws ClassNotFoundException, SQLException{
+    public void createUser(User user) throws ClassNotFoundException, SQLException{
         PreparedStatement pSt=getConnection().prepareStatement("INSERT INTO users (name,age) VALUES (?,?)");
-        pSt.setString(1,name);
-        pSt.setInt(2, age);
+        pSt.setString(1,user.getName());
+        pSt.setInt(2, user.getAge());
         int rowsInserted=pSt.executeUpdate();
 
         pSt.close();
