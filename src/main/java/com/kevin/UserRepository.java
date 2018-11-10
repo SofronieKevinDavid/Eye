@@ -63,73 +63,62 @@ public class UserRepository{
         PreparedStatement pSt = getConnection().prepareStatement("UPDATE USERS SET name=? WHERE age=?");
         pSt.setString(1, name);
         pSt.setInt(2, age);
-
-        int rowsUpdated = pSt.executeUpdate();
-
-        pSt.close();
-        getConnection().close();
+        Connection c=getConnection();
+        updateCommon(pSt,c);
     }
     public void updateAgeUser(String name, int age) throws ClassNotFoundException, SQLException{
         PreparedStatement pSt = getConnection().prepareStatement("UPDATE USERS SET age=? WHERE name=?");
         pSt.setInt(1, age);
         pSt.setString(2, name);
-
-        int rowsUpdated = pSt.executeUpdate();
-
-        pSt.close();
-        getConnection().close();
+        Connection c=getConnection();
+        updateCommon(pSt,c);
     }
     public void updateAgeUser(int age,String name, int oldAge) throws ClassNotFoundException, SQLException{
         PreparedStatement pSt = getConnection().prepareStatement("UPDATE USERS SET age=? WHERE name=? and age=?");
         pSt.setInt(1, age);
         pSt.setString(2, name);
         pSt.setInt(3, oldAge);
-
-        int rowsUpdated = pSt.executeUpdate();
-
-        pSt.close();
-        getConnection().close();
+        Connection c=getConnection();
+        updateCommon(pSt,c);
     }
     public void updateNameUser(String name,String oldName, int age) throws ClassNotFoundException, SQLException{
         PreparedStatement pSt = getConnection().prepareStatement("UPDATE USERS SET name=? WHERE name=? and age=?");
         pSt.setString(1, name);
         pSt.setString(2,oldName);
         pSt.setInt(3, age);
-
+        Connection c=getConnection();
+        updateCommon(pSt,c);
+    }
+    private void updateCommon(PreparedStatement pSt, Connection c)throws ClassNotFoundException, SQLException{
         int rowsUpdated = pSt.executeUpdate();
 
         pSt.close();
-        getConnection().close();
+        c.close();
     }
+
     public void deleteUser(int age)throws ClassNotFoundException, SQLException{
         PreparedStatement pSt = getConnection().prepareStatement("DELETE FROM USERS WHERE age=?");
         pSt.setInt(1, age);
-
-        int rowsDeleted = pSt.executeUpdate();
-        System.out.println(rowsDeleted + " rows were deleted.");
-
-        pSt.close();
-        getConnection().close();
+        Connection c=getConnection();
+        deleteCommon(pSt,c);
     }
     public void deleteUser(String name)throws ClassNotFoundException, SQLException{
         PreparedStatement pSt = getConnection().prepareStatement("DELETE FROM USERS WHERE name=?");
         pSt.setString(1, name);
-
-        int rowsDeleted = pSt.executeUpdate();
-        System.out.println(rowsDeleted + " rows were deleted.");
-
-        pSt.close();
-        getConnection().close();
+        Connection c=getConnection();
+        deleteCommon(pSt,c);
     }
     public void deleteUser(String name,int age)throws ClassNotFoundException, SQLException{
         PreparedStatement pSt = getConnection().prepareStatement("DELETE FROM USERS WHERE name=? and age=?");
         pSt.setString(1, name);
         pSt.setInt(2, age);
-
+        Connection c=getConnection();
+        deleteCommon(pSt,c);
+    }
+    private void deleteCommon(PreparedStatement pSt, Connection c) throws ClassNotFoundException, SQLException{
         int rowsDeleted = pSt.executeUpdate();
         System.out.println(rowsDeleted + " rows were deleted.");
-
         pSt.close();
-        getConnection().close();
+        c.close();
     }
 }

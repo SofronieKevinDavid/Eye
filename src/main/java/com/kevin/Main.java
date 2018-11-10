@@ -11,13 +11,14 @@ public class Main {
         try {
             //userRepository.getConnection();
             userRepository.createUser(user);
-            //userRepository.deleteUser("Andreiu",1222);
+            //userRepository.deleteUser("David",100);
 
 
 
 
-            //userRepository.updateAgeUser(100,"kevin",13);
+            userRepository.updateAgeUser(100,"David",17);
             //userRepository.updateAgeUser("Caludel",12);
+            userRepository.deleteUser("David",100);
             List l =userRepository.findAllUserRepository();
             for (int i = 0; i < l.size(); i++) {
 
