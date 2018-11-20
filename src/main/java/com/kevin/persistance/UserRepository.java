@@ -1,9 +1,6 @@
-package com.kevin;
+package com.kevin.persistance;
 
-
-        /*3. In metoda findAllUserRepository, la linia 41 din clasa UserRepository, instantiezi un obiect User cu nume si varsta temporare, pe care apoi le inlocuiesti cu
-        datele citite din db. Ai putea evita numele si varsta temporare, daca mai intai ai citi din db, ai stoca numele si varsta in cate o variabila si doar apoi sa instantiezi userul.*/
-
+import com.kevin.domain.User;
 
 import java.sql.*;
 import java.util.ArrayList;

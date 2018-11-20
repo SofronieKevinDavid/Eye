@@ -1,4 +1,6 @@
-package com.kevin;
+package com.kevin.domain;
+
+import com.kevin.persistance.UserRepository;
 
 import java.sql.SQLException;
 import java.util.List;

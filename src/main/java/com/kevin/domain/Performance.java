@@ -1,4 +1,6 @@
-package com.kevin;
+package com.kevin.domain;
+
+import com.kevin.domain.History;
 
 import java.util.*;
 

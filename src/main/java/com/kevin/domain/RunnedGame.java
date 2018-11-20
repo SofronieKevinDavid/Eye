@@ -1,4 +1,4 @@
-package com.kevin;
+package com.kevin.domain;
 
 public class RunnedGame {
     private int level;
