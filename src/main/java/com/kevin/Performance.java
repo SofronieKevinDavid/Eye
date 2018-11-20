@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Performance {
     private Map<String, List<History>> resultList =new HashMap();
-    //private RunnedGame runnedGame;
     public void printMap(Map<String,List<History>> map){
         for(Map.Entry<String, List<History>> entry:map.entrySet()){
             String key=entry.getKey();

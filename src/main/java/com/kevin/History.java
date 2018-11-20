@@ -22,14 +22,9 @@ public class History {
         this.date=getDate();
     }
 
-    public int getResult() {
-        return result;
+    public String getResult() {
+        return runnedGame.stringMedium();
     }
-
-    public void setResult(int result) {
-        this.result = result;
-    }
-
 
     @Override
     public String toString() {

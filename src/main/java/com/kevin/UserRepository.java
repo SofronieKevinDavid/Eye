@@ -1,11 +1,8 @@
 package com.kevin;
 
 
-        /*
-        3. In metoda findAllUserRepository, la linia 41 din clasa UserRepository, instantiezi un obiect User cu nume si varsta temporare, pe care apoi le inlocuiesti cu
-        datele citite din db. Ai putea evita numele si varsta temporare, daca mai intai ai citi din db, ai stoca numele si varsta in cate o variabila si doar apoi sa instantiezi userul.
-
-        4. Foarte fain ca ai facut overload la metodele de update si delete... Te poti gandi la un mod prin care sa obtii in continuare aceeasi functionalitate, dar fara sa duplici cod?*/
+        /*3. In metoda findAllUserRepository, la linia 41 din clasa UserRepository, instantiezi un obiect User cu nume si varsta temporare, pe care apoi le inlocuiesti cu
+        datele citite din db. Ai putea evita numele si varsta temporare, daca mai intai ai citi din db, ai stoca numele si varsta in cate o variabila si doar apoi sa instantiezi userul.*/
 
 
 import java.sql.*;
