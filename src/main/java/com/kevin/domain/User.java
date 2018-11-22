@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User {
     @Id
-    private static int ID = 0;
+    private int ID = 0;
     private String name;
     private int age;
 
@@ -16,6 +16,14 @@ public class User {
         this.name = nume;
         this.age = age;
         this.ID++;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getName() {
