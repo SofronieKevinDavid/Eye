@@ -1,0 +1,44 @@
+application:
+  name: org.eye.service
+
+environment:
+  name: dev
+server:
+  port: 8010 # Choose a unique port for each service
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,application/octet-stream,multipart/form-data
+    min-response-size: 2048
+
+
+spring:
+  application:
+    name: EyeApplication
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+
+spring.datasource.url: jdbc:postgresql://54.93.65.5:5432/kevin
+spring.datasource.username: fasttrackit_dev
+spring.datasource.password: fasttrackit_dev
+
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto: update
+
+params:
+  page:
+    size:
+      default: 10
+
+# Integration points config
+ribbon:
+  eureka:
+    enabled: false
+
+# Logging
+logging:
+  level:
+    org: INFO
