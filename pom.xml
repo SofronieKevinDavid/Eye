@@ -44,6 +44,17 @@
         <servo.core.version>0.9.4</servo.core.version>
     </properties>
 
+    <beans xmlns = "http://www.springframework.org/schema/beans"
+           xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+        <bean id = "helloWorld" class = "com.tutorialspoint.HelloWorld">
+            <property name = "message" value = "Hello World!"/>
+        </bean>
+
+    </beans>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -55,121 +66,62 @@
                 <scope>import</scope>
             </dependency>
 
-            <dependency>
-                <!-- Import dependency management from Spring Cloud -->
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-parent</artifactId>
-                <version>${spring.cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.1-901-1.jdbc4</version>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-web</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.cloud</groupId>-->
-        <!--<artifactId>spring-cloud-starter-eureka</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-actuator</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-amqp</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-data-mongodb</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.cloud</groupId>-->
-        <!--<artifactId>spring-cloud-starter-ribbon</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-test</artifactId>-->
-        <!--<scope>test</scope>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-redis</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
 
-        <!--<dependency>-->
-        <!--<groupId>com.fasterxml.jackson.datatype</groupId>-->
-        <!--<artifactId>jackson-datatype-joda</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda.time.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
 
 
-        <!--<dependency>-->
-        <!--<groupId>org.aspectj</groupId>-->
-        <!--<artifactId>aspectjweaver</artifactId>-->
-        <!--<version>${aspectj.weaver.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+        </dependency>
 
 
-        <!--&lt;!&ndash; we use StringUtils class&ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>commons-lang</groupId>-->
-        <!--<artifactId>commons-lang</artifactId>-->
-        <!--<version>${commons.lang}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.weaver.version}</version>
+        </dependency>
 
-        <!--&lt;!&ndash; we use FilenameUtils class&ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>commons-io</groupId>-->
-        <!--<artifactId>commons-io</artifactId>-->
-        <!--<version>${commons.io}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>commons-fileupload</groupId>-->
-        <!--<artifactId>commons-fileupload</artifactId>-->
-        <!--<version>${commons.fileupload}</version>-->
-        <!--</dependency>-->
-
-
-        <!--&lt;!&ndash;needed for mime utility from DownloadUtils class &ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>javax.mail</groupId>-->
-        <!--<artifactId>mail</artifactId>-->
-        <!--<version>${javax.mail}</version>-->
-        <!--</dependency>-->
-
-
-        <!--<dependency>-->
-        <!--<groupId>com.netflix.netflix-commons</groupId>-->
-        <!--<artifactId>netflix-commons-util</artifactId>-->
-        <!--<version>${netflix.commons.util.version}</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>com.netflix.servo</groupId>-->
-        <!--<artifactId>servo-core</artifactId>-->
-        <!--<version>${servo.core.version}</version>-->
-        <!--</dependency>-->
 
     </dependencies>
+
 
     <build>
         <!-- Enable replacement of placeholders delimited by @..@ in resource files. -->
