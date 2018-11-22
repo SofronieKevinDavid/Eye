@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User {
     @Id
-    private int ID = 0;
+    private long ID = 0;
     private String name;
     private int age;
 
@@ -18,7 +18,7 @@ public class User {
         this.ID++;
     }
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 
