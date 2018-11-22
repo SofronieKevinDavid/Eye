@@ -1,11 +1,13 @@
 package com.kevin.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
 public class User {
+    @Id
     private static int ID = 0;
     private String name;
     private int age;
