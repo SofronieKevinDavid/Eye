@@ -3,7 +3,7 @@ package org.kevin.eye;
 
 import com.kevin.domain.User;
 import com.kevin.service.UserService;
-import com.kevin.web.EyeApplication;
+import com.kevin.EyeApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
