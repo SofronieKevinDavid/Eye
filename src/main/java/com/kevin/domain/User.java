@@ -1,6 +1,10 @@
 package com.kevin.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "users")
 public class User {
     private static int ID = 0;
     private String name;
