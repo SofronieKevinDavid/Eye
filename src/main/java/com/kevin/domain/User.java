@@ -8,14 +8,13 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User {
     @Id
-    private long ID = 0;
+    private long ID;
     private String name;
     private int age;
 
     public User(String nume, int age) {
         this.name = nume;
         this.age = age;
-        this.ID++;
     }
 
     public long getID() {

@@ -1,5 +1,4 @@
-/*
-package com.kevin.web;
+/*package com.kevin.web;
 
 import com.kevin.domain.User;
 import com.kevin.service.UserService;
