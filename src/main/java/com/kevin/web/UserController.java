@@ -1,4 +1,4 @@
-/*package com.kevin.web;
+package com.kevin.web;
 
 import com.kevin.domain.User;
 import com.kevin.service.UserService;
@@ -18,11 +18,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = {"/{blueprintId}"}, method = RequestMethod.GET)
-    public User findUser(@PathVariable("userId") Long userId) {
-        LOGGER.info("userId >> {}", userId);
+    @RequestMapping(value = {"/{user}"}, method = RequestMethod.POST)
+    public void saveUser(@PathVariable("user") User user) {
+        LOGGER.info("user >> {}", user);
 
-        return userService.findOne(userId);
+        userService.saveUser(user);
     }
 }
-*/

@@ -14,11 +14,11 @@ public class UserService {
 
     public void saveUser(User user){
         if(user.getName()==null){
-            throw new IllegalArgumentException("Username can not be null.");
+            throw new IllegalArgumentException("Name can not be null.");
         }
 
         if(user.getAge()<=0){
-            throw new IllegalArgumentException("Last name can not be null.");
+            throw new IllegalArgumentException("Age must be greater than 0.");
         }
         try {
             userRepository.save(user);
