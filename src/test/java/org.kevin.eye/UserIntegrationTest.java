@@ -23,9 +23,9 @@ public class UserIntegrationTest {
     @Test
     public void testFind() {
 
-        User user=new User("Elefant222",12);
-        user.setName("Elefantos222");
-        user.setAge(21);
+        User user=new User("pantera",12);
+        user.setName("pantera");
+        user.setAge(10000);
         userService.saveUser(user);
 
     }

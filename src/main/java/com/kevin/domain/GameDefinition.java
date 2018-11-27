@@ -1,20 +1,25 @@
 package com.kevin.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "gameDefinitions")
+@Table(name = "gamedefinitions")
 public class GameDefinition {
 
     @Id
+    @Column(name="gamedefinitionid")
+    @GeneratedValue(generator = "gameDefinition_generator")
+    @SequenceGenerator(
+            name = "gameDefinition_generator",
+            sequenceName = "gameDefinition_sequence",
+            initialValue = 1
+    )
     private long ID;
+    @Column(name = "name")
     private String name;
 
     public boolean validateAnswer(String answer){
         return true;
-
     }
 
     public GameDefinition(String name) {

@@ -17,6 +17,9 @@ public class GameDefinitionService {
         if(gameDefinition.getName()==null){
             throw new IllegalArgumentException("Name can not be null.");
         }
+        //if(gameDefinition.getID()==0){
+            //throw new IllegalArgumentException("ID can not be 0.");
+        //}
 
         try {
             gameDefinitionRepository.save(gameDefinition);

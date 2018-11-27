@@ -1,15 +1,22 @@
 package com.kevin.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(generator = "user_generator")
+    @SequenceGenerator(
+            name = "user_generator",
+            sequenceName = "user_sequence",
+            initialValue = 1
+    )
+    @Column(name="userid")
     private long ID;
+    @Column(name = "name")
     private String name;
+    @Column(name = "age")
     private int age;
 
     public User(String nume, int age) {

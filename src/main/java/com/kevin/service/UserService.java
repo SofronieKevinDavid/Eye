@@ -20,6 +20,10 @@ public class UserService {
         if(user.getAge()<=0){
             throw new IllegalArgumentException("Age must be greater than 0.");
         }
+
+        //if(user.getID()==0){
+            //throw new IllegalArgumentException("ID can not be 0.");
+        //}
         try {
             userRepository.save(user);
         }catch (Exception e){

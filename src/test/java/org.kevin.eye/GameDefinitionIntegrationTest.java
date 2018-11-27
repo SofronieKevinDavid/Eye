@@ -21,8 +21,8 @@ public class GameDefinitionIntegrationTest {
     @Test
     public void testFind() {
 
-        GameDefinition gameDefinition=new GameDefinition("Definire");
-        gameDefinition.setName("Definire1");
+        GameDefinition gameDefinition=new GameDefinition("alfabet");
+        gameDefinition.setName("alfabet");
         gameDefinitionService.saveGameDefinition(gameDefinition);
 
     }
