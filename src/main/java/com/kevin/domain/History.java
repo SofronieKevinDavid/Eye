@@ -1,13 +1,26 @@
 package com.kevin.domain;
 
+import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name = "histories")
 public class History {
+    @Id
+    @Column(name="historyId")
+    @GeneratedValue(generator = "history_generator")
+    @SequenceGenerator(
+            name = "history_generator",
+            sequenceName = "history_sequence",
+            initialValue = 1
+    )
+    private long ID;
+    @Column(name="result")
     private int result;
-
+    @Column(name="date")
     private String date;
     private RunnedGame runnedGame;
 
@@ -24,6 +37,18 @@ public class History {
 
     public String getResult() {
         return runnedGame.stringMedium();
+    }
+
+    public long getID() {
+        return ID;
+    }
+
+    public void setID(long ID) {
+        this.ID = ID;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
     }
 
     @Override

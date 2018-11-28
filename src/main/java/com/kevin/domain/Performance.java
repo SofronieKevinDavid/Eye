@@ -1,10 +1,22 @@
 package com.kevin.domain;
 
-import com.kevin.domain.History;
 
+import javax.persistence.*;
 import java.util.*;
 
+
+@Entity
+@Table(name = "performances")
 public class Performance {
+    @Id
+    @Column(name="performanceId")
+    @GeneratedValue(generator = "performance_generator")
+    @SequenceGenerator(
+            name = "performance_generator",
+            sequenceName = "performance_sequence",
+            initialValue = 1
+    )
+    private long ID;
     private Map<String, List<History>> resultList =new HashMap();
     public void printMap(Map<String,List<History>> map){
         for(Map.Entry<String, List<History>> entry:map.entrySet()){
@@ -36,6 +48,21 @@ public class Performance {
             resultList.put(string, performance);
             performance.add(history);
         }
+    }
 
+    public long getID() {
+        return ID;
+    }
+
+    public void setID(long ID) {
+        this.ID = ID;
+    }
+
+    public Map<String, List<History>> getResultList() {
+        return resultList;
+    }
+
+    public void setResultList(Map<String, List<History>> resultList) {
+        this.resultList = resultList;
     }
 }
