@@ -1,3 +1,4 @@
+
 package com.kevin.domain;
 
 import javax.persistence.*;
@@ -20,22 +21,26 @@ public class History {
     private long ID;
     @Column(name="result")
     private int result;
-    @Column(name="date")
-    private String date;
+    //eroare cu date:
+    //@Column(name="date")
+    //private String date;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="runnedGameId")
     private RunnedGame runnedGame;
 
 
-    private String getDate(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        return dateFormat.format(date);
-    }
+    //private String getDate(){
+        //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        //Date date = new Date();
+        //return dateFormat.format(date);
+    //}
 
     public History() {
-        this.date=getDate();
+        //this.date=getDate();
     }
 
     public String getResult() {
+        //eroare cu nullpointerexception:
         return runnedGame.stringMedium();
     }
 
@@ -51,7 +56,7 @@ public class History {
         this.result = result;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "History{" +
                 "result=" + result +
@@ -71,5 +76,6 @@ public class History {
     @Override
     public int hashCode() {
         return Objects.hash(getResult(), getDate());
-    }
+    }*/
 }
+

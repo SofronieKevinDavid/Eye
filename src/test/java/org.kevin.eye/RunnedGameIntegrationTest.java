@@ -1,8 +1,9 @@
+
 package org.kevin.eye;
 
-import com.kevin.domain.User;
-import com.kevin.service.UserService;
 import com.kevin.EyeApplication;
+import com.kevin.domain.RunnedGame;
+import com.kevin.service.RunnedGameService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,22 +12,19 @@ import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = EyeApplication.class, loader = SpringApplicationContextLoader.class, initializers = ConfigFileApplicationContextInitializer.class)
-public class UserIntegrationTest {
+public class RunnedGameIntegrationTest {
+
     @Autowired
-    private UserService userService;
-
-
+    private RunnedGameService runnedGameService;
 
     @Test
     public void testFind() {
 
-        User user=new User("strasnic",12);
-        user.setName("strasnic");
-        user.setAge(12345);
-        userService.saveUser(user);
+        RunnedGame runnedGame=new RunnedGame();
+        runnedGame.setLevel(12);
+        runnedGameService.saveRunnedGame(runnedGame);
 
     }
 }

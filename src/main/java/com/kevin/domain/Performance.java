@@ -1,3 +1,4 @@
+/*
 package com.kevin.domain;
 
 
@@ -17,6 +18,13 @@ public class Performance {
             initialValue = 1
     )
     private long ID;
+    public long getID() {
+        return ID;
+    }
+
+    public void setID(long ID) {
+        this.ID = ID;
+    }
     private Map<String, List<History>> resultList =new HashMap();
     public void printMap(Map<String,List<History>> map){
         for(Map.Entry<String, List<History>> entry:map.entrySet()){
@@ -50,13 +58,7 @@ public class Performance {
         }
     }
 
-    public long getID() {
-        return ID;
-    }
 
-    public void setID(long ID) {
-        this.ID = ID;
-    }
 
     public Map<String, List<History>> getResultList() {
         return resultList;
@@ -66,3 +68,4 @@ public class Performance {
         this.resultList = resultList;
     }
 }
+*/

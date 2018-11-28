@@ -1,3 +1,4 @@
+//functioneazaRunnedGamme
 package com.kevin.domain;
 
 import javax.persistence.*;
@@ -16,7 +17,11 @@ public class RunnedGame {
     private long ID;
     @Column(name="level")
     private int level;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="gameDefinitionId")
     private GameDefinition gameDefinition;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="userId")
     private User user;
 
     public long getID() {
@@ -47,6 +52,10 @@ public class RunnedGame {
         return numberOfCorrectAnswers / totalNumberOfResults;
     }
     public String stringMedium(){
+        if(totalNumberOfResults==0){
+            return "No medium to show.";
+        }
         return numberOfCorrectAnswers +"/"+ totalNumberOfResults;
     }
 }
+

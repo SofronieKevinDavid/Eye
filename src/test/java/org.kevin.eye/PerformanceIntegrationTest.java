@@ -1,8 +1,10 @@
+/*
 package org.kevin.eye;
 
-import com.kevin.domain.User;
-import com.kevin.service.UserService;
 import com.kevin.EyeApplication;
+import com.kevin.domain.History;
+import com.kevin.domain.Performance;
+import com.kevin.service.PerformanceService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +16,21 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = EyeApplication.class, loader = SpringApplicationContextLoader.class, initializers = ConfigFileApplicationContextInitializer.class)
-public class UserIntegrationTest {
+public class PerformanceIntegrationTest {
+
     @Autowired
-    private UserService userService;
-
-
+    private PerformanceService performanceService;
 
     @Test
     public void testFind() {
 
-        User user=new User("strasnic",12);
-        user.setName("strasnic");
-        user.setAge(12345);
-        userService.saveUser(user);
+//        History history=new History();
+//        history.setResult(33);
+        Performance performance=new Performance();
+//        performance.addPerformance("wow",history);
+//        performance.setResultList(performance.getResultList());
+        performanceService.savePerformance(performance);
 
     }
 }
-
+*/
