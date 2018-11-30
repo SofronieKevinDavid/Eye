@@ -49,6 +49,9 @@ public class RunnedGame {
     private int totalNumberOfResults;
 
     public double medium(){
+        if(totalNumberOfResults==0){
+            return -1;
+        }
         return numberOfCorrectAnswers / totalNumberOfResults;
     }
     public String stringMedium(){

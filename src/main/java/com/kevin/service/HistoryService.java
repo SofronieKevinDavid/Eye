@@ -13,8 +13,8 @@ public class HistoryService {
     private HistoryRepository historyRepository;
 
     public void saveHistory(History history){
-        if(history.getResult()==null){
-            throw new IllegalArgumentException("Name can not be null.");
+        if(history.getResult()==-1){
+            throw new IllegalArgumentException("Result not valid.");
         }
         //if(history.getID()==0){
             //throw new IllegalArgumentException("Name can not be null.");
