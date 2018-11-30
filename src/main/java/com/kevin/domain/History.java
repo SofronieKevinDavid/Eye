@@ -2,7 +2,13 @@
 package com.kevin.domain;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Entity
 @Table(name = "histories")
@@ -19,23 +25,27 @@ public class History {
     @Column(name="result")
     private double result;
     @Column(name="date")
-    private LocalDateTime date;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private String date;
     @JoinColumn(name="runnedGameId")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private RunnedGame runnedGame;
 
 
-    private LocalDateTime getDate(){
-       return date=LocalDateTime.now();
+    private String getDate(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime dateTime = LocalDateTime.now();
+        String formattedDateTime = dateTime.format(formatter);
+        return formattedDateTime;
     }
 
     public History() {
-        //this.date=getDate();
+        this.date=getDate();
     }
 
     public double getResult() {
         //eroare cu nullpointerexception:
-        return runnedGame.medium();
+        //return runnedGame.medium();
+        return 3;
     }
 
     public long getID() {

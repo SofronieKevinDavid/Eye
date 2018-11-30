@@ -23,7 +23,7 @@ public class HistoryIntegrationTest {
     public void testFind() {
 
         History history=new History();
-        history.setResult(99);
+        history.setResult(90);
         historyService.saveHistory(history);
 
     }
