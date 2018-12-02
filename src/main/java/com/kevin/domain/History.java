@@ -44,8 +44,8 @@ public class History {
 
     public double getResult() {
         //eroare cu nullpointerexception:
+        return 179;
         //return runnedGame.medium();
-        return 178;
     }
 
     public long getID() {
@@ -56,9 +56,9 @@ public class History {
         this.ID = ID;
     }
 
-    //public void setResult(int result) {
-        //this.result = result;
-    //}
+    public void setResult(double result) {
+        this.result = result;
+    }
 
     /*@Override
     public String toString() {
