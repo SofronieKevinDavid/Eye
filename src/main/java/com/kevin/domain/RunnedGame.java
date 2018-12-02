@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name = "runnedgames")
 public class RunnedGame {
     @Id
-    @Column(name="runnedgameid")
+    @Column(name="id")
     @GeneratedValue(generator = "runnedGame_generator")
     @SequenceGenerator(
             name = "runnedGame_generator",
@@ -46,13 +46,14 @@ public class RunnedGame {
 
     private int numberOfCorrectAnswers =0;
 
-    private int totalNumberOfResults;
+    private int totalNumberOfResults=1;
 
     public double medium(){
         if(totalNumberOfResults==0){
             return -1;
         }
         return numberOfCorrectAnswers / totalNumberOfResults;
+        //return 3;
     }
     public String stringMedium(){
         if(totalNumberOfResults==0){

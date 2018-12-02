@@ -14,7 +14,7 @@ import java.util.Date;
 @Table(name = "histories")
 public class History {
     @Id
-    @Column(name="historyId")
+    @Column(name="Id")
     @GeneratedValue(generator = "history_generator")
     @SequenceGenerator(
             name = "history_generator",
@@ -45,7 +45,7 @@ public class History {
     public double getResult() {
         //eroare cu nullpointerexception:
         //return runnedGame.medium();
-        return 3;
+        return 178;
     }
 
     public long getID() {
@@ -56,9 +56,9 @@ public class History {
         this.ID = ID;
     }
 
-    public void setResult(int result) {
-        this.result = result;
-    }
+    //public void setResult(int result) {
+        //this.result = result;
+    //}
 
     /*@Override
     public String toString() {
