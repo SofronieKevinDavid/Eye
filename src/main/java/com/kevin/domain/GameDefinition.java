@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class GameDefinition {
 
     @Id
-    @Column(name="gamedefinitionid")
+    @Column(name="id")
     @GeneratedValue(generator = "gameDefinition_generator")
     @SequenceGenerator(
             name = "gameDefinition_generator",

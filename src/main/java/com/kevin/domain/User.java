@@ -12,7 +12,7 @@ public class User {
             sequenceName = "user_sequence",
             initialValue = 1
     )
-    @Column(name="userid")
+    @Column(name="id")
     private long ID;
     @Column(name = "name")
     private String name;
