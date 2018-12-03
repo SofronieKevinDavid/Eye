@@ -23,7 +23,7 @@ public class RunnedGameIntegrationTest {
     public void testFind() {
 
         RunnedGame runnedGame=new RunnedGame();
-        runnedGame.setLevel(115);
+        runnedGame.setLevel(11534);
         runnedGameService.saveRunnedGame(runnedGame);
 
     }

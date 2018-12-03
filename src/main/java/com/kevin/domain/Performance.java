@@ -10,7 +10,7 @@ import java.util.*;
 @Table(name = "performances")
 public class Performance {
     @Id
-    @Column(name="performanceId")
+    @Column(name="Id")
     @GeneratedValue(generator = "performance_generator")
     @SequenceGenerator(
             name = "performance_generator",
@@ -25,14 +25,16 @@ public class Performance {
     public void setID(long ID) {
         this.ID = ID;
     }
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="runned_Game_Id")
     private Map<String, List<History>> resultList =new HashMap();
-    public void printMap(Map<String,List<History>> map){
+    public void printMap(Map<String,List<History>> map, RunnedGame runnedGame){
         for(Map.Entry<String, List<History>> entry:map.entrySet()){
             String key=entry.getKey();
             List<History> list=entry.getValue();
             System.out.print(key+" ---> ");
             for(int i=0;i<list.size();i++){
-                System.out.println(list.get(i).getResult()+", ");
+                System.out.println(list.get(i).getResult(runnedGame)+", ");
             }
         }
     }

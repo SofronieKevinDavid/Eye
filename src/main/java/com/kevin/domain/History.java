@@ -2,13 +2,8 @@
 package com.kevin.domain;
 
 import javax.persistence.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -27,7 +22,7 @@ public class History {
     private double result;
     @Column(name="date")
     private String date;
-    @JoinColumn(name="runnedGameId")
+    @JoinColumn(name="runned_Game_Id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private RunnedGame runnedGame;
 

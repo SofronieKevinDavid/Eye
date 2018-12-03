@@ -2,7 +2,6 @@
 package org.kevin.eye;
 
 import com.kevin.EyeApplication;
-import com.kevin.domain.History;
 import com.kevin.domain.Performance;
 import com.kevin.service.PerformanceService;
 import org.junit.Test;
@@ -24,13 +23,10 @@ public class PerformanceIntegrationTest {
     @Test
     public void testFind() {
 
-//        History history=new History();
-//        history.setResult(33);
         Performance performance=new Performance();
-//        performance.addPerformance("wow",history);
-//        performance.setResultList(performance.getResultList());
         performanceService.savePerformance(performance);
 
     }
 }
+
 */
