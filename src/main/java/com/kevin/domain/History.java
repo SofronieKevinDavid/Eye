@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "histories")
@@ -42,10 +43,9 @@ public class History {
         this.date=getDate();
     }
 
-    public double getResult() {
+    public double getResult(RunnedGame runnedGame) {
         //eroare cu nullpointerexception:
-        return 179;
-        //return runnedGame.medium();
+        return runnedGame.medium();
     }
 
     public long getID() {
@@ -60,26 +60,30 @@ public class History {
         this.result = result;
     }
 
-    /*@Override
-    public String toString() {
-        return "History{" +
-                "result=" + result +
-                ", date='" + date + '\'' +
-                '}';
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof History)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         History history = (History) o;
-        return getResult() == history.getResult() &&
-                Objects.equals(getDate(), history.getDate());
+        return ID == history.ID &&
+                Double.compare(history.result, result) == 0 &&
+                Objects.equals(date, history.date) &&
+                Objects.equals(runnedGame, history.runnedGame);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getResult(), getDate());
-    }*/
+        return Objects.hash(ID, result, date, runnedGame);
+    }
+
+    @Override
+    public String toString() {
+        return "History{" +
+                "ID=" + ID +
+                ", result=" + result +
+                ", date='" + date + '\'' +
+                ", runnedGame=" + runnedGame +
+                '}';
+    }
 }
 

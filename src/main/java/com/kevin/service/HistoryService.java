@@ -2,6 +2,7 @@
 package com.kevin.service;
 
 import com.kevin.domain.History;
+import com.kevin.domain.RunnedGame;
 import com.kevin.persistance.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +13,8 @@ public class HistoryService {
     @Autowired
     private HistoryRepository historyRepository;
 
-    public void saveHistory(History history){
-        if(history.getResult()==-1){
+    public void saveHistory(History history, RunnedGame runnedGame){
+        if(history.getResult(runnedGame)==-1){
             throw new IllegalArgumentException("Result not valid.");
         }
         //if(history.getID()==0){

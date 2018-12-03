@@ -3,6 +3,7 @@ package org.kevin.eye;
 
 import com.kevin.EyeApplication;
 import com.kevin.domain.History;
+import com.kevin.domain.RunnedGame;
 import com.kevin.service.HistoryService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,8 +24,9 @@ public class HistoryIntegrationTest {
     public void testFind() {
 
         History history=new History();
-        history.setResult(history.getResult());
-        historyService.saveHistory(history);
+        RunnedGame runnedGame=new RunnedGame();
+        history.setResult(history.getResult(runnedGame));
+        historyService.saveHistory(history, runnedGame);
 
     }
 }
