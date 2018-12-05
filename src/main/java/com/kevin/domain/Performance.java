@@ -18,6 +18,9 @@ public class Performance {
     )
     private long ID;
 
+    public Performance() {
+    }
+
     public long getID() {
         return ID;
     }

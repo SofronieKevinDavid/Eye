@@ -1,7 +1,6 @@
 package org.kevin.eye;
 
 import com.kevin.DTO.UserDTO;
-import com.kevin.domain.User;
 import com.kevin.service.UserService;
 import com.kevin.EyeApplication;
 import org.junit.Test;

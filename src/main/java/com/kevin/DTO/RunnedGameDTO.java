@@ -46,4 +46,16 @@ public class RunnedGameDTO {
         }
         return numberOfCorrectAnswers +"/"+ totalNumberOfResults;
     }
+
+    @Override
+    public String toString() {
+        return "RunnedGameDTO{" +
+                "ID=" + ID +
+                ", level=" + level +
+                ", gameDefinition=" + gameDefinition +
+                ", user=" + user +
+                ", numberOfCorrectAnswers=" + numberOfCorrectAnswers +
+                ", totalNumberOfResults=" + totalNumberOfResults +
+                '}';
+    }
 }

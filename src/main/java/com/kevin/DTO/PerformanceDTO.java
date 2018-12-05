@@ -47,4 +47,12 @@ public class PerformanceDTO {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "PerformanceDTO{" +
+                "ID=" + ID +
+                ", resultList=" + resultList +
+                '}';
+    }
 }

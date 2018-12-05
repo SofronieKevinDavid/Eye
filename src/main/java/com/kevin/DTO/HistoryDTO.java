@@ -40,4 +40,14 @@ public class HistoryDTO {
     public void setResult(double result) {
         this.result = result;
     }
+
+    @Override
+    public String toString() {
+        return "HistoryDTO{" +
+                "ID=" + ID +
+                ", result=" + result +
+                ", date='" + date + '\'' +
+                ", runnedGame=" + runnedGame +
+                '}';
+    }
 }

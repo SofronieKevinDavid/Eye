@@ -16,6 +16,7 @@ public class RunnedGame {
     )
     private long ID;
     @Column(name="level")
+
     private int level;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="game_Definition_Id")

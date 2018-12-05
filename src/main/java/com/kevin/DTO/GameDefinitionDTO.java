@@ -26,4 +26,12 @@ public class GameDefinitionDTO {
     public GameDefinitionDTO(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "GameDefinitionDTO{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

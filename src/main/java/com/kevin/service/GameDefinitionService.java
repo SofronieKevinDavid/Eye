@@ -1,10 +1,18 @@
 package com.kevin.service;
 
 
+import com.kevin.DTO.GameDefinitionDTO;
+import com.kevin.DTO.UserDTO;
 import com.kevin.domain.GameDefinition;
+import com.kevin.domain.User;
 import com.kevin.persistance.GameDefinitionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 @Service
 public class GameDefinitionService {
@@ -26,5 +34,29 @@ public class GameDefinitionService {
         }catch (Exception e){
             System.out.println("Error in saving user "+e);
         }
+    }
+
+    @Transactional
+    public List<GameDefinitionDTO> getGameDefinitions() {
+        Iterator<GameDefinition> iterator =
+                gameDefinitionRepository.findAll().iterator();
+
+
+        List<GameDefinitionDTO> list = new ArrayList<>();
+
+        while (iterator.hasNext()) {
+            GameDefinition gameDefinition = iterator.next();
+
+            GameDefinitionDTO gameDefinitionDTO = new GameDefinitionDTO("GameDefinitionDTO");
+            gameDefinitionDTO.setName(gameDefinition.getName());
+            gameDefinitionDTO.setID(gameDefinition.getID());
+
+
+            list.add(gameDefinitionDTO);
+        }
+
+        return list;
+
+
     }
 }

@@ -22,6 +22,10 @@ public class GameDefinition {
         return true;
     }
 
+    public GameDefinition() {
+        this.name="defaultConstructor";
+    }
+
     public GameDefinition(String name) {
         this.name = name;
     }
