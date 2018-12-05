@@ -19,8 +19,13 @@ public class User {
     @Column(name = "age")
     private int age;
 
-    public User(String nume, int age) {
-        this.name = nume;
+    public User(){
+        this.name="defaultConstructor";
+        this.age=0;
+    }
+
+    public User(String name, int age) {
+        this.name = name;
         this.age = age;
     }
 
@@ -28,7 +33,7 @@ public class User {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(long ID) {
         this.ID = ID;
     }
 

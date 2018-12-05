@@ -4,15 +4,15 @@ public class UserDTO {
     private long ID;
     private String name;
 
-    public UserDTO(String nume) {
-        this.name = nume;
+    public UserDTO(String name) {
+        this.name = name;
     }
 
     public long getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(long ID) {
         this.ID = ID;
     }
 
@@ -22,5 +22,13 @@ public class UserDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
