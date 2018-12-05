@@ -9,7 +9,7 @@ public class User {
     @GeneratedValue(generator = "user_generator")
     @SequenceGenerator(
             name = "user_generator",
-            sequenceName = "user_sequence",
+            sequenceName = "user_games_sequence",
             initialValue = 1
     )
     @Column(name="id")

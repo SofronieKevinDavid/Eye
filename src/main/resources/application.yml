@@ -18,7 +18,7 @@ spring:
     serialization:
       write_dates_as_timestamps: false
 
-spring.datasource.url: jdbc:postgresql://54.93.65.5:5432/kevin
+spring.datasource.url: jdbc:postgresql://54.93.65.5:5432/kevin3
 spring.datasource.username: fasttrackit_dev
 spring.datasource.password: fasttrackit_dev
 

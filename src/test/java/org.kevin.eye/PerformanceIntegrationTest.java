@@ -1,4 +1,3 @@
-/*
 package org.kevin.eye;
 
 import com.kevin.EyeApplication;
@@ -28,5 +27,3 @@ public class PerformanceIntegrationTest {
 
     }
 }
-
-*/

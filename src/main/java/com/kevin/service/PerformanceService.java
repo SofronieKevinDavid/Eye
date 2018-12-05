@@ -1,4 +1,3 @@
-/*
 package com.kevin.service;
 
 import com.kevin.domain.Performance;
@@ -13,9 +12,9 @@ public class PerformanceService {
     private PerformanceRepository performanceRepository;
 
     public void savePerformance(Performance performance){
-        if(performance.getID()==0){
-            throw new IllegalArgumentException("Name can not be null.");
-        }
+        //if(performance.getID()==0){
+            //throw new IllegalArgumentException("ID can not be null.");
+        //}
         try {
             performanceRepository.save(performance);
         }catch (Exception e){
@@ -23,5 +22,3 @@ public class PerformanceService {
         }
     }
 }
-
-*/

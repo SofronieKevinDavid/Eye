@@ -1,4 +1,3 @@
-/*
 
 package com.kevin.persistance;
 
@@ -8,5 +7,3 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface PerformanceRepository extends
         PagingAndSortingRepository<Performance, Long> {
 }
-
-*/

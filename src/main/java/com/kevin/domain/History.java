@@ -10,7 +10,7 @@ import java.util.Objects;
 @Table(name = "histories")
 public class History {
     @Id
-    @Column(name="Id")
+    @Column(name = "Id")
     @GeneratedValue(generator = "history_generator")
     @SequenceGenerator(
             name = "history_generator",
@@ -18,16 +18,19 @@ public class History {
             initialValue = 1
     )
     private long ID;
-    @Column(name="result")
+
+    @Column(name = "result")
     private double result;
-    @Column(name="date")
+
+    @Column(name = "date")
     private String date;
-    @JoinColumn(name="runned_Game_Id")
+
+    @JoinColumn(name = "runned_Game_Id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private RunnedGame runnedGame;
 
 
-    private String getDate(){
+    private String getDate() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime dateTime = LocalDateTime.now();
         String formattedDateTime = dateTime.format(formatter);
@@ -35,7 +38,7 @@ public class History {
     }
 
     public History() {
-        this.date=getDate();
+        this.date = getDate();
     }
 
     public double getResult(RunnedGame runnedGame) {
