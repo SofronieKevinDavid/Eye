@@ -50,8 +50,8 @@ public class PerformanceService {
 
             List<History> histories = performance.getResultList();
             int nrOfProd = 0;
-            while (nrOfProd < 5 && histories.size() >= 5) {
-
+            //while (nrOfProd < 5 && histories.size() >= 5) {
+            while(nrOfProd<histories.size()){
                 History history = histories.get(nrOfProd);
                 HistoryDTO historyDTO = new HistoryDTO();
 
