@@ -1,11 +1,19 @@
 
 package com.kevin.service;
 
+import com.kevin.DTO.HistoryDTO;
+import com.kevin.DTO.UserDTO;
 import com.kevin.domain.History;
 import com.kevin.domain.RunnedGame;
+import com.kevin.domain.User;
 import com.kevin.persistance.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 @Service
 public class HistoryService {
@@ -26,6 +34,30 @@ public class HistoryService {
         }catch (Exception e){
             System.out.println("Error in saving user "+e);
         }
+    }
+
+
+    @Transactional
+    public List<HistoryDTO> getHistories() {
+        Iterator<History> iterator =
+                historyRepository.findAll().iterator();
+
+
+        List<HistoryDTO> list = new ArrayList<>();
+
+        while (iterator.hasNext()) {
+            History history = iterator.next();
+
+            HistoryDTO historyDTO = new HistoryDTO();
+            RunnedGame runnedGame= new RunnedGame();
+            historyDTO.setResult(history.getResult(runnedGame));
+            historyDTO.setID(history.getID());
+
+
+            list.add(historyDTO);
+        }
+
+        return list;
     }
 }
 
