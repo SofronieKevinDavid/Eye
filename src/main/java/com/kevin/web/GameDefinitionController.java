@@ -21,7 +21,7 @@ public class GameDefinitionController {
     private GameDefinitionService gameDefinitionService;
 
     @RequestMapping(value = {"/{gameDefinition}"}, method = RequestMethod.POST)
-    public void saveUser(@PathVariable("gameDefinition")GameDefinition gameDefinition) {
+    public void saveGameDefinition(@PathVariable("gameDefinition")GameDefinition gameDefinition) {
         LOGGER.info("gameDefinition >> {}", gameDefinition);
 
         gameDefinitionService.saveGameDefinition(gameDefinition);
