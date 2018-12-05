@@ -16,13 +16,13 @@ public class PerformanceDTO {
         this.ID = ID;
     }
 
-    private List<History> resultList =new ArrayList<>();
+    private List<HistoryDTO> resultList =new ArrayList<>();
 
-    public List<History> getResultList() {
+    public List<HistoryDTO> getResultList() {
         return resultList;
     }
 
-    public void setResultList(List<History> resultList) {
+    public void setResultList(List<HistoryDTO> resultList) {
         this.resultList = resultList;
     }
 
@@ -38,10 +38,10 @@ public class PerformanceDTO {
         }
         return false;
     }
-    public boolean addPerformance(History history){
+    public boolean addPerformance(HistoryDTO historyDTO){
 
-        if(resultList.contains(history)==true){
-            resultList.add(history);
+        if(resultList.contains(historyDTO)==true){
+            resultList.add(historyDTO);
             return true;
         }else{
             return false;
