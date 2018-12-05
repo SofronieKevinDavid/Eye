@@ -1,7 +1,6 @@
 package org.kevin.eye;
 
 import com.kevin.DTO.GameDefinitionDTO;
-import com.kevin.DTO.UserDTO;
 import com.kevin.EyeApplication;
 import com.kevin.domain.GameDefinition;
 import com.kevin.service.GameDefinitionService;
