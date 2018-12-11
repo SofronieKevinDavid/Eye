@@ -14,7 +14,7 @@ public class GameDefinition {
             sequenceName = "gameDefinition_sequence",
             initialValue = 1
     )
-    private long ID;
+    private long id;
     @Column(name = "name")
     private String name;
 
@@ -38,11 +38,11 @@ public class GameDefinition {
         this.name = name;
     }
 
-    public long getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(long id) {
+        this.id = id;
     }
 }

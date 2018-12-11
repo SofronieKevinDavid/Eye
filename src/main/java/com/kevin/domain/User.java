@@ -13,7 +13,7 @@ public class User {
             initialValue = 1
     )
     @Column(name="id")
-    private long ID;
+    private long id;
     @Column(name = "name")
     private String name;
     @Column(name = "age")
@@ -29,12 +29,12 @@ public class User {
         this.age = age;
     }
 
-    public long getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

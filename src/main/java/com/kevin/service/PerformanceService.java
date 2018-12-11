@@ -21,7 +21,7 @@ public class PerformanceService {
     private PerformanceRepository performanceRepository;
 
     public void savePerformance(Performance performance){
-        //if(performance.getID()==0){
+        //if(performance.getId()==0){
             //throw new IllegalArgumentException("ID can not be null.");
         //}
         try {
@@ -44,7 +44,7 @@ public class PerformanceService {
             Performance performance = iterator.next();
 
             PerformanceDTO performanceDTO = new PerformanceDTO();
-            performanceDTO.setID(performance.getID());
+            performanceDTO.setID(performance.getId());
 
             List<History> histories = performance.getResultList();
             int nrOfProd = 0;
@@ -53,7 +53,7 @@ public class PerformanceService {
                 History history = histories.get(nrOfProd);
                 HistoryDTO historyDTO = new HistoryDTO();
 
-                historyDTO.setID(history.getID());
+                historyDTO.setID(history.getId());
                 RunnedGame runnedGame=new RunnedGame();
                 historyDTO.setResult(history.getResult(runnedGame));
 

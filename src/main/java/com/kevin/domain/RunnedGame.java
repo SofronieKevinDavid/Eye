@@ -14,7 +14,7 @@ public class RunnedGame {
             sequenceName = "runnedGame_sequence",
             initialValue = 1
     )
-    private long ID;
+    private long id;
     @Column(name="level")
 
     private int level;
@@ -25,12 +25,12 @@ public class RunnedGame {
     @JoinColumn(name="user_Id")
     private User user;
 
-    public long getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public RunnedGame() {

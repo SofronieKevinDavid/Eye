@@ -22,7 +22,7 @@ public class RunnedGameService {
         if(runnedGame.getLevel()==0){
             throw new IllegalArgumentException("Level can not be 0.");
         }
-//        if(runnedGame.getID()==0){
+//        if(runnedGame.getId()==0){
 //            throw new IllegalArgumentException("ID can not be 0.");
 //        }
         try {
@@ -45,7 +45,7 @@ public class RunnedGameService {
 
             RunnedGameDTO runnedGameDTO = new RunnedGameDTO();
             runnedGameDTO.setLevel(runnedGame.getLevel());
-            runnedGame.setID(runnedGame.getID());
+            runnedGame.setId(runnedGame.getId());
 
 
             list.add(runnedGameDTO);

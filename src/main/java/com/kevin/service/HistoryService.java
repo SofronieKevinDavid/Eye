@@ -23,7 +23,7 @@ public class HistoryService {
         if(history.getResult(runnedGame)==-1){
             throw new IllegalArgumentException("Result not valid.");
         }
-        //if(history.getID()==0){
+        //if(history.getId()==0){
             //throw new IllegalArgumentException("Name can not be null.");
         //}
 
@@ -49,7 +49,7 @@ public class HistoryService {
             HistoryDTO historyDTO = new HistoryDTO();
             RunnedGame runnedGame= new RunnedGame();
             historyDTO.setResult(history.getResult(runnedGame));
-            historyDTO.setID(history.getID());
+            historyDTO.setID(history.getId());
 
 
             list.add(historyDTO);

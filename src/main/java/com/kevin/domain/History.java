@@ -17,7 +17,7 @@ public class History {
             sequenceName = "history_sequence",
             initialValue = 1
     )
-    private long ID;
+    private long id;
 
     @Column(name = "result")
     private double result;
@@ -46,12 +46,12 @@ public class History {
         return runnedGame.medium();
     }
 
-    public long getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setResult(double result) {
@@ -63,7 +63,7 @@ public class History {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         History history = (History) o;
-        return ID == history.ID &&
+        return id == history.id &&
                 Double.compare(history.result, result) == 0 &&
                 Objects.equals(date, history.date) &&
                 Objects.equals(runnedGame, history.runnedGame);
@@ -71,13 +71,13 @@ public class History {
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, result, date, runnedGame);
+        return Objects.hash(id, result, date, runnedGame);
     }
 
     @Override
     public String toString() {
         return "History{" +
-                "ID=" + ID +
+                "id=" + id +
                 ", result=" + result +
                 ", date='" + date + '\'' +
                 ", runnedGame=" + runnedGame +

@@ -16,17 +16,17 @@ public class Performance {
             sequenceName = "performance_sequence",
             initialValue = 1
     )
-    private long ID;
+    private long id;
 
     public Performance() {
     }
 
-    public long getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

@@ -23,7 +23,7 @@ public class GameDefinitionService {
         if(gameDefinition.getName()==null){
             throw new IllegalArgumentException("Name can not be null.");
         }
-        //if(gameDefinition.getID()==0){
+        //if(gameDefinition.getId()==0){
             //throw new IllegalArgumentException("ID can not be 0.");
         //}
 
@@ -47,7 +47,7 @@ public class GameDefinitionService {
 
             GameDefinitionDTO gameDefinitionDTO = new GameDefinitionDTO("GameDefinitionDTO");
             gameDefinitionDTO.setName(gameDefinition.getName());
-            gameDefinitionDTO.setID(gameDefinition.getID());
+            gameDefinitionDTO.setID(gameDefinition.getId());
 
 
             list.add(gameDefinitionDTO);

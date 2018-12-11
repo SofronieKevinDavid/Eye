@@ -28,7 +28,7 @@ public class UserService {
             throw new IllegalArgumentException("Age must be greater than 0.");
         }
 
-        //if(user.getID()==0){
+        //if(user.getId()==0){
         //throw new IllegalArgumentException("ID can not be 0.");
         //}
         try {
@@ -51,7 +51,7 @@ public class UserService {
 
             UserDTO userDTO = new UserDTO("UserDTO");
             userDTO.setName(user.getName());
-            userDTO.setID(user.getID());
+            userDTO.setID(user.getId());
 
 
             list.add(userDTO);
