@@ -19,16 +19,14 @@ public class GameDefinitionService {
     private GameDefinitionRepository gameDefinitionRepository;
 
 
-    public void saveGameDefinition(GameDefinition gameDefinition){
+    public void saveGameDefinition(GameDefinitionDTO gameDefinition){
         if(gameDefinition.getName()==null){
             throw new IllegalArgumentException("Name can not be null.");
         }
-        //if(gameDefinition.getId()==0){
-            //throw new IllegalArgumentException("ID can not be 0.");
-        //}
+        GameDefinition gameDefinitionObject=convert(gameDefinition);
 
         try {
-            gameDefinitionRepository.save(gameDefinition);
+            gameDefinitionRepository.save(gameDefinitionObject);
         }catch (Exception e){
             System.out.println("Error in saving user "+e);
         }
@@ -45,9 +43,7 @@ public class GameDefinitionService {
         while (iterator.hasNext()) {
             GameDefinition gameDefinition = iterator.next();
 
-            GameDefinitionDTO gameDefinitionDTO = new GameDefinitionDTO("GameDefinitionDTO");
-            gameDefinitionDTO.setName(gameDefinition.getName());
-            gameDefinitionDTO.setID(gameDefinition.getId());
+            GameDefinitionDTO gameDefinitionDTO = convertToDto(gameDefinition);
 
 
             list.add(gameDefinitionDTO);
@@ -56,5 +52,39 @@ public class GameDefinitionService {
         return list;
 
 
+    }
+
+    private GameDefinitionDTO convertToDto(GameDefinition gameDefinition) {
+        GameDefinitionDTO gameDefinitionDTO = new GameDefinitionDTO();
+        gameDefinitionDTO.setName(gameDefinition.getName());
+        gameDefinitionDTO.setID(gameDefinition.getId());
+        gameDefinitionDTO.setDescription(gameDefinition.getDescription());
+        return gameDefinitionDTO;
+    }
+
+    private GameDefinition convert(GameDefinitionDTO gameDefinitionDTO) {
+        GameDefinition gameDefinition = new GameDefinition();
+        gameDefinition.setName(gameDefinitionDTO.getName());
+        gameDefinition.setId(gameDefinitionDTO.getID());
+        gameDefinition.setDescription(gameDefinitionDTO.getDescription());
+        return gameDefinition;
+    }
+
+    public GameDefinitionDTO getGameDefinitionById(long id) {
+        GameDefinition gameDefinition=gameDefinitionRepository.findOne(id);
+        if(gameDefinition==null){
+            throw new IllegalArgumentException("The id is not valid.");
+        }
+        return convertToDto(gameDefinition);
+    }
+
+    public GameDefinitionDTO updateGameDefinition(long id,GameDefinitionDTO dto) {
+        GameDefinition gameDefinition=gameDefinitionRepository.findOne(id);
+        gameDefinition.setDescription(dto.getDescription());
+        gameDefinition.setName(dto.getName());
+
+        GameDefinition savedObject= gameDefinitionRepository.save(gameDefinition);
+
+        return convertToDto(savedObject);
     }
 }

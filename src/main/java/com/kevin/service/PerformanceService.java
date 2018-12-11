@@ -21,9 +21,7 @@ public class PerformanceService {
     private PerformanceRepository performanceRepository;
 
     public void savePerformance(Performance performance){
-        //if(performance.getId()==0){
-            //throw new IllegalArgumentException("ID can not be null.");
-        //}
+
         try {
             performanceRepository.save(performance);
         }catch (Exception e){
@@ -48,7 +46,7 @@ public class PerformanceService {
 
             List<History> histories = performance.getResultList();
             int nrOfProd = 0;
-            //while (nrOfProd < 5 && histories.size() >= 5) {
+
             while(nrOfProd<histories.size()){
                 History history = histories.get(nrOfProd);
                 HistoryDTO historyDTO = new HistoryDTO();

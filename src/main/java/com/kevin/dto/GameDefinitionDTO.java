@@ -4,6 +4,19 @@ public class GameDefinitionDTO {
     private long ID;
     private String name;
 
+    public GameDefinitionDTO() {
+
+    }
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public long getID() {
         return ID;
     }
