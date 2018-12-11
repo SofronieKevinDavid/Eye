@@ -1,9 +1,8 @@
 
 package org.kevin.eye;
 
-import com.kevin.DTO.RunnedGameDTO;
+import com.kevin.dto.RunnedGameDTO;
 import com.kevin.EyeApplication;
-import com.kevin.domain.RunnedGame;
 import com.kevin.service.RunnedGameService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

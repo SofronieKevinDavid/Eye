@@ -1,4 +1,4 @@
-package com.kevin.DTO;
+package com.kevin.dto;
 
 public class UserDTO {
     private long ID;

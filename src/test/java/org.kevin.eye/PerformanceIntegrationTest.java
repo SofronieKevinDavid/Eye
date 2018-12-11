@@ -1,8 +1,7 @@
 package org.kevin.eye;
 
-import com.kevin.DTO.PerformanceDTO;
+import com.kevin.dto.PerformanceDTO;
 import com.kevin.EyeApplication;
-import com.kevin.domain.Performance;
 import com.kevin.service.PerformanceService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

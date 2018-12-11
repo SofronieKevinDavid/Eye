@@ -1,11 +1,8 @@
 
 package org.kevin.eye;
 
-import com.kevin.DTO.HistoryDTO;
-import com.kevin.DTO.UserDTO;
+import com.kevin.dto.HistoryDTO;
 import com.kevin.EyeApplication;
-import com.kevin.domain.History;
-import com.kevin.domain.RunnedGame;
 import com.kevin.service.HistoryService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.kevin.DTO;
+package com.kevin.dto;
 
 public class GameDefinitionDTO {
     private long ID;

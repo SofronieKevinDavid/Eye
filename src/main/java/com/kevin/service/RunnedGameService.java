@@ -1,10 +1,8 @@
 
 package com.kevin.service;
 
-import com.kevin.DTO.RunnedGameDTO;
-import com.kevin.DTO.UserDTO;
+import com.kevin.dto.RunnedGameDTO;
 import com.kevin.domain.RunnedGame;
-import com.kevin.domain.User;
 import com.kevin.persistance.RunnedGameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

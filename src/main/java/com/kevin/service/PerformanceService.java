@@ -1,12 +1,10 @@
 package com.kevin.service;
 
-import com.kevin.DTO.HistoryDTO;
-import com.kevin.DTO.PerformanceDTO;
-import com.kevin.DTO.UserDTO;
+import com.kevin.dto.HistoryDTO;
+import com.kevin.dto.PerformanceDTO;
 import com.kevin.domain.History;
 import com.kevin.domain.Performance;
 import com.kevin.domain.RunnedGame;
-import com.kevin.domain.User;
 import com.kevin.persistance.PerformanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

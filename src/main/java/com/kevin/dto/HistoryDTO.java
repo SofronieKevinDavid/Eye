@@ -1,4 +1,4 @@
-package com.kevin.DTO;
+package com.kevin.dto;
 
 import com.kevin.domain.RunnedGame;
 

@@ -1,10 +1,8 @@
 package com.kevin.service;
 
 
-import com.kevin.DTO.GameDefinitionDTO;
-import com.kevin.DTO.UserDTO;
+import com.kevin.dto.GameDefinitionDTO;
 import com.kevin.domain.GameDefinition;
-import com.kevin.domain.User;
 import com.kevin.persistance.GameDefinitionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

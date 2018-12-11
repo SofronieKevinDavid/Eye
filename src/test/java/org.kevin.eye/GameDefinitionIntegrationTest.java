@@ -1,8 +1,7 @@
 package org.kevin.eye;
 
-import com.kevin.DTO.GameDefinitionDTO;
+import com.kevin.dto.GameDefinitionDTO;
 import com.kevin.EyeApplication;
-import com.kevin.domain.GameDefinition;
 import com.kevin.service.GameDefinitionService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
