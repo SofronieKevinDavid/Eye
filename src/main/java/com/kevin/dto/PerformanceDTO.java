@@ -22,6 +22,20 @@ public class PerformanceDTO {
         return resultList;
     }
 
+    public List<History> getResultListAsNotDTO() {
+        List<History> list=new ArrayList<>();
+        for(int i=0;i<resultList.size();i++) {
+            HistoryDTO historyDTO=resultList.get(i);
+            History history = new History();
+            RunnedGameDTO runnedGameDTO=new RunnedGameDTO();
+            history.setDate(historyDTO.getDatePublic());
+            history.setResult(historyDTO.getResult(runnedGameDTO));
+            history.setId(historyDTO.getID());
+            list.add(history);
+        }
+        return list;
+    }
+
     public void setResultList(List<HistoryDTO> resultList) {
         this.resultList = resultList;
     }

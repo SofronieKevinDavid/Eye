@@ -1,6 +1,7 @@
 package com.kevin.service;
 
 
+import com.kevin.domain.GameDefinition;
 import com.kevin.dto.UserDTO;
 import com.kevin.domain.User;
 import com.kevin.persistance.UserRepository;
@@ -19,20 +20,19 @@ public class UserService {
     private UserRepository userRepository;
 
     //@Transactional
-    public void saveUser(User user){
-        if(user.getName()==null){
+    public void saveUser(UserDTO userDTO){
+        if(userDTO.getName()==null){
             throw new IllegalArgumentException("Name can not be null.");
         }
 
-        if(user.getAge()<=0){
-            throw new IllegalArgumentException("Age must be greater than 0.");
-        }
+
+        User userObject=convert(userDTO);
 
         //if(user.getId()==0){
         //throw new IllegalArgumentException("ID can not be 0.");
         //}
         try {
-            userRepository.save(user);
+            userRepository.save(userObject);
         }catch (Exception e){
             System.out.println("Error in saving user "+e);
         }
@@ -58,6 +58,37 @@ public class UserService {
         }
 
         return list;
+    }
+
+    private UserDTO convertToDto(User user) {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setName(user.getName());
+        userDTO.setID(user.getId());
+        return userDTO;
+    }
+
+    private User convert(UserDTO userDTO) {
+        User user = new User();
+        user.setName(userDTO.getName());
+        user.setId(userDTO.getID());
+        return user;
+    }
+
+    public UserDTO getUserById(long id) {
+        User user=userRepository.findOne(id);
+        if(user==null){
+            throw new IllegalArgumentException("The id is not valid.");
+        }
+        return convertToDto(user);
+    }
+
+    public UserDTO updateUser(long id,UserDTO dto) {
+        User user=userRepository.findOne(id);
+        user.setName(dto.getName());
+
+        User savedObject= userRepository.save(user);
+
+        return convertToDto(savedObject);
     }
 }
 

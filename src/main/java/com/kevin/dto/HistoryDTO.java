@@ -24,9 +24,12 @@ public class HistoryDTO {
     public HistoryDTO() {
         this.date=getDate();
     }
+    public double getResult() {
+        return result;
+    }
 
-    public double getResult(RunnedGame runnedGame) {
-        return runnedGame.medium();
+    public double getResult(RunnedGameDTO runnedGameDTO) {
+        return runnedGameDTO.medium();
     }
 
     public long getID() {
@@ -41,8 +44,16 @@ public class HistoryDTO {
         this.result = result;
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDatePublic(){
+        return date;
+    }
+
     @Override
-    public String toString() {
+   public String toString() {
         return "HistoryDTO{" +
                 "ID=" + ID +
                 ", result=" + result +

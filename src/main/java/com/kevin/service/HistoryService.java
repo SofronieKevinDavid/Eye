@@ -1,9 +1,13 @@
 
 package com.kevin.service;
 
+
 import com.kevin.dto.HistoryDTO;
 import com.kevin.domain.History;
 import com.kevin.domain.RunnedGame;
+import com.kevin.dto.RunnedGameDTO;
+
+
 import com.kevin.persistance.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,16 +23,16 @@ public class HistoryService {
     @Autowired
     private HistoryRepository historyRepository;
 
-    public void saveHistory(History history, RunnedGame runnedGame){
-        if(history.getResult(runnedGame)==-1){
+
+    public void saveHistory(HistoryDTO historyDTO, RunnedGameDTO runnedGameDTO){
+        if(historyDTO.getResult(runnedGameDTO)==-1){
             throw new IllegalArgumentException("Result not valid.");
         }
-        //if(history.getId()==0){
-            //throw new IllegalArgumentException("Name can not be null.");
-        //}
+
+        History historyObject=convert(historyDTO);
 
         try {
-            historyRepository.save(history);
+            historyRepository.save(historyObject);
         }catch (Exception e){
             System.out.println("Error in saving user "+e);
         }
@@ -56,6 +60,43 @@ public class HistoryService {
         }
 
         return list;
+    }
+
+    private HistoryDTO convertToDto(History history) {
+        HistoryDTO historyDTO = new HistoryDTO();
+        RunnedGame runnedGame=new RunnedGame();
+        historyDTO.setResult(history.getResult(runnedGame));
+        historyDTO.setDate(history.getDatePublic());
+        historyDTO.setID(history.getId());
+        return historyDTO;
+    }
+
+    private History convert(HistoryDTO historyDTO) {
+        History history = new History();
+        RunnedGameDTO runnedGameDTO=new RunnedGameDTO();
+        history.setResult(historyDTO.getResult(runnedGameDTO));
+        history.setDate(historyDTO.getDatePublic());
+        history.setId(historyDTO.getID());
+        return history;
+    }
+
+    public HistoryDTO getHistoryById(long id) {
+        History history=historyRepository.findOne(id);
+        if(history==null){
+            throw new IllegalArgumentException("The id is not valid.");
+        }
+        return convertToDto(history);
+    }
+
+    public HistoryDTO updateHistory(long id,HistoryDTO dto) {
+        History history=historyRepository.findOne(id);
+        RunnedGameDTO runnedGameDTO=new RunnedGameDTO();
+        history.setResult(dto.getResult(runnedGameDTO));
+        history.setDate(dto.getDatePublic());
+
+        History savedObject= historyRepository.save(history);
+
+        return convertToDto(savedObject);
     }
 }
 

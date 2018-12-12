@@ -1,6 +1,8 @@
 package com.kevin.domain;
 
 
+import com.kevin.dto.HistoryDTO;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -21,6 +23,8 @@ public class Performance {
     public Performance() {
     }
 
+
+
     public long getId() {
         return id;
     }
@@ -35,6 +39,18 @@ public class Performance {
 
     public List<History> getResultList() {
         return resultList;
+    }
+    public List<HistoryDTO> getResultListInDto() {
+        List<HistoryDTO> list=new ArrayList<>();
+        for(int i=0;i<resultList.size();i++) {
+            History history=resultList.get(i);
+            HistoryDTO historyDTO = new HistoryDTO();
+            historyDTO.setDate(history.getDatePublic());
+            historyDTO.setResult(history.getResult());
+            historyDTO.setID(history.getId());
+            list.add(historyDTO);
+        }
+        return list;
     }
 
     public void setResultList(List<History> resultList) {

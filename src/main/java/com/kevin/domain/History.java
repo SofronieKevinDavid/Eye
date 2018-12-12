@@ -29,6 +29,13 @@ public class History {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private RunnedGame runnedGame;
 
+    public double getResult() {
+        return result;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     private String getDate() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -37,12 +44,15 @@ public class History {
         return formattedDateTime;
     }
 
+    public String getDatePublic(){
+        return date;
+    }
+
     public History() {
         this.date = getDate();
     }
 
     public double getResult(RunnedGame runnedGame) {
-        //eroare cu nullpointerexception:
         return runnedGame.medium();
     }
 

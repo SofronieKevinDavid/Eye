@@ -20,10 +20,10 @@ public class PerformanceService {
     @Autowired
     private PerformanceRepository performanceRepository;
 
-    public void savePerformance(Performance performance){
-
+    public void savePerformance(PerformanceDTO performanceDTO){
+        Performance performanceObject=convert(performanceDTO);
         try {
-            performanceRepository.save(performance);
+            performanceRepository.save(performanceObject);
         }catch (Exception e){
             System.out.println("Error in saving user "+e);
         }
@@ -62,5 +62,37 @@ public class PerformanceService {
         }
 
         return list;
+    }
+
+    private PerformanceDTO convertToDto(Performance performance) {
+        PerformanceDTO performanceDTO = new PerformanceDTO();
+        performanceDTO.setResultList(performance.getResultListInDto());
+        performanceDTO.setID(performance.getId());
+        return performanceDTO;
+    }
+
+    private Performance convert(PerformanceDTO performanceDTO) {
+        Performance performance = new Performance();
+        performance.setResultList(performanceDTO.getResultListAsNotDTO());
+        performance.setId(performanceDTO.getID());
+        return performance;
+    }
+
+    public PerformanceDTO getPerformanceById(long id) {
+        Performance performance=performanceRepository.findOne(id);
+        if(performance==null){
+            throw new IllegalArgumentException("The id is not valid.");
+        }
+        return convertToDto(performance);
+    }
+
+    public PerformanceDTO updatePerformance(long id,PerformanceDTO dto) {
+        Performance performance=performanceRepository.findOne(id);
+        performance.setResultList(dto.getResultListAsNotDTO());
+
+
+        Performance savedObject= performanceRepository.save(performance);
+
+        return convertToDto(savedObject);
     }
 }

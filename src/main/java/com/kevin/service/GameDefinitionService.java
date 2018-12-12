@@ -19,11 +19,11 @@ public class GameDefinitionService {
     private GameDefinitionRepository gameDefinitionRepository;
 
 
-    public void saveGameDefinition(GameDefinitionDTO gameDefinition){
-        if(gameDefinition.getName()==null){
+    public void saveGameDefinition(GameDefinitionDTO gameDefinitionDTO){
+        if(gameDefinitionDTO.getName()==null){
             throw new IllegalArgumentException("Name can not be null.");
         }
-        GameDefinition gameDefinitionObject=convert(gameDefinition);
+        GameDefinition gameDefinitionObject=convert(gameDefinitionDTO);
 
         try {
             gameDefinitionRepository.save(gameDefinitionObject);

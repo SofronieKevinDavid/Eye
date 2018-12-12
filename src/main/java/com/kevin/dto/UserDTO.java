@@ -4,6 +4,9 @@ public class UserDTO {
     private long ID;
     private String name;
 
+    public UserDTO() {
+    }
+
     public UserDTO(String name) {
         this.name = name;
     }
