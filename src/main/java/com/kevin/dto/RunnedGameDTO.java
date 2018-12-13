@@ -19,7 +19,11 @@ public class RunnedGameDTO {
     }
 
     public RunnedGameDTO() {
-        this.level=20;
+
+    }
+
+    public RunnedGameDTO(int level) {
+        this.level = level;
     }
 
     public int getLevel() {

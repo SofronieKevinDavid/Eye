@@ -34,7 +34,7 @@ public class RunnedGame {
     }
 
     public RunnedGame() {
-        this.level=20;
+
     }
 
     public int getLevel() {

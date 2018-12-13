@@ -30,6 +30,20 @@ public class RunnedGameService {
         }
     }
 
+    /*public void saveUser(UserDTO userDTO){
+        if(userDTO.getName()==null){
+            throw new IllegalArgumentException("Name can not be null.");
+        }
+
+
+        User userObject=convert(userDTO);
+        try {
+            userRepository.save(userObject);
+        }catch (Exception e){
+            System.out.println("Error in saving user "+e);
+        }
+    }*/
+
     @Transactional
     public List<RunnedGameDTO> getRunnedGames() {
         Iterator<RunnedGame> iterator =
