@@ -2,29 +2,30 @@ package com.kevin.web;
 
 
 
-import com.kevin.domain.RunnedGame;
+import com.kevin.dto.RunnedGameDTO;
 import com.kevin.service.RunnedGameService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/runnedGame")
 public class RunnedGameController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RunnedGameService.class);
-
     @Autowired
     private RunnedGameService runnedGameService;
 
-    @RequestMapping(value = {"/{runnedGame}"}, method = RequestMethod.POST)
-    public void saveRunnedGame(@PathVariable("runnedGame") RunnedGame runnedGame) {
-        LOGGER.info("runnedGame >> {}", runnedGame);
+    @RequestMapping(path = "/runnedgame/{id}", method = RequestMethod.GET)
+    public RunnedGameDTO getRunnedGame(@PathVariable("id") long id){
+        return runnedGameService.getRunnedGameById(id);
+    }
 
-        runnedGameService.saveRunnedGame(runnedGame);
+    @RequestMapping(path="/runnedgame", method=RequestMethod.POST)
+    public void saveRunnedGame(@RequestBody RunnedGameDTO runnedGameDTO){
+        runnedGameService.saveRunnedGame(runnedGameDTO);
+    }
+
+    @RequestMapping(path="/runnedgame/{id}", method=RequestMethod.PUT)
+    public RunnedGameDTO updateRunnedGame(@PathVariable long id, @RequestBody RunnedGameDTO dto){
+        return runnedGameService.updateRunnedGame(id, dto);
     }
 }

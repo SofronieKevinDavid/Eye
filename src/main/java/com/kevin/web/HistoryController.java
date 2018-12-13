@@ -1,30 +1,34 @@
 package com.kevin.web;
 
 
-import com.kevin.domain.History;
-import com.kevin.domain.RunnedGame;
+
+import com.kevin.dto.HistoryDTO;
 import com.kevin.service.HistoryService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/history")
 public class HistoryController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HistoryService.class);
 
     @Autowired
     private HistoryService historyService;
 
-    @RequestMapping(value = {"/{history}"}, method = RequestMethod.POST)
-    public void saveHistory(@PathVariable("history") History history, RunnedGame runnedGame) {
-        LOGGER.info("history >> {}", history);
+    @RequestMapping(path = "/history/{id}", method = RequestMethod.GET)
+    public HistoryDTO getHistory(@PathVariable("id") long id){
+        return historyService.getHistoryById(id);
+    }
 
-        historyService.saveHistory(history, runnedGame);
+    @RequestMapping(path="/history", method=RequestMethod.POST)
+    public void saveUser(@RequestBody HistoryDTO historyDTO){
+        historyService.saveHistory(historyDTO);
+    }
+
+    @RequestMapping(path="/history/{id}", method=RequestMethod.PUT)
+    public HistoryDTO updateUser(@PathVariable long id, @RequestBody HistoryDTO dto){
+        return historyService.updateHistory(id, dto);
     }
 }

@@ -24,7 +24,8 @@ public class HistoryService {
     private HistoryRepository historyRepository;
 
 
-    public void saveHistory(HistoryDTO historyDTO, RunnedGameDTO runnedGameDTO){
+    public void saveHistory(HistoryDTO historyDTO){
+        RunnedGameDTO runnedGameDTO=new RunnedGameDTO();
         if(historyDTO.getResult(runnedGameDTO)==-1){
             throw new IllegalArgumentException("Result not valid.");
         }
