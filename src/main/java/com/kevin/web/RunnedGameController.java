@@ -14,15 +14,18 @@ public class RunnedGameController {
     @Autowired
     private RunnedGameService runnedGameService;
 
+    
     @RequestMapping(path = "/runnedgame/{id}", method = RequestMethod.GET)
     public RunnedGameDTO getRunnedGame(@PathVariable("id") long id){
         return runnedGameService.getRunnedGameById(id);
     }
 
+
     @RequestMapping(path="/runnedgame", method=RequestMethod.POST)
     public void saveRunnedGame(@RequestBody RunnedGameDTO runnedGameDTO){
         runnedGameService.saveRunnedGame(runnedGameDTO);
     }
+
 
     @RequestMapping(path="/runnedgame/{id}", method=RequestMethod.PUT)
     public RunnedGameDTO updateRunnedGame(@PathVariable long id, @RequestBody RunnedGameDTO dto){
