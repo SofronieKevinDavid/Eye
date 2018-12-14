@@ -77,7 +77,7 @@ public class RunnedGameService {
 
     private RunnedGame convert(RunnedGameDTO runnedGameDTO) {
         RunnedGame runnedGame = new RunnedGame();
-        runnedGame.setLevel(runnedGame.getLevel());
+        runnedGame.setLevel(runnedGameDTO.getLevel());
         runnedGame.setId(runnedGameDTO.getID());
         return runnedGame;
     }
