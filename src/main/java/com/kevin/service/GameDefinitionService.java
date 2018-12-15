@@ -78,6 +78,14 @@ public class GameDefinitionService {
         return convertToDto(gameDefinition);
     }
 
+    public boolean deleteGameDefinitionById(long id){
+        if(gameDefinitionRepository.findOne(id)!=null) {
+            gameDefinitionRepository.delete(id);
+            return true;
+        }
+        return false;
+    }
+
     public GameDefinitionDTO updateGameDefinition(long id,GameDefinitionDTO dto) {
         GameDefinition gameDefinition=gameDefinitionRepository.findOne(id);
         gameDefinition.setDescription(dto.getDescription());

@@ -31,4 +31,9 @@ public class RunnedGameController {
     public RunnedGameDTO updateRunnedGame(@PathVariable long id, @RequestBody RunnedGameDTO dto){
         return runnedGameService.updateRunnedGame(id, dto);
     }
+
+    @RequestMapping(path = "/runnedgame/{id}", method =RequestMethod.DELETE)
+    public void deleteRunnedGame(@PathVariable("id") long id){
+        runnedGameService.deleteRunnedGameById(id);
+    }
 }

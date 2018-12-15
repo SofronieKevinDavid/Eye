@@ -98,5 +98,13 @@ public class RunnedGameService {
 
         return convertToDto(savedObject);
     }
+
+    public boolean deleteRunnedGameById(long id){
+        if(runnedGameRepository.findOne(id)!=null) {
+            runnedGameRepository.delete(id);
+            return true;
+        }
+        return false;
+    }
 }
 

@@ -29,6 +29,8 @@ public class GameDefinitionController {
         return gameDefinitionService.updateGameDefinition(id, dto);
     }
 
-
-
+    @RequestMapping(path = "/gamedefinition/{id}", method =RequestMethod.DELETE)
+    public void deleteGameDefinition(@PathVariable("id") long id){
+        gameDefinitionService.deleteGameDefinitionById(id);
+    }
 }

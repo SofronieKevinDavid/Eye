@@ -99,5 +99,13 @@ public class HistoryService {
 
         return convertToDto(savedObject);
     }
+
+    public boolean deleteHistoryById(long id){
+        if(historyRepository.findOne(id)!=null) {
+            historyRepository.delete(id);
+            return true;
+        }
+        return false;
+    }
 }
 

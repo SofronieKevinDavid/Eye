@@ -90,5 +90,13 @@ public class UserService {
 
         return convertToDto(savedObject);
     }
+
+    public boolean deleteUserById(long id){
+        if(userRepository.findOne(id)!=null) {
+            userRepository.delete(id);
+            return true;
+        }
+        return false;
+    }
 }
 

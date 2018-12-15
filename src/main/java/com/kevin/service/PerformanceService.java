@@ -95,4 +95,12 @@ public class PerformanceService {
 
         return convertToDto(savedObject);
     }
+
+    public boolean deletePerformanceById(long id){
+        if(performanceRepository.findOne(id)!=null) {
+            performanceRepository.delete(id);
+            return true;
+        }
+        return false;
+    }
 }

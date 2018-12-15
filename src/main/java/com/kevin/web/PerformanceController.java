@@ -32,4 +32,9 @@ public class PerformanceController {
     public PerformanceDTO updatePerformance(@PathVariable long id, @RequestBody PerformanceDTO dto){
         return performanceService.updatePerformance(id, dto);
     }
+
+    @RequestMapping(path = "/performance/{id}", method =RequestMethod.DELETE)
+    public void deletePerformance(@PathVariable("id") long id){
+        performanceService.deletePerformanceById(id);
+    }
 }

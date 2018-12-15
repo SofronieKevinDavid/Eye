@@ -28,4 +28,10 @@ public class UserController {
         return userService.updateUser(id, dto);
     }
 
+    @RequestMapping(path = "/user/{id}", method =RequestMethod.DELETE)
+    public void deleteUser(@PathVariable("id") long id){
+        userService.deleteUserById(id);
+    }
+
+
 }

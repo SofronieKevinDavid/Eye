@@ -31,4 +31,9 @@ public class HistoryController {
     public HistoryDTO updateUser(@PathVariable long id, @RequestBody HistoryDTO dto){
         return historyService.updateHistory(id, dto);
     }
+
+    @RequestMapping(path = "/history/{id}", method =RequestMethod.DELETE)
+    public void deleteHistory(@PathVariable("id") long id){
+        historyService.deleteHistoryById(id);
+    }
 }
