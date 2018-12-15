@@ -30,7 +30,7 @@ public class History {
     private RunnedGame runnedGame;
 
     public double getResult() {
-        return result;
+        return this.result;
     }
 
     public void setDate(String date) {

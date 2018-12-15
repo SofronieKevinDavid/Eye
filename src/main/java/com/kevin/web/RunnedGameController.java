@@ -14,7 +14,7 @@ public class RunnedGameController {
     @Autowired
     private RunnedGameService runnedGameService;
 
-    
+
     @RequestMapping(path = "/runnedgame/{id}", method = RequestMethod.GET)
     public RunnedGameDTO getRunnedGame(@PathVariable("id") long id){
         return runnedGameService.getRunnedGameById(id);

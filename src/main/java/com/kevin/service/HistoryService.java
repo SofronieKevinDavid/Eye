@@ -65,8 +65,8 @@ public class HistoryService {
 
     private HistoryDTO convertToDto(History history) {
         HistoryDTO historyDTO = new HistoryDTO();
-        RunnedGame runnedGame=new RunnedGame();
-        historyDTO.setResult(history.getResult(runnedGame));
+        //RunnedGame runnedGame=new RunnedGame();-pt a se putea da data din postman
+        historyDTO.setResult(history.getResult());
         historyDTO.setDate(history.getDatePublic());
         historyDTO.setID(history.getId());
         return historyDTO;
@@ -74,8 +74,8 @@ public class HistoryService {
 
     private History convert(HistoryDTO historyDTO) {
         History history = new History();
-        RunnedGameDTO runnedGameDTO=new RunnedGameDTO();
-        history.setResult(historyDTO.getResult(runnedGameDTO));
+        //RunnedGameDTO runnedGameDTO=new RunnedGameDTO();-pt a se putea da data din postman
+        history.setResult(historyDTO.getResult());
         history.setDate(historyDTO.getDatePublic());
         history.setId(historyDTO.getID());
         return history;
@@ -91,8 +91,8 @@ public class HistoryService {
 
     public HistoryDTO updateHistory(long id,HistoryDTO dto) {
         History history=historyRepository.findOne(id);
-        RunnedGameDTO runnedGameDTO=new RunnedGameDTO();
-        history.setResult(dto.getResult(runnedGameDTO));
+        //RunnedGameDTO runnedGameDTO=new RunnedGameDTO();-pt a se putea da data din postman
+        history.setResult(dto.getResult());
         history.setDate(dto.getDatePublic());
 
         History savedObject= historyRepository.save(history);

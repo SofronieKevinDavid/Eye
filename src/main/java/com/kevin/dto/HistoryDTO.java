@@ -25,7 +25,7 @@ public class HistoryDTO {
         this.date=getDate();
     }
     public double getResult() {
-        return result;
+        return this.result;
     }
 
     public double getResult(RunnedGameDTO runnedGameDTO) {
