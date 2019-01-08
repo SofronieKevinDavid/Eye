@@ -44,22 +44,6 @@ public class RunnedGame {
         this.level = level;
     }
 
-    private int numberOfCorrectAnswers =0;
-
-    private int totalNumberOfResults=1;
-
-    public double medium(){
-        if(totalNumberOfResults==0){
-            return -1;
-        }
-        return numberOfCorrectAnswers / totalNumberOfResults;
-        //return 3;
-    }
-    public String stringMedium(){
-        if(totalNumberOfResults==0){
-            return "No medium to show.";
-        }
-        return numberOfCorrectAnswers +"/"+ totalNumberOfResults;
-    }
+    
 }
 

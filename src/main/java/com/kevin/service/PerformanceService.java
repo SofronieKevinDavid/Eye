@@ -73,6 +73,7 @@ public class PerformanceService {
 
     private Performance convert(PerformanceDTO performanceDTO) {
         Performance performance = new Performance();
+        //
         performance.setResultList(performanceDTO.getResultListAsNotDTO());
         performance.setId(performanceDTO.getID());
         return performance;
@@ -88,6 +89,7 @@ public class PerformanceService {
 
     public PerformanceDTO updatePerformance(long id,PerformanceDTO dto) {
         Performance performance=performanceRepository.findOne(id);
+        //
         performance.setResultList(dto.getResultListAsNotDTO());
 
 

@@ -34,9 +34,6 @@ public class RunnedGameDTO {
         this.level = level;
     }
 
-    private int numberOfCorrectAnswers =0;
-
-    private int totalNumberOfResults=1;
 
     @Override
     public String toString() {
@@ -45,8 +42,6 @@ public class RunnedGameDTO {
                 ", level=" + level +
                 ", gameDefinition=" + gameDefinition +
                 ", user=" + user +
-                ", numberOfCorrectAnswers=" + numberOfCorrectAnswers +
-                ", totalNumberOfResults=" + totalNumberOfResults +
                 '}';
     }
 }
