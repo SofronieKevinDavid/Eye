@@ -38,19 +38,6 @@ public class RunnedGameDTO {
 
     private int totalNumberOfResults=1;
 
-    public double medium(){
-        if(totalNumberOfResults==0){
-            return -1;
-        }
-        return numberOfCorrectAnswers / totalNumberOfResults;
-    }
-    public String stringMedium(){
-        if(totalNumberOfResults==0){
-            return "No medium to show.";
-        }
-        return numberOfCorrectAnswers +"/"+ totalNumberOfResults;
-    }
-
     @Override
     public String toString() {
         return "RunnedGameDTO{" +

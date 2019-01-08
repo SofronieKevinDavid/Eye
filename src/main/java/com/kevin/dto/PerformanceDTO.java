@@ -27,9 +27,9 @@ public class PerformanceDTO {
         for(int i=0;i<resultList.size();i++) {
             HistoryDTO historyDTO=resultList.get(i);
             History history = new History();
-            RunnedGameDTO runnedGameDTO=new RunnedGameDTO();
+
             history.setDate(historyDTO.getDatePublic());
-            history.setResult(historyDTO.getResult(runnedGameDTO));
+            history.setResult(historyDTO.getResult());
             history.setId(historyDTO.getID());
             list.add(history);
         }
@@ -40,9 +40,9 @@ public class PerformanceDTO {
         this.resultList = resultList;
     }
 
-    public void printMap(List<History> list, RunnedGame runnedGame){
+    public void printMap(List<History> list){
         for(int i=0;i<list.size();i++){
-            System.out.println(list.get(i).getResult(runnedGame));
+            System.out.println(list.get(i).getResult());
         }
     }
     public boolean deleteResult(int index){

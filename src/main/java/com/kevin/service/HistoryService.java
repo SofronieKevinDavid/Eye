@@ -4,8 +4,7 @@ package com.kevin.service;
 
 import com.kevin.dto.HistoryDTO;
 import com.kevin.domain.History;
-import com.kevin.domain.RunnedGame;
-import com.kevin.dto.RunnedGameDTO;
+
 
 
 import com.kevin.persistance.HistoryRepository;
@@ -25,8 +24,8 @@ public class HistoryService {
 
 
     public void saveHistory(HistoryDTO historyDTO){
-        RunnedGameDTO runnedGameDTO=new RunnedGameDTO();
-        if(historyDTO.getResult(runnedGameDTO)==-1){
+
+        if(historyDTO.getResult()==-1){
             throw new IllegalArgumentException("Result not valid.");
         }
 
@@ -52,8 +51,8 @@ public class HistoryService {
             History history = iterator.next();
 
             HistoryDTO historyDTO = new HistoryDTO();
-            RunnedGame runnedGame= new RunnedGame();
-            historyDTO.setResult(history.getResult(runnedGame));
+
+            historyDTO.setResult(history.getResult());
             historyDTO.setID(history.getId());
 
 
@@ -65,7 +64,6 @@ public class HistoryService {
 
     private HistoryDTO convertToDto(History history) {
         HistoryDTO historyDTO = new HistoryDTO();
-        //RunnedGame runnedGame=new RunnedGame();-pt a se putea da data din postman
         historyDTO.setResult(history.getResult());
         historyDTO.setDate(history.getDatePublic());
         historyDTO.setID(history.getId());
@@ -74,7 +72,6 @@ public class HistoryService {
 
     private History convert(HistoryDTO historyDTO) {
         History history = new History();
-        //RunnedGameDTO runnedGameDTO=new RunnedGameDTO();-pt a se putea da data din postman
         history.setResult(historyDTO.getResult());
         history.setDate(historyDTO.getDatePublic());
         history.setId(historyDTO.getID());
@@ -91,7 +88,6 @@ public class HistoryService {
 
     public HistoryDTO updateHistory(long id,HistoryDTO dto) {
         History history=historyRepository.findOne(id);
-        //RunnedGameDTO runnedGameDTO=new RunnedGameDTO();-pt a se putea da data din postman
         history.setResult(dto.getResult());
         history.setDate(dto.getDatePublic());
 

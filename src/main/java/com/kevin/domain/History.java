@@ -52,10 +52,6 @@ public class History {
         this.date = getDate();
     }
 
-    public double getResult(RunnedGame runnedGame) {
-        return runnedGame.medium();
-    }
-
     public long getId() {
         return id;
     }

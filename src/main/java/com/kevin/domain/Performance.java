@@ -59,7 +59,7 @@ public class Performance {
 
     public void printMap(List<History> list, RunnedGame runnedGame) {
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getResult(runnedGame));
+            System.out.println(list.get(i).getResult());
         }
     }
 

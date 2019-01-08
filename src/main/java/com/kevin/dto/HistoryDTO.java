@@ -28,10 +28,6 @@ public class HistoryDTO {
         return this.result;
     }
 
-    public double getResult(RunnedGameDTO runnedGameDTO) {
-        return runnedGameDTO.medium();
-    }
-
     public long getID() {
         return ID;
     }

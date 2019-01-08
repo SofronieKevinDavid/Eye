@@ -18,10 +18,10 @@ public class RunnedGame {
     @Column(name="level")
 
     private int level;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="game_Definition_Id")
     private GameDefinition gameDefinition;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_Id")
     private User user;
 

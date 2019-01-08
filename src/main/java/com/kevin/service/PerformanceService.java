@@ -53,7 +53,7 @@ public class PerformanceService {
 
                 historyDTO.setID(history.getId());
                 RunnedGame runnedGame=new RunnedGame();
-                historyDTO.setResult(history.getResult(runnedGame));
+                historyDTO.setResult(history.getResult());
 
                 performanceDTO.getResultList().add(historyDTO);
                 nrOfProd++;
