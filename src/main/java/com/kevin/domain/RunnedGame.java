@@ -1,4 +1,3 @@
-//functioneazaRunnedGamme
 package com.kevin.domain;
 
 import javax.persistence.*;
