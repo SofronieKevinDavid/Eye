@@ -44,6 +44,6 @@ public class RunnedGame {
         this.level = level;
     }
 
-    
+
 }
 
