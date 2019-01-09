@@ -73,8 +73,8 @@ public class PerformanceService {
 
     private Performance convert(PerformanceDTO performanceDTO) {
         Performance performance = new Performance();
-        //
-        performance.setResultList(performanceDTO.getResultListAsNotDTO());
+//
+        performance.setResultList(getResultListAsNotDTO(performanceDTO));
         performance.setId(performanceDTO.getID());
         return performance;
     }
@@ -89,8 +89,8 @@ public class PerformanceService {
 
     public PerformanceDTO updatePerformance(long id,PerformanceDTO dto) {
         Performance performance=performanceRepository.findOne(id);
-        //
-        performance.setResultList(dto.getResultListAsNotDTO());
+//
+        performance.setResultList(getResultListAsNotDTO(dto));
 
 
         Performance savedObject= performanceRepository.save(performance);
@@ -104,5 +104,20 @@ public class PerformanceService {
             return true;
         }
         return false;
+    }
+//
+    public List<History> getResultListAsNotDTO(PerformanceDTO performanceDTO) {
+        List<HistoryDTO> resultList=performanceDTO.getResultList();
+        List<History> list=new ArrayList<>();
+        for(int i=0;i<resultList.size();i++) {
+            HistoryDTO historyDTO=resultList.get(i);
+            History history = new History();
+
+            history.setDate(historyDTO.getDatePublic());
+            history.setResult(historyDTO.getResult());
+            history.setId(historyDTO.getID());
+            list.add(history);
+        }
+        return list;
     }
 }
