@@ -1,9 +1,14 @@
 
 package com.kevin.service;
 
+import com.kevin.domain.GameDefinition;
+import com.kevin.domain.User;
+import com.kevin.dto.GameDefinitionDTO;
 import com.kevin.dto.RunnedGameDTO;
 import com.kevin.domain.RunnedGame;
+import com.kevin.persistance.GameDefinitionRepository;
 import com.kevin.persistance.RunnedGameRepository;
+import com.kevin.persistance.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,17 +23,30 @@ public class RunnedGameService {
     @Autowired
     private RunnedGameRepository runnedGameRepository;
 
-    public void saveRunnedGame(RunnedGameDTO runnedGameDTO){
-        if(runnedGameDTO.getLevel()==0){
+    @Autowired
+    private GameDefinitionRepository gameDefinitionRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public void saveRunnedGame(RunnedGameDTO dto){
+        if(dto.getLevel()==0){
             throw new IllegalArgumentException("Level can not be 0.");
         }
-        RunnedGame runnedGameObject=convert(runnedGameDTO);
+        long gameId=dto.getGameDefinitionId();
+        long userId=dto.getUserId();
+        GameDefinition gameDefinition=gameDefinitionRepository.findOne(gameId);
+        User user=userRepository.findOne(userId);
+        RunnedGame runnedGame=convert(dto);
+        runnedGame.setGameDefinition(gameDefinition);
+        runnedGame.setUser(user);
         try {
-            runnedGameRepository.save(runnedGameObject);
+            runnedGameRepository.save(runnedGame);
         }catch (Exception e){
             System.out.println("Error in saving user "+e);
         }
     }
+
 
 
     @Transactional

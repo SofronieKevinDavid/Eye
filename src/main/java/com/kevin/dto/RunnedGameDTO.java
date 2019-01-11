@@ -22,6 +22,14 @@ public class RunnedGameDTO {
 
     }
 
+    public long getGameDefinitionId(){
+        return gameDefinition.getId();
+    }
+
+    public long getUserId(){
+        return gameDefinition.getId();
+    }
+
     public RunnedGameDTO(int level) {
         this.level = level;
     }

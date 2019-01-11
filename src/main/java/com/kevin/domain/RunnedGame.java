@@ -32,6 +32,22 @@ public class RunnedGame {
         this.id = id;
     }
 
+    public GameDefinition getGameDefinition() {
+        return gameDefinition;
+    }
+
+    public void setGameDefinition(GameDefinition gameDefinition) {
+        this.gameDefinition = gameDefinition;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public RunnedGame() {
 
     }
