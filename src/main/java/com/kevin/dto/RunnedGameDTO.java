@@ -3,6 +3,8 @@ package com.kevin.dto;
 import com.kevin.domain.GameDefinition;
 import com.kevin.domain.User;
 
+import java.util.Objects;
+
 public class RunnedGameDTO {
     private long ID;
     private int level;
@@ -67,5 +69,21 @@ public class RunnedGameDTO {
                 ", gameDefinitionDTO=" + gameDefinitionDTO +
                 ", userDTO=" + userDTO +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RunnedGameDTO that = (RunnedGameDTO) o;
+        return ID == that.ID &&
+                level == that.level &&
+                Objects.equals(gameDefinitionDTO, that.gameDefinitionDTO) &&
+                Objects.equals(userDTO, that.userDTO);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, level, gameDefinitionDTO, userDTO);
     }
 }

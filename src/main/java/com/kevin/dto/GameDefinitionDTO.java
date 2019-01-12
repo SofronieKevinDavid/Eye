@@ -1,5 +1,7 @@
 package com.kevin.dto;
 
+import java.util.Objects;
+
 public class GameDefinitionDTO {
     private long ID;
     private String name;
@@ -46,5 +48,20 @@ public class GameDefinitionDTO {
                 "ID=" + ID +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameDefinitionDTO that = (GameDefinitionDTO) o;
+        return ID == that.ID &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, name, description);
     }
 }

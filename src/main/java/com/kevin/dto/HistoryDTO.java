@@ -4,6 +4,7 @@ import com.kevin.domain.RunnedGame;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class HistoryDTO {
     private long ID;
@@ -64,5 +65,21 @@ public class HistoryDTO {
                 ", date='" + date + '\'' +
                 ", runnedGameDTO=" + runnedGameDTO +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HistoryDTO that = (HistoryDTO) o;
+        return ID == that.ID &&
+                Double.compare(that.result, result) == 0 &&
+                Objects.equals(date, that.date) &&
+                Objects.equals(runnedGameDTO, that.runnedGameDTO);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, result, date, runnedGameDTO);
     }
 }

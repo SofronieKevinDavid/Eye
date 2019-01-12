@@ -5,6 +5,7 @@ import com.kevin.domain.RunnedGame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PerformanceDTO {
     private long ID;
@@ -56,5 +57,19 @@ public class PerformanceDTO {
                 "ID=" + ID +
                 ", resultList=" + resultList +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PerformanceDTO that = (PerformanceDTO) o;
+        return ID == that.ID &&
+                Objects.equals(resultList, that.resultList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, resultList);
     }
 }

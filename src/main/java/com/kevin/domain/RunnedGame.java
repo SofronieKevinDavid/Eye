@@ -1,6 +1,7 @@
 package com.kevin.domain;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "runnedgames")
@@ -60,6 +61,30 @@ public class RunnedGame {
         this.level = level;
     }
 
+    @Override
+    public String toString() {
+        return "RunnedGame{" +
+                "id=" + id +
+                ", level=" + level +
+                ", gameDefinition=" + gameDefinition +
+                ", user=" + user +
+                '}';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RunnedGame that = (RunnedGame) o;
+        return id == that.id &&
+                level == that.level &&
+                Objects.equals(gameDefinition, that.gameDefinition) &&
+                Objects.equals(user, that.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, level, gameDefinition, user);
+    }
 }
 

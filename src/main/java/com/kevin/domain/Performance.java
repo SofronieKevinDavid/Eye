@@ -80,4 +80,26 @@ public class Performance {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Performance{" +
+                "id=" + id +
+                ", resultList=" + resultList +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Performance that = (Performance) o;
+        return id == that.id &&
+                Objects.equals(resultList, that.resultList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, resultList);
+    }
 }

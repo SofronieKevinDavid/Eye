@@ -1,5 +1,7 @@
 package com.kevin.dto;
 
+import java.util.Objects;
+
 public class UserDTO {
     private long ID;
     private String name;
@@ -33,5 +35,19 @@ public class UserDTO {
                 "ID=" + ID +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserDTO userDTO = (UserDTO) o;
+        return ID == userDTO.ID &&
+                Objects.equals(name, userDTO.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, name);
     }
 }
