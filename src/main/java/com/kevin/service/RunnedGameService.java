@@ -1,4 +1,3 @@
-
 package com.kevin.service;
 
 import com.kevin.domain.GameDefinition;
@@ -69,8 +68,6 @@ public class RunnedGameService {
         }
 
         return list;
-
-
     }
 
     private RunnedGameDTO convertToDto(RunnedGame runnedGame) {

@@ -18,10 +18,12 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @RequestMapping(path = "/user/{name}", method = RequestMethod.GET)
-    public UserDTO getUser(@PathVariable("name") String name){
-        return userService.getUserByName(name);
-    }
+
+    //NU FUNCTIONEAZA GET-UL DE MAI SUS DACA NU AM COMENTATA METODA ASTA:
+//    @RequestMapping(path = "/user/{name}", method = RequestMethod.GET)
+//    public UserDTO getUser(@PathVariable("name") String name){
+//        return userService.getUserByName(name);
+//    }
 
     @RequestMapping(path="/user", method=RequestMethod.POST)
     public void saveUser(@RequestBody UserDTO userDTO){

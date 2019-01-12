@@ -27,10 +27,10 @@ public class PerformanceController {
         return performanceService.getPerformanceForUser(userDTO);
     }
 
-    @RequestMapping(path = "/performance", method = RequestMethod.GET)
-    public PerformanceDTO getPerformanceForUserForGame(@RequestBody UserDTO userDTO,@RequestBody GameDefinitionDTO gameDefinitionDTO){
-        return performanceService.getPerformanceForUserForGame(userDTO,gameDefinitionDTO);
-    }
+//    @RequestMapping(path = "/performance", method = RequestMethod.GET)
+//    public PerformanceDTO getPerformanceForUserForGame(@RequestBody UserDTO userDTO,@RequestBody GameDefinitionDTO gameDefinitionDTO){
+//        return performanceService.getPerformanceForUserForGame(userDTO,gameDefinitionDTO);
+//    }
 
     @RequestMapping(path="/performance", method=RequestMethod.POST)
     public void savePerformance(@RequestBody PerformanceDTO performanceDTO){
