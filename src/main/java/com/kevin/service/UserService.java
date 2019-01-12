@@ -38,6 +38,16 @@ public class UserService {
         }
     }
 
+    public UserDTO getUserByName(String name){
+        List<UserDTO> list=getUsers();
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).getName()==name){
+                return list.get(i);
+            }
+        }
+        return null;
+    }
+
     @Transactional
     public List<UserDTO> getUsers() {
         Iterator<User> iterator =

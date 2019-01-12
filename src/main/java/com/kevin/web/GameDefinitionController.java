@@ -7,6 +7,8 @@ import com.kevin.service.GameDefinitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class GameDefinitionController {
 
@@ -17,6 +19,11 @@ public class GameDefinitionController {
     @RequestMapping(path = "/gamedefinition/{id}", method =RequestMethod.GET)
     public GameDefinitionDTO getGameDefinition(@PathVariable("id") long id){
         return gameDefinitionService.getGameDefinitionById(id);
+    }
+
+    @RequestMapping(path = "/gamedefinition", method =RequestMethod.GET)
+    public List<GameDefinitionDTO> getGameDefinitions(){
+        return gameDefinitionService.getGameDefinitions();
     }
 
     @RequestMapping(path="/gamedefinition", method=RequestMethod.POST)

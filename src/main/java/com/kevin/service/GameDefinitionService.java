@@ -50,8 +50,6 @@ public class GameDefinitionService {
         }
 
         return list;
-
-
     }
 
     private GameDefinitionDTO convertToDto(GameDefinition gameDefinition) {
