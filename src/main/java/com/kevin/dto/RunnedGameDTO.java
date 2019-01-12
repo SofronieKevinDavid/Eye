@@ -7,8 +7,8 @@ public class RunnedGameDTO {
     private long ID;
     private int level;
 
-    private GameDefinition gameDefinition;
-    private User user;
+    private GameDefinitionDTO gameDefinitionDTO;
+    private UserDTO userDTO;
 
     public long getID() {
         return ID;
@@ -22,12 +22,28 @@ public class RunnedGameDTO {
 
     }
 
+    public GameDefinitionDTO getGameDefinitionDTO() {
+        return gameDefinitionDTO;
+    }
+
+    public void setGameDefinitionDTO(GameDefinitionDTO gameDefinitionDTO) {
+        this.gameDefinitionDTO = gameDefinitionDTO;
+    }
+
+    public UserDTO getUserDTO() {
+        return userDTO;
+    }
+
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
+    }
+
     public long getGameDefinitionId(){
-        return gameDefinition.getId();
+        return gameDefinitionDTO.getID();
     }
 
     public long getUserId(){
-        return gameDefinition.getId();
+        return gameDefinitionDTO.getID();
     }
 
     public RunnedGameDTO(int level) {
@@ -48,8 +64,8 @@ public class RunnedGameDTO {
         return "RunnedGameDTO{" +
                 "ID=" + ID +
                 ", level=" + level +
-                ", gameDefinition=" + gameDefinition +
-                ", user=" + user +
+                ", gameDefinitionDTO=" + gameDefinitionDTO +
+                ", userDTO=" + userDTO +
                 '}';
     }
 }

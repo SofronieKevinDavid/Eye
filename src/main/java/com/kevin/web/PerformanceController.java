@@ -2,7 +2,9 @@ package com.kevin.web;
 
 
 
+import com.kevin.dto.GameDefinitionDTO;
 import com.kevin.dto.PerformanceDTO;
+import com.kevin.dto.UserDTO;
 import com.kevin.service.PerformanceService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,16 @@ public class PerformanceController {
     @RequestMapping(path = "/performance/{id}", method = RequestMethod.GET)
     public PerformanceDTO getPerformance(@PathVariable("id") long id){
         return performanceService.getPerformanceById(id);
+    }
+
+    @RequestMapping(path = "/performance", method = RequestMethod.GET)
+    public PerformanceDTO getPerformanceForUser(@RequestBody UserDTO userDTO){
+        return performanceService.getPerformanceForUser(userDTO);
+    }
+
+    @RequestMapping(path = "/performance", method = RequestMethod.GET)
+    public PerformanceDTO getPerformanceForUserForGame(@RequestBody UserDTO userDTO,@RequestBody GameDefinitionDTO gameDefinitionDTO){
+        return performanceService.getPerformanceForUserForGame(userDTO,gameDefinitionDTO);
     }
 
     @RequestMapping(path="/performance", method=RequestMethod.POST)

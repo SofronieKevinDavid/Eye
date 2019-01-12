@@ -1,7 +1,7 @@
 package com.kevin.service;
 
-import com.kevin.dto.HistoryDTO;
-import com.kevin.dto.PerformanceDTO;
+
+import com.kevin.dto.*;
 import com.kevin.domain.History;
 import com.kevin.domain.Performance;
 import com.kevin.domain.RunnedGame;
@@ -28,6 +28,37 @@ public class PerformanceService {
             System.out.println("Error in saving user "+e);
         }
     }
+
+    public PerformanceDTO getPerformanceForUser(UserDTO userDTO){
+        List<PerformanceDTO> list=getPerformances();
+        for(int i=0;i<list.size();i++){
+            PerformanceDTO performanceDTO=list.get(i);
+            List<HistoryDTO> list1=list.get(i).getResultList();
+            for(int j=0;j<list1.size();j++){
+                RunnedGameDTO runnedGameDTO=list1.get(j).getRunnedGameDTO();
+                if(runnedGameDTO.getUserDTO().equals(userDTO)){
+                    return performanceDTO;
+                }
+            }
+        }
+        return null;
+    }
+
+    public PerformanceDTO getPerformanceForUserForGame(UserDTO userDTO, GameDefinitionDTO gameDefinitionDTO){
+        List<PerformanceDTO> list=getPerformances();
+        for(int i=0;i<list.size();i++){
+            PerformanceDTO performanceDTO=list.get(i);
+            List<HistoryDTO> list1=list.get(i).getResultList();
+            for(int j=0;j<list1.size();j++){
+                RunnedGameDTO runnedGameDTO=list1.get(j).getRunnedGameDTO();
+                if(runnedGameDTO.getUserDTO().equals(userDTO)&&runnedGameDTO.getGameDefinitionDTO().equals(gameDefinitionDTO)){
+                    return performanceDTO;
+                }
+            }
+        }
+        return null;
+    }
+
 
 
     @Transactional

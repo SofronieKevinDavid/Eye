@@ -11,7 +11,7 @@ public class HistoryDTO {
     private double result;
     private String date;
 
-    private RunnedGame runnedGame;
+    private RunnedGameDTO runnedGameDTO;
 
 
     private String getDate(){
@@ -19,6 +19,14 @@ public class HistoryDTO {
         LocalDateTime dateTime = LocalDateTime.now();
         String formattedDateTime = dateTime.format(formatter);
         return formattedDateTime;
+    }
+
+    public RunnedGameDTO getRunnedGameDTO() {
+        return runnedGameDTO;
+    }
+
+    public void setRunnedGameDTO(RunnedGameDTO runnedGameDTO) {
+        this.runnedGameDTO = runnedGameDTO;
     }
 
     public HistoryDTO() {
@@ -54,7 +62,7 @@ public class HistoryDTO {
                 "ID=" + ID +
                 ", result=" + result +
                 ", date='" + date + '\'' +
-                ", runnedGame=" + runnedGame +
+                ", runnedGameDTO=" + runnedGameDTO +
                 '}';
     }
 }

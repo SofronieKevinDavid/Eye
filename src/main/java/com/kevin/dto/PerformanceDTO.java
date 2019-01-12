@@ -28,7 +28,7 @@ public class PerformanceDTO {
         this.resultList = resultList;
     }
 
-    public void printMap(List<History> list){
+    public void printList(List<History> list){
         for(int i=0;i<list.size();i++){
             System.out.println(list.get(i).getResult());
         }
