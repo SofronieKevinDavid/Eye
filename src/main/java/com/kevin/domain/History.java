@@ -29,6 +29,14 @@ public class History {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private RunnedGame runnedGame;
 
+    public RunnedGame getRunnedGame() {
+        return runnedGame;
+    }
+
+    public void setRunnedGame(RunnedGame runnedGame) {
+        this.runnedGame = runnedGame;
+    }
+
     public double getResult() {
         return this.result;
     }

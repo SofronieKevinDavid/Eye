@@ -2,11 +2,12 @@
 package com.kevin.service;
 
 
+import com.kevin.domain.RunnedGame;
 import com.kevin.dto.HistoryDTO;
 import com.kevin.domain.History;
 
 
-
+import com.kevin.dto.RunnedGameDTO;
 import com.kevin.persistance.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,7 +68,15 @@ public class HistoryService {
         historyDTO.setResult(history.getResult());
         historyDTO.setDate(history.getDatePublic());
         historyDTO.setID(history.getId());
+        historyDTO.setRunnedGameDTO(convertRunnedGameToDTO(history.getRunnedGame()));
         return historyDTO;
+    }
+
+    private RunnedGameDTO convertRunnedGameToDTO(RunnedGame runnedGame) {
+        RunnedGameDTO runnedGameDTO = new RunnedGameDTO();
+        runnedGameDTO.setLevel(runnedGame.getLevel());
+        runnedGameDTO.setID(runnedGame.getId());
+        return runnedGameDTO;
     }
 
     private History convert(HistoryDTO historyDTO) {
