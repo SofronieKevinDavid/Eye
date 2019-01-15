@@ -5,6 +5,8 @@ import com.kevin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 
 public class UserController {
@@ -21,7 +23,7 @@ public class UserController {
 
     //NU FUNCTIONEAZA GET-UL DE MAI SUS DACA NU AM COMENTATA METODA ASTA:
     @RequestMapping(path = "/user/{name}", method = RequestMethod.GET)
-    public UserDTO getUser(@PathVariable("name") String name){
+    public List<UserDTO> getUser(@PathVariable("name") String name){
         return userService.getUserByName(name);
     }
 
