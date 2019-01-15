@@ -29,35 +29,15 @@ public class PerformanceService {
         }
     }
 
-    public PerformanceDTO getPerformanceForUser(UserDTO userDTO){
-        List<PerformanceDTO> list=getPerformances();
-        for(int i=0;i<list.size();i++){
-            PerformanceDTO performanceDTO=list.get(i);
-            List<HistoryDTO> list1=list.get(i).getResultList();
-            for(int j=0;j<list1.size();j++){
-                RunnedGameDTO runnedGameDTO=list1.get(j).getRunnedGameDTO();
-                if(runnedGameDTO.getUserDTO().equals(userDTO)){
-                    return performanceDTO;
-                }
-            }
-        }
-        return null;
-    }
-
-    public PerformanceDTO getPerformanceForUserForGame(UserDTO userDTO, GameDefinitionDTO gameDefinitionDTO){
-        List<PerformanceDTO> list=getPerformances();
-        for(int i=0;i<list.size();i++){
-            PerformanceDTO performanceDTO=list.get(i);
-            List<HistoryDTO> list1=list.get(i).getResultList();
-            for(int j=0;j<list1.size();j++){
-                RunnedGameDTO runnedGameDTO=list1.get(j).getRunnedGameDTO();
-                if(runnedGameDTO.getUserDTO().equals(userDTO)&&runnedGameDTO.getGameDefinitionDTO().equals(gameDefinitionDTO)){
-                    return performanceDTO;
-                }
-            }
-        }
-        return null;
-    }
+//    public PerformanceDTO getPerformanceForUserID(long userID){
+//        PerformanceDTO performanceDTO;
+//        performanceDTO=convertToDto(performanceRepository.findPerformanceByResultListRunnedGameUserId(userID)) ;
+//        return  performanceDTO;
+//    }
+//
+//    public PerformanceDTO getPerformanceForUserForGame(long userID, long gameDefinitionID){
+//        return getPerformanceById(userID);
+//    }
 
 
 

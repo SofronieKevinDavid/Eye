@@ -22,6 +22,10 @@ public class HistoryDTO {
         return formattedDateTime;
     }
 
+    public long getRunnedGameId(){
+        return runnedGameDTO.getID();
+    }
+
     public RunnedGameDTO getRunnedGameDTO() {
         return runnedGameDTO;
     }

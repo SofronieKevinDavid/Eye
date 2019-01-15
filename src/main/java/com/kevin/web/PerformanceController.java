@@ -22,14 +22,14 @@ public class PerformanceController {
         return performanceService.getPerformanceById(id);
     }
 
-    @RequestMapping(path = "/performance", method = RequestMethod.GET)
-    public PerformanceDTO getPerformanceForUser(@RequestBody UserDTO userDTO){
-        return performanceService.getPerformanceForUser(userDTO);
-    }
+//    @RequestMapping(path = "/performance", method = RequestMethod.GET)
+//    public PerformanceDTO getPerformanceForUser(@RequestBody long userID){
+//        return performanceService.getPerformanceForUserID(userID);
+//    }
 
 //    @RequestMapping(path = "/performance", method = RequestMethod.GET)
-//    public PerformanceDTO getPerformanceForUserForGame(@RequestBody UserDTO userDTO,@RequestBody GameDefinitionDTO gameDefinitionDTO){
-//        return performanceService.getPerformanceForUserForGame(userDTO,gameDefinitionDTO);
+//    public PerformanceDTO getPerformanceForUserForGame(@RequestBody long userID,@RequestBody long gameDefinitionID){
+//        return performanceService.getPerformanceForUserForGame(userID,gameDefinitionID);
 //    }
 
     @RequestMapping(path="/performance", method=RequestMethod.POST)

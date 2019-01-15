@@ -40,12 +40,21 @@ public class RunnedGameDTO {
         this.userDTO = userDTO;
     }
 
-    public long getGameDefinitionId(){
-        return gameDefinitionDTO.getID();
+    public long getGameDefinitionId() {
+        if (gameDefinitionDTO != null) {
+            return gameDefinitionDTO.getID();
+        } else {
+            return 0;
+        }
+
     }
 
-    public long getUserId(){
-        return gameDefinitionDTO.getID();
+    public long getUserId() {
+        if (userDTO != null) {
+            return gameDefinitionDTO.getID();
+        } else {
+            return 0;
+        }
     }
 
     public RunnedGameDTO(int level) {

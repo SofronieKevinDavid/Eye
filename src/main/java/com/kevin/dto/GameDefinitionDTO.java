@@ -34,9 +34,7 @@ public class GameDefinitionDTO {
     public void setName(String name) {
         this.name = name;
     }
-    public boolean validateAnswer(String answer){
-        return true;
-    }
+
 
     public GameDefinitionDTO(String name) {
         this.name = name;

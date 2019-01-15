@@ -57,6 +57,15 @@ public class RunnedGame {
         return level;
     }
 
+    public long getGameDefinitionId(){
+        return gameDefinition.getId();
+
+    }
+
+    public long getUserId(){
+        return user.getId();
+    }
+
     public void setLevel(int level) {
         this.level = level;
     }
