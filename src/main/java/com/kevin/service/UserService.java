@@ -6,6 +6,7 @@ import com.kevin.dto.UserDTO;
 import com.kevin.domain.User;
 import com.kevin.persistance.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,28 +25,43 @@ public class UserService {
         if(userDTO.getName()==null){
             throw new IllegalArgumentException("Name can not be null.");
         }
+        boolean daca=false;
+        List<UserDTO> userDTOList=getUsers();
 
-
-        User userObject=convert(userDTO);
-
-        //if(user.getId()==0){
-        //throw new IllegalArgumentException("ID can not be 0.");
-        //}
-        try {
-            userRepository.save(userObject);
-        }catch (Exception e){
-            System.out.println("Error in saving user "+e);
+        for(int i=0;i<userDTOList.size();i++){
+            if(userDTOList.get(i).getName()==userDTO.getName()){
+                daca=true;
+            }
         }
+
+
+        if(daca==false) {
+            User userObject = convert(userDTO);
+
+            //if(user.getId()==0){
+            //throw new IllegalArgumentException("ID can not be 0.");
+            //}
+            try {
+                userRepository.save(userObject);
+            } catch (Exception e) {
+                System.out.println("Error in saving user " + e);
+            }
+        }else{
+            throw new IllegalArgumentException("Name must be unique.");
+        }
+
     }
 
     public UserDTO getUserByName(String name){
-        List<UserDTO> list=getUsers();
-        for(int i=0;i<list.size();i++){
-            if(list.get(i).getName()==name){
-                return list.get(i);
-            }
-        }
-        return null;
+        User user= userRepository.findByName(name);
+        return convertToDto(user);
+//        List<UserDTO> list=getUsers();
+//        for(int i=0;i<list.size();i++){
+//            if(list.get(i).getName()==name){
+//                return list.get(i);
+//            }
+//        }
+//        return null;
     }
 
     @Transactional
