@@ -10,6 +10,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface PerformanceRepository extends
         PagingAndSortingRepository<Performance, Long> {
 
-    //@Query("select p from Performance p where p.resultList.runnedGame.user.id=?1")
-    //Performance findPerformanceByResultListRunnedGameUserId(long id);
+    //@Query("select p from Performance p where p.getUserId=?1")
+    Performance findByPerformanceUserId(long id);
 }

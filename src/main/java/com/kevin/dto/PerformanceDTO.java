@@ -2,6 +2,7 @@ package com.kevin.dto;
 
 import com.kevin.domain.History;
 import com.kevin.domain.RunnedGame;
+import com.kevin.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,16 @@ public class PerformanceDTO {
 
     public List<HistoryDTO> getResultList() {
         return resultList;
+    }
+
+    private User performanceUser;
+
+    public User getPerformanceUser() {
+        return performanceUser;
+    }
+
+    public void setPerformanceUser(User performanceUser) {
+        this.performanceUser = performanceUser;
     }
 
 

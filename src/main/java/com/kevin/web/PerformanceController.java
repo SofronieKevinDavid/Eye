@@ -22,10 +22,10 @@ public class PerformanceController {
         return performanceService.getPerformanceById(id);
     }
 
-//    @RequestMapping(path = "/performance", method = RequestMethod.GET)
-//    public PerformanceDTO getPerformanceForUser(@RequestBody long userID){
-//        return performanceService.getPerformanceForUserID(userID);
-//    }
+    @RequestMapping(path = "/performance", method = RequestMethod.GET)
+    public PerformanceDTO getPerformanceForUser(@RequestParam long userID){
+        return performanceService.getPerformanceForUserID(userID);
+    }
 
 //    @RequestMapping(path = "/performance", method = RequestMethod.GET)
 //    public PerformanceDTO getPerformanceForUserForGame(@RequestBody long userID,@RequestBody long gameDefinitionID){

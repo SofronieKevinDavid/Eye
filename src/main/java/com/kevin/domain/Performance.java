@@ -20,9 +20,24 @@ public class Performance {
     )
     private long id;
 
-    public Performance() {
+
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "performances_history_Id_fk", nullable = true)
+    private List<History> resultList = new ArrayList<>();
+
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "performances_user_Id_fk")
+    private User performanceUser;
+
+    public User getPerformanceUser() {
+        return performanceUser;
     }
 
+    public void setPerformanceUser(User performanceUser) {
+        this.performanceUser = performanceUser;
+    }
 
 
     public long getId() {
@@ -33,9 +48,16 @@ public class Performance {
         this.id = id;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "performances_history_Id_fk", nullable = true)
-    private List<History> resultList = new ArrayList<>();
+    public Performance() {
+    }
+
+
+
+
+
+    public long getUserId(){
+        return performanceUser.getId();
+    }
 
     public List<History> getResultList() {
         return resultList;

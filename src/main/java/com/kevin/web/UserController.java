@@ -15,15 +15,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    //@RequestMapping(path = "/user/{id}", method = RequestMethod.GET)
-    //public UserDTO getUser(@PathVariable("id") long id){
-        //return userService.getUserById(id);
-    //}
+    @RequestMapping(path = "/user/{id}", method = RequestMethod.GET)
+    public UserDTO getUser(@PathVariable("id") long id){
+        return userService.getUserById(id);
+    }
 
 
     //NU FUNCTIONEAZA GET-UL DE MAI SUS DACA NU AM COMENTATA METODA ASTA:
-    @RequestMapping(path = "/user/{name}", method = RequestMethod.GET)
-    public List<UserDTO> getUser(@PathVariable("name") String name){
+    @RequestMapping(path = "/user", method = RequestMethod.GET)
+    public List<UserDTO> getUser(@RequestParam("name") String name){
         return userService.getUserByName(name);
     }
 

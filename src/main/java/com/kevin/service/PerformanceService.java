@@ -29,11 +29,11 @@ public class PerformanceService {
         }
     }
 
-//    public PerformanceDTO getPerformanceForUserID(long userID){
-//        PerformanceDTO performanceDTO;
-//        performanceDTO=convertToDto(performanceRepository.findPerformanceByResultListRunnedGameUserId(userID)) ;
-//        return  performanceDTO;
-//    }
+    public PerformanceDTO getPerformanceForUserID(long userID){
+        PerformanceDTO performanceDTO;
+        performanceDTO=convertToDto(performanceRepository.findByPerformanceUserId(userID)) ;
+        return  performanceDTO;
+    }
 //
 //    public PerformanceDTO getPerformanceForUserForGame(long userID, long gameDefinitionID){
 //        return getPerformanceById(userID);
