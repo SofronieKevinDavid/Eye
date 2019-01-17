@@ -5,7 +5,7 @@ import com.kevin.domain.User;
 import com.kevin.dto.*;
 import com.kevin.domain.History;
 import com.kevin.domain.Performance;
-import com.kevin.domain.RunnedGame;
+import com.kevin.persistance.HistoryRepository;
 import com.kevin.persistance.PerformanceRepository;
 import com.kevin.persistance.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +23,32 @@ public class PerformanceService {
     private PerformanceRepository performanceRepository;
 
     @Autowired
+    private HistoryRepository historyRepository;
+
+    @Autowired
     private UserRepository userRepository;
 
     public void savePerformance(PerformanceDTO performanceDTO){
         long userId=performanceDTO.getPerformanceUserDTOId();
-
         User user=userRepository.findOne(userId);
+
+
+
+        List<Long> idList=new ArrayList<>();
+
+        for(int i = 0; i<performanceDTO.getResultListDTO().size(); i++) {
+            idList.add(performanceDTO.getResultListDTO().get(i).getID());
+        }
+
+        List<History> list=new ArrayList<>();
+        for(int i=0;i<idList.size();i++){
+            list.add(historyRepository.findOne(idList.get(i)));
+        }
+
+
         Performance performanceObject=convert(performanceDTO);
         performanceObject.setPerformanceUser(user);
+        performanceObject.setResultList(list);
         try {
             performanceRepository.save(performanceObject);
         }catch (Exception e){
@@ -90,10 +108,11 @@ public class PerformanceService {
                 HistoryDTO historyDTO = new HistoryDTO();
 
                 historyDTO.setID(history.getId());
-                RunnedGame runnedGame=new RunnedGame();
+                //historyDTO.setRunnedGameDTO();
+                //RunnedGame runnedGame=new RunnedGame();
                 historyDTO.setResult(history.getResult());
 
-                performanceDTO.getResultList().add(historyDTO);
+                performanceDTO.getResultListDTO().add(historyDTO);
                 nrOfProd++;
             }
             list.add(performanceDTO);
@@ -104,10 +123,24 @@ public class PerformanceService {
 
     private PerformanceDTO convertToDto(Performance performance) {
         PerformanceDTO performanceDTO = new PerformanceDTO();
-        performanceDTO.setResultList(performance.getResultListInDto());
+
         performanceDTO.setID(performance.getId());
         performanceDTO.setPerformanceUserDTO(convertUserToDto(performance.getPerformanceUser()));
+        performanceDTO.setResultListDTO(convertResultListToDTO(performance.getResultList()));
         return performanceDTO;
+    }
+
+    public List<HistoryDTO> convertResultListToDTO(List<History> resultList) {
+        List<HistoryDTO> list=new ArrayList<>();
+        for(int i=0;i<resultList.size();i++) {
+            History history=resultList.get(i);
+            HistoryDTO historyDTO = new HistoryDTO();
+            historyDTO.setDate(history.getDatePublic());
+            historyDTO.setResult(history.getResult());
+            historyDTO.setID(history.getId());
+            list.add(historyDTO);
+        }
+        return list;
     }
 
 
@@ -125,7 +158,25 @@ public class PerformanceService {
         performance.setResultList(getResultListAsNotDTO(performanceDTO));
         performance.setId(performanceDTO.getID());
         performance.setPerformanceUser(convertUser(performanceDTO.getPerformanceUserDTO()));
+        performance.setResultList(convertResultList(performanceDTO.getResultListDTO()));
         return performance;
+    }
+
+    private List<History> convertResultList(List<HistoryDTO> resultList){
+        List<History> list=new ArrayList<>();
+        for(int i=0;i<resultList.size();i++){
+            list.add(convert(resultList.get(i)));
+        }
+        return list;
+    }
+
+    private History convert(HistoryDTO historyDTO) {
+        History history = new History();
+        history.setResult(historyDTO.getResult());
+        history.setDate(historyDTO.getDatePublic());
+        history.setId(historyDTO.getID());
+        //history.setRunnedGame(convertRunnedGame(historyDTO.getRunnedGameDTO()));
+        return history;
     }
 
     private User convertUser(UserDTO userDTO) {
@@ -163,7 +214,7 @@ public class PerformanceService {
     }
 //
     public List<History> getResultListAsNotDTO(PerformanceDTO performanceDTO) {
-        List<HistoryDTO> resultList=performanceDTO.getResultList();
+        List<HistoryDTO> resultList=performanceDTO.getResultListDTO();
         List<History> list=new ArrayList<>();
         for(int i=0;i<resultList.size();i++) {
             HistoryDTO historyDTO=resultList.get(i);

@@ -18,7 +18,7 @@ public class PerformanceDTO {
 
     private List<HistoryDTO> resultList =new ArrayList<>();
 
-    public List<HistoryDTO> getResultList() {
+    public List<HistoryDTO> getResultListDTO() {
         return resultList;
     }
 
@@ -38,7 +38,7 @@ public class PerformanceDTO {
 
 
 
-    public void setResultList(List<HistoryDTO> resultList) {
+    public void setResultListDTO(List<HistoryDTO> resultList) {
         this.resultList = resultList;
     }
 
