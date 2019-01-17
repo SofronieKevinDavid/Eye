@@ -22,6 +22,14 @@ public class PerformanceDTO {
         return resultList;
     }
 
+    public List<Long> getResultListDTOID(){
+        List<Long> list=new ArrayList<>();
+        for(int i=0;i<resultList.size();i++){
+            list.add(resultList.get(i).getID());
+        }
+        return list;
+    }
+
     private UserDTO performanceUserDTO;
 
     public UserDTO getPerformanceUserDTO() {

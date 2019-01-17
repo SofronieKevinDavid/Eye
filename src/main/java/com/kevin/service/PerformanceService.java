@@ -34,11 +34,7 @@ public class PerformanceService {
 
 
 
-        List<Long> idList=new ArrayList<>();
-
-        for(int i = 0; i<performanceDTO.getResultListDTO().size(); i++) {
-            idList.add(performanceDTO.getResultListDTO().get(i).getID());
-        }
+        List<Long> idList=performanceDTO.getResultListDTOID();
 
         List<History> list=new ArrayList<>();
         for(int i=0;i<idList.size();i++){
