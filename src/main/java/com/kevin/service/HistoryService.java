@@ -86,7 +86,7 @@ public class HistoryService {
     private RunnedGameDTO convertRunnedGameToDTO(RunnedGame runnedGame) {
         RunnedGameDTO runnedGameDTO = new RunnedGameDTO();
         runnedGameDTO.setLevel(runnedGame.getLevel());
-        runnedGameDTO.setID(runnedGame.getId());
+        runnedGameDTO.setId(runnedGame.getId());
         runnedGameDTO.setUserDTO(convertUserToDto(runnedGame.getUser()));
         runnedGameDTO.setGameDefinitionDTO(convertGameDefinitionToDto(runnedGame.getGameDefinition()));
         return runnedGameDTO;
@@ -100,7 +100,7 @@ public class HistoryService {
         return gameDefinitionDTO;
     }
 
-    private GameDefinition convertGameDefinition(GameDefinitionDTO gameDefinitionDTO) {
+    private GameDefinition convertGameDefinitionForHistory(GameDefinitionDTO gameDefinitionDTO) {
         GameDefinition gameDefinition = new GameDefinition();
         gameDefinition.setName(gameDefinitionDTO.getName());
         gameDefinition.setId(gameDefinitionDTO.getID());
@@ -128,7 +128,20 @@ public class HistoryService {
         history.setResult(historyDTO.getResult());
         history.setDate(historyDTO.getDatePublic());
         history.setId(historyDTO.getID());
+        history.setRunnedGame(convertRunnedGame(historyDTO.getRunnedGameDTO()));
         return history;
+    }
+    private RunnedGame convertRunnedGame(RunnedGameDTO runnedGameDTO) {
+        RunnedGame runnedGame = new RunnedGame();
+        runnedGame.setLevel(runnedGameDTO.getLevel());
+        runnedGame.setId(runnedGameDTO.getId());
+        if(runnedGame.getGameDefinition()!=null) {
+            runnedGame.setGameDefinition(convertGameDefinitionForHistory(runnedGameDTO.getGameDefinitionDTO()));
+        }
+        if(runnedGame.getUser()!=null) {
+            runnedGame.setUser(convertUser(runnedGameDTO.getUserDTO()));
+        }
+        return runnedGame;
     }
 
     public HistoryDTO getHistoryById(long id) {

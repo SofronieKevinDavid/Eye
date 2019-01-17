@@ -50,7 +50,7 @@ public class RunnedGameService {
     private RunnedGameDTO convertToDto(RunnedGame runnedGame) {
         RunnedGameDTO runnedGameDTO = new RunnedGameDTO();
         runnedGameDTO.setLevel(runnedGame.getLevel());
-        runnedGameDTO.setID(runnedGame.getId());
+        runnedGameDTO.setId(runnedGame.getId());
         runnedGameDTO.setGameDefinitionDTO(convertGameDefinitionToDto(runnedGame.getGameDefinition()));
         runnedGameDTO.setUserDTO(convertUserToDto(runnedGame.getUser()));
         return runnedGameDTO;
@@ -71,7 +71,7 @@ public class RunnedGameService {
 
             RunnedGameDTO runnedGameDTO = new RunnedGameDTO();
             runnedGameDTO.setLevel(runnedGame.getLevel());
-            runnedGameDTO.setID(runnedGame.getId());
+            runnedGameDTO.setId(runnedGame.getId());
             runnedGameDTO.setGameDefinitionDTO(convertGameDefinitionToDto(runnedGame.getGameDefinition()));
             runnedGameDTO.setUserDTO(convertUserToDto(runnedGame.getUser()));
 
@@ -102,7 +102,7 @@ public class RunnedGameService {
     private RunnedGame convert(RunnedGameDTO runnedGameDTO) {
         RunnedGame runnedGame = new RunnedGame();
         runnedGame.setLevel(runnedGameDTO.getLevel());
-        runnedGame.setId(runnedGameDTO.getID());
+        runnedGame.setId(runnedGameDTO.getId());
         runnedGame.setGameDefinition(convertGameDefinition(runnedGameDTO.getGameDefinitionDTO()));
         runnedGame.setUser(convertUser(runnedGameDTO.getUserDTO()));
         return runnedGame;

@@ -23,12 +23,12 @@ public class HistoryController {
     }
 
     @RequestMapping(path="/history", method=RequestMethod.POST)
-    public void saveUser(@RequestBody HistoryDTO historyDTO){
+    public void saveHistory(@RequestBody HistoryDTO historyDTO){
         historyService.saveHistory(historyDTO);
     }
 
     @RequestMapping(path="/history/{id}", method=RequestMethod.PUT)
-    public HistoryDTO updateUser(@PathVariable long id, @RequestBody HistoryDTO dto){
+    public HistoryDTO updateHistory(@PathVariable long id, @RequestBody HistoryDTO dto){
         return historyService.updateHistory(id, dto);
     }
 

@@ -1,8 +1,6 @@
 package com.kevin.dto;
 
 import com.kevin.domain.History;
-import com.kevin.domain.RunnedGame;
-import com.kevin.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +22,18 @@ public class PerformanceDTO {
         return resultList;
     }
 
-    private User performanceUser;
+    private UserDTO performanceUserDTO;
 
-    public User getPerformanceUser() {
-        return performanceUser;
+    public UserDTO getPerformanceUserDTO() {
+        return performanceUserDTO;
     }
 
-    public void setPerformanceUser(User performanceUser) {
-        this.performanceUser = performanceUser;
+    public void setPerformanceUserDTO(UserDTO performanceUserDTO) {
+        this.performanceUserDTO = performanceUserDTO;
+    }
+
+    public long getPerformanceUserDTOId(){
+        return performanceUserDTO.getID();
     }
 
 
@@ -67,6 +69,7 @@ public class PerformanceDTO {
         return "PerformanceDTO{" +
                 "ID=" + ID +
                 ", resultList=" + resultList +
+                ", performanceUserDTO=" + performanceUserDTO +
                 '}';
     }
 
@@ -76,11 +79,12 @@ public class PerformanceDTO {
         if (o == null || getClass() != o.getClass()) return false;
         PerformanceDTO that = (PerformanceDTO) o;
         return ID == that.ID &&
-                Objects.equals(resultList, that.resultList);
+                Objects.equals(resultList, that.resultList) &&
+                Objects.equals(performanceUserDTO, that.performanceUserDTO);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, resultList);
+        return Objects.hash(ID, resultList, performanceUserDTO);
     }
 }

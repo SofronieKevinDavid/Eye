@@ -1,23 +1,20 @@
 package com.kevin.dto;
 
-import com.kevin.domain.GameDefinition;
-import com.kevin.domain.User;
-
 import java.util.Objects;
 
 public class RunnedGameDTO {
-    private long ID;
+    private long id;
     private int level;
 
     private GameDefinitionDTO gameDefinitionDTO;
     private UserDTO userDTO;
 
-    public long getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public RunnedGameDTO() {
@@ -73,7 +70,7 @@ public class RunnedGameDTO {
     @Override
     public String toString() {
         return "RunnedGameDTO{" +
-                "ID=" + ID +
+                "id=" + id +
                 ", level=" + level +
                 ", gameDefinitionDTO=" + gameDefinitionDTO +
                 ", userDTO=" + userDTO +
@@ -85,7 +82,7 @@ public class RunnedGameDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RunnedGameDTO that = (RunnedGameDTO) o;
-        return ID == that.ID &&
+        return id == that.id &&
                 level == that.level &&
                 Objects.equals(gameDefinitionDTO, that.gameDefinitionDTO) &&
                 Objects.equals(userDTO, that.userDTO);
@@ -93,6 +90,6 @@ public class RunnedGameDTO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, level, gameDefinitionDTO, userDTO);
+        return Objects.hash(id, level, gameDefinitionDTO, userDTO);
     }
 }

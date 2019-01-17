@@ -1,7 +1,5 @@
 package com.kevin.dto;
 
-import com.kevin.domain.RunnedGame;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -23,7 +21,7 @@ public class HistoryDTO {
     }
 
     public long getRunnedGameId(){
-        return runnedGameDTO.getID();
+        return runnedGameDTO.getId();
     }
 
     public RunnedGameDTO getRunnedGameDTO() {
