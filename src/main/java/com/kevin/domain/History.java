@@ -46,7 +46,7 @@ public class History {
     public void setDate(Date date){this.date=date;
     }
 
-    private Date getDate() {
+    public Date getDate() {
         return date;
     }
 
