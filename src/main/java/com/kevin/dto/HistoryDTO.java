@@ -1,29 +1,33 @@
 package com.kevin.dto;
 
-import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 import java.util.Objects;
+
 
 public class HistoryDTO {
     private long ID;
 
     private double result;
 
-    private LocalDateTime date;
+    //DTO urile se convertesc in json cu Jackson nu modelul!
+    //DTOurile sunt expuse pe api, nu modelul
+    //annotarea de jackson trebuie sa fie aici in dto ca sa stie jackson cum sa converteasca acest date cand creaza jsonul
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a z")
+    private Date date;
 
     private RunnedGameDTO runnedGameDTO;
 
 
-    private LocalDateTime getDate() {
-        LocalDateTime dateTime = LocalDateTime.now();
+    public Date getDate() {
+        Date dateTime = new Date();
         return dateTime;
     }
 
-    public void setDate(LocalDateTime date){this.date=date;
+    public void setDate(Date date){this.date=date;
     }
 
-    public LocalDateTime getDatePublic(){
-        return date;
-    }
 
     public long getRunnedGameId(){
         return runnedGameDTO.getId();
@@ -47,6 +51,9 @@ public class HistoryDTO {
         this.historyUserDTO = historyUserDTO;
     }
 
+    //TODO this is not ok .. nu returneaza userid ci history id - nu o sa poti salva 2 history pt un user asa
+    //normal in history object nu ar trebui sa ai nici user dto nici gameDefinition dto
+    // ar trebui sa ai user id , gameDefinition id, si eventual game name  si cam atata
     public long getHistoryUserDTOId(){
         return historyUserDTO.getID();
     }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -24,8 +25,8 @@ public class History {
     private double result;
 
     @Column(name = "date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a z")
-    private LocalDateTime date;
+
+    private Date date;
 
     @JoinColumn(name = "runned_Game_Id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -43,15 +44,10 @@ public class History {
         return this.result;
     }
 
-    public void setDate(LocalDateTime date){this.date=date;
+    public void setDate(Date date){this.date=date;
     }
 
-    private LocalDateTime getDate() {
-        LocalDateTime dateTime = LocalDateTime.now();
-        return dateTime;
-    }
-
-    public LocalDateTime getDatePublic(){
+    public Date getDate() {
         return date;
     }
 
