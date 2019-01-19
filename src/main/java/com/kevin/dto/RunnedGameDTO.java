@@ -6,8 +6,10 @@ public class RunnedGameDTO {
     private long id;
     private int level;
 
-    private GameDefinitionDTO gameDefinitionDTO;
-    private UserDTO userDTO;
+    private long gameDefinitionId;
+    private long userId;
+    private String username;
+    private String gameName;
 
     public long getId() {
         return id;
@@ -21,37 +23,36 @@ public class RunnedGameDTO {
 
     }
 
-    public GameDefinitionDTO getGameDefinitionDTO() {
-        return gameDefinitionDTO;
-    }
-
-    public void setGameDefinitionDTO(GameDefinitionDTO gameDefinitionDTO) {
-        this.gameDefinitionDTO = gameDefinitionDTO;
-    }
-
-    public UserDTO getUserDTO() {
-        return userDTO;
-    }
-
-    public void setUserDTO(UserDTO userDTO) {
-        this.userDTO = userDTO;
-    }
-
     public long getGameDefinitionId() {
-        if (gameDefinitionDTO != null) {
-            return gameDefinitionDTO.getID();
-        } else {
-            return 0;
-        }
+        return gameDefinitionId;
+    }
 
+    public void setGameDefinitionId(long gameDefinitionId) {
+        this.gameDefinitionId = gameDefinitionId;
     }
 
     public long getUserId() {
-        if (userDTO != null) {
-            return gameDefinitionDTO.getID();
-        } else {
-            return 0;
-        }
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getGameName() {
+        return gameName;
+    }
+
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
     }
 
     public RunnedGameDTO(int level) {
@@ -66,15 +67,17 @@ public class RunnedGameDTO {
         this.level = level;
     }
 
-
     @Override
     public String toString() {
-        return "RunnedGameDTO{" +
-                "id=" + id +
-                ", level=" + level +
-                ", gameDefinitionDTO=" + gameDefinitionDTO +
-                ", userDTO=" + userDTO +
-                '}';
+        final StringBuilder sb = new StringBuilder("RunnedGameDTO{");
+        sb.append("id=").append(id);
+        sb.append(", level=").append(level);
+        sb.append(", gameDefinitionId=").append(gameDefinitionId);
+        sb.append(", userId=").append(userId);
+        sb.append(", username='").append(username).append('\'');
+        sb.append(", gameName='").append(gameName).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 
     @Override
@@ -84,12 +87,12 @@ public class RunnedGameDTO {
         RunnedGameDTO that = (RunnedGameDTO) o;
         return id == that.id &&
                 level == that.level &&
-                Objects.equals(gameDefinitionDTO, that.gameDefinitionDTO) &&
-                Objects.equals(userDTO, that.userDTO);
+                gameDefinitionId == that.gameDefinitionId &&
+                userId == that.userId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, level, gameDefinitionDTO, userDTO);
+        return Objects.hash(id, level, gameDefinitionId, userId);
     }
 }

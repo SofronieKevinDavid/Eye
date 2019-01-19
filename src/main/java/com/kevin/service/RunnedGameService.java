@@ -29,21 +29,27 @@ public class RunnedGameService {
     @Autowired
     private UserRepository userRepository;
 
-    public void saveRunnedGame(RunnedGameDTO dto){
-        if(dto.getLevel()==0){
+    public void saveRunnedGame(RunnedGameDTO dto) {
+        if (dto.getLevel() == 0) {
             throw new IllegalArgumentException("Level can not be 0.");
         }
-        long gameId=dto.getGameDefinitionId();
-        long userId=dto.getUserId();
-        GameDefinition gameDefinition=gameDefinitionRepository.findOne(gameId);
-        User user=userRepository.findOne(userId);
-        RunnedGame runnedGame=convert(dto);
-        runnedGame.setGameDefinition(gameDefinition);
-        runnedGame.setUser(user);
+        long gameId = dto.getGameDefinitionId();
+        long userId = dto.getUserId();
+        GameDefinition gameDefinition = gameDefinitionRepository.findOne(gameId);
+        User user = userRepository.findOne(userId);
+        if (gameDefinition == null) {
+            throw new IllegalArgumentException("Game definition id invalid");
+
+        }
+        if (user == null) {
+            throw new IllegalArgumentException("userId invalid");
+
+        }
+        RunnedGame runnedGame = convert(dto, user, gameDefinition);
         try {
             runnedGameRepository.save(runnedGame);
-        }catch (Exception e){
-            System.out.println("Error in saving user "+e);
+        } catch (Exception e) {
+            System.out.println("Error in saving user " + e);
         }
     }
 
@@ -51,11 +57,11 @@ public class RunnedGameService {
         RunnedGameDTO runnedGameDTO = new RunnedGameDTO();
         runnedGameDTO.setLevel(runnedGame.getLevel());
         runnedGameDTO.setId(runnedGame.getId());
-        runnedGameDTO.setGameDefinitionDTO(convertGameDefinitionToDto(runnedGame.getGameDefinition()));
-        runnedGameDTO.setUserDTO(convertUserToDto(runnedGame.getUser()));
+        runnedGameDTO.setGameDefinitionId(runnedGame.getGameDefinition().getId());
+        runnedGameDTO.setUserId(runnedGame.getUser().getId());
+        runnedGameDTO.setUsername(runnedGame.getUser().getName());
         return runnedGameDTO;
     }
-
 
 
     @Transactional
@@ -69,12 +75,7 @@ public class RunnedGameService {
         while (iterator.hasNext()) {
             RunnedGame runnedGame = iterator.next();
 
-            RunnedGameDTO runnedGameDTO = new RunnedGameDTO();
-            runnedGameDTO.setLevel(runnedGame.getLevel());
-            runnedGameDTO.setId(runnedGame.getId());
-            runnedGameDTO.setGameDefinitionDTO(convertGameDefinitionToDto(runnedGame.getGameDefinition()));
-            runnedGameDTO.setUserDTO(convertUserToDto(runnedGame.getUser()));
-
+            RunnedGameDTO runnedGameDTO = convertToDto(runnedGame);
 
             list.add(runnedGameDTO);
         }
@@ -83,28 +84,12 @@ public class RunnedGameService {
     }
 
 
-
-    private UserDTO convertUserToDto(User user) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setName(user.getName());
-        userDTO.setID(user.getId());
-        return userDTO;
-    }
-
-    private GameDefinitionDTO convertGameDefinitionToDto(GameDefinition gameDefinition) {
-        GameDefinitionDTO gameDefinitionDTO = new GameDefinitionDTO();
-        gameDefinitionDTO.setName(gameDefinition.getName());
-        gameDefinitionDTO.setID(gameDefinition.getId());
-        gameDefinitionDTO.setDescription(gameDefinition.getDescription());
-        return gameDefinitionDTO;
-    }
-
-    private RunnedGame convert(RunnedGameDTO runnedGameDTO) {
+    private RunnedGame convert(RunnedGameDTO runnedGameDTO, User user, GameDefinition game) {
         RunnedGame runnedGame = new RunnedGame();
         runnedGame.setLevel(runnedGameDTO.getLevel());
         runnedGame.setId(runnedGameDTO.getId());
-        runnedGame.setGameDefinition(convertGameDefinition(runnedGameDTO.getGameDefinitionDTO()));
-        runnedGame.setUser(convertUser(runnedGameDTO.getUserDTO()));
+        runnedGame.setGameDefinition(game);
+        runnedGame.setUser(user);
         return runnedGame;
     }
 
@@ -124,24 +109,24 @@ public class RunnedGameService {
     }
 
     public RunnedGameDTO getRunnedGameById(long id) {
-        RunnedGame runnedGame=runnedGameRepository.findOne(id);
-        if(runnedGame==null){
+        RunnedGame runnedGame = runnedGameRepository.findOne(id);
+        if (runnedGame == null) {
             throw new IllegalArgumentException("The id is not valid.");
         }
         return convertToDto(runnedGame);
     }
 
-    public RunnedGameDTO updateRunnedGame(long id,RunnedGameDTO dto) {
-        RunnedGame runnedGame=runnedGameRepository.findOne(id);
+    public RunnedGameDTO updateRunnedGame(long id, RunnedGameDTO dto) {
+        RunnedGame runnedGame = runnedGameRepository.findOne(id);
         runnedGame.setLevel(dto.getLevel());
 
-        RunnedGame savedObject= runnedGameRepository.save(runnedGame);
+        RunnedGame savedObject = runnedGameRepository.save(runnedGame);
 
         return convertToDto(savedObject);
     }
 
-    public boolean deleteRunnedGameById(long id){
-        if(runnedGameRepository.findOne(id)!=null) {
+    public boolean deleteRunnedGameById(long id) {
+        if (runnedGameRepository.findOne(id) != null) {
             runnedGameRepository.delete(id);
             return true;
         }

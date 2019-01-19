@@ -14,53 +14,31 @@ public class HistoryDTO {
     //DTO urile se convertesc in json cu Jackson nu modelul!
     //DTOurile sunt expuse pe api, nu modelul
     //annotarea de jackson trebuie sa fie aici in dto ca sa stie jackson cum sa converteasca acest date cand creaza jsonul
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a z")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date date;
 
-    private RunnedGameDTO runnedGameDTO;
+    private long gameId;
 
+
+    private long userId;
+    private String username;
+
+    private long runnedGameId;
 
     public Date getDate() {
         Date dateTime = new Date();
         return dateTime;
     }
 
-    public void setDate(Date date){this.date=date;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-
-    public long getRunnedGameId(){
-        return runnedGameDTO.getId();
-    }
-
-    public RunnedGameDTO getRunnedGameDTO() {
-        return runnedGameDTO;
-    }
-
-    public void setRunnedGameDTO(RunnedGameDTO runnedGameDTO) {
-        this.runnedGameDTO = runnedGameDTO;
-    }
-
-    private UserDTO historyUserDTO;
-
-    public UserDTO getHistoryUserDTO() {
-        return historyUserDTO;
-    }
-
-    public void setHistoryUserDTO(UserDTO historyUserDTO) {
-        this.historyUserDTO = historyUserDTO;
-    }
-
-    //TODO this is not ok .. nu returneaza userid ci history id - nu o sa poti salva 2 history pt un user asa
-    //normal in history object nu ar trebui sa ai nici user dto nici gameDefinition dto
-    // ar trebui sa ai user id , gameDefinition id, si eventual game name  si cam atata
-    public long getHistoryUserDTOId(){
-        return historyUserDTO.getID();
-    }
 
     public HistoryDTO() {
-        this.date=getDate();
+        this.date = getDate();
     }
+
     public double getResult() {
         return this.result;
     }
@@ -77,6 +55,37 @@ public class HistoryDTO {
         this.result = result;
     }
 
+    public long getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(long gameId) {
+        this.gameId = gameId;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public long getRunnedGameId() {
+        return runnedGameId;
+    }
+
+    public void setRunnedGameId(long runnedGameId) {
+        this.runnedGameId = runnedGameId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -85,24 +94,13 @@ public class HistoryDTO {
         HistoryDTO that = (HistoryDTO) o;
         return ID == that.ID &&
                 Double.compare(that.result, result) == 0 &&
-                Objects.equals(date, that.date) &&
-                Objects.equals(runnedGameDTO, that.runnedGameDTO) &&
-                Objects.equals(historyUserDTO, that.historyUserDTO);
+                gameId == that.gameId &&
+                date.equals(that.date) &&
+                userId == that.userId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, result, date, runnedGameDTO, historyUserDTO);
-    }
-
-    @Override
-    public String toString() {
-        return "HistoryDTO{" +
-                "ID=" + ID +
-                ", result=" + result +
-                ", date=" + date +
-                ", runnedGameDTO=" + runnedGameDTO +
-                ", historyUserDTO=" + historyUserDTO +
-                '}';
+        return Objects.hash(ID, result, date, gameId, userId);
     }
 }

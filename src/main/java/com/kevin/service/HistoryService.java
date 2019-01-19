@@ -39,44 +39,36 @@ public class HistoryService {
     @Autowired
     private GameDefinitionRepository gameDefinitionRepository;
 
-    public void saveHistory(HistoryDTO historyDTO){
+    public void saveHistory(HistoryDTO historyDTO) {
 
-        if(historyDTO.getResult()==-1){
+        if (historyDTO.getResult() == -1) {
             throw new IllegalArgumentException("Result not valid.");
         }
 
-        long runnedGameId=historyDTO.getRunnedGameId();
-        RunnedGame runnedGame=runnedGameRepository.findOne(runnedGameId);
+        long runnedGameId = historyDTO.getRunnedGameId();
+        RunnedGame runnedGame = runnedGameRepository.findOne(runnedGameId);
 
-        //TODO see comments HISTORYDTO in class
-//la tine historyDTO.getHistoryUserDTOId() nu returneaza user id ci history id . nu e ok .
-        //scimba historyDto sa nu mai aiba user dti numa user id , nu iti trebuie tot userul in dto
-        //numa in model trebuie tot userul
-        User userById = userRepository.findOne(historyDTO.getHistoryUserDTOId());
+        User userById = userRepository.findOne(historyDTO.getUserId());
         if (userById == null) {
-            throw new IllegalArgumentException("Invalid userId " + historyDTO.getHistoryUserDTOId());
+            throw new IllegalArgumentException("Invalid userId " + historyDTO.getUserId());
         }
 
         if (runnedGame != null && runnedGame.getUser().getId() != userById.getId()) {
             throw new IllegalArgumentException("Yu are trying to save a history object for a runned game that is created for other user.");
         }
-        History historyObject = convert(historyDTO);
-        historyObject.setHistoryUser(userById);
-
-        if (runnedGame != null) {
-            historyObject.setRunnedGame(runnedGame);
-        }
+        History historyObject = convert(historyDTO, runnedGame, userById);
         try {
             historyRepository.save(historyObject);
         } catch (Exception e) {
             System.out.println("Error in saving user " + e);
         }
     }
+
     @Transactional
-    public List<HistoryDTO> getHistoryForUserID(long userID){
-        List<HistoryDTO> listDTO=new ArrayList<>();
-        List<History> list=historyRepository.findByHistoryUserId(userID);
-        for(int i=0;i<list.size();i++){
+    public List<HistoryDTO> getHistoryForUserID(long userID) {
+        List<HistoryDTO> listDTO = new ArrayList<>();
+        List<History> list = historyRepository.findByHistoryUserId(userID);
+        for (int i = 0; i < list.size(); i++) {
             listDTO.add(convertToDto(list.get(i)));
         }
         return listDTO;
@@ -113,22 +105,15 @@ public class HistoryService {
             throw new IllegalArgumentException("Invalid history object" +
                     " that is not linked to a user directly");
         }
-       // historyDTO.setUserId(history.getHistoryUser().getId());
+        // historyDTO.setUserId(history.getHistoryUser().getId());
         historyDTO.setDate(history.getDate());
         historyDTO.setID(history.getId());
-        historyDTO.setHistoryUserDTO(convertUserToDto(history.getHistoryUser()));
-        historyDTO.setRunnedGameDTO(convertRunnedGameToDTO(history.getRunnedGame()));
+        historyDTO.setUserId(history.getHistoryUser().getId());
+        historyDTO.setUsername(history.getHistoryUser().getName());
+        historyDTO.setRunnedGameId(history.getRunnedGame().getId());
         return historyDTO;
     }
 
-    private RunnedGameDTO convertRunnedGameToDTO(RunnedGame runnedGame) {
-        RunnedGameDTO runnedGameDTO = new RunnedGameDTO();
-        runnedGameDTO.setLevel(runnedGame.getLevel());
-        runnedGameDTO.setId(runnedGame.getId());
-        runnedGameDTO.setUserDTO(convertUserToDto(runnedGame.getUser()));
-        runnedGameDTO.setGameDefinitionDTO(convertGameDefinitionToDto(runnedGame.getGameDefinition()));
-        return runnedGameDTO;
-    }
 
     private GameDefinitionDTO convertGameDefinitionToDto(GameDefinition gameDefinition) {
         GameDefinitionDTO gameDefinitionDTO = new GameDefinitionDTO();
@@ -161,44 +146,30 @@ public class HistoryService {
     }
 
 
-    private History convert(HistoryDTO historyDTO) {
+    private History convert(HistoryDTO historyDTO, RunnedGame game, User user) {
         History history = new History();
         history.setResult(historyDTO.getResult());
         history.setDate(historyDTO.getDate());
         history.setId(historyDTO.getID());
-        if (historyDTO.getRunnedGameDTO() == null) {
-            throw new IllegalArgumentException("runned game dto can not be null");
-        }
 
-        history.setHistoryUser(convertUser(historyDTO.getHistoryUserDTO()));
-        history.setRunnedGame(convertRunnedGame(historyDTO.getRunnedGameDTO()));
+        history.setHistoryUser(user);
+        history.setRunnedGame(game);
         return history;
     }
+
     private RunnedGame convertRunnedGame(RunnedGameDTO runnedGameDTO) {
         RunnedGame runnedGame = new RunnedGame();
         runnedGame.setLevel(runnedGameDTO.getLevel());
         runnedGame.setId(runnedGameDTO.getId());
-        if (runnedGameDTO.getGameDefinitionDTO() != null) {
-            if (runnedGameDTO.getGameDefinitionDTO().getID() > 0) {
-                //game already exists in db we avoid updating it by cascading
-                GameDefinition gameDef = gameDefinitionRepository.findOne(runnedGameDTO.getGameDefinitionDTO().getID());
-                runnedGame.setGameDefinition(gameDef);
-            } else {
-                //TODO KEVIN
-                //this is a new game it will be saved in CASCADE - do we want this? normally
-                // I would throw an exception here because teh request was invalid - the game should already be in the DB
-                runnedGame.setGameDefinition(convertGameDefinitionForHistory(runnedGameDTO.getGameDefinitionDTO()));
-            }
+        if (runnedGameDTO.getGameDefinitionId() > 0) {
+            //game already exists in db we avoid updating it by cascading
+            GameDefinition gameDef = gameDefinitionRepository.findOne(runnedGameDTO.getGameDefinitionId());
+            runnedGame.setGameDefinition(gameDef);
         }
-        if (runnedGameDTO.getUserDTO() != null) {
-            if (runnedGameDTO.getUserDTO().getID() > 0) {
-                //the user already exists, we avoid reupdating it in cascade
-                User user = userRepository.findOne(runnedGameDTO.getUserDTO().getID());
-                runnedGame.setUser(user);
-            } else {
-                //TOTO KEVIN - similar to prev
-                runnedGame.setUser(convertUser(runnedGameDTO.getUserDTO()));
-            }
+        if (runnedGameDTO.getUserId() > 0) {
+            //the user already exists, we avoid reupdating it in cascade
+            User user = userRepository.findOne(runnedGameDTO.getUserId());
+            runnedGame.setUser(user);
         }
         return runnedGame;
     }
@@ -215,11 +186,11 @@ public class HistoryService {
     @Transactional
     public HistoryDTO updateHistory(long id, HistoryDTO dto) {
         History history = historyRepository.findOne(id);
+
         history.setResult(dto.getResult());
         history.setDate(dto.getDate());
-        history.setHistoryUser(convertUser(dto.getHistoryUserDTO()));
 
-        History savedObject= historyRepository.save(history);
+        History savedObject = historyRepository.save(history);
 
         return convertToDto(savedObject);
     }
