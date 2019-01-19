@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 
 public class HistoryController {
@@ -21,6 +23,16 @@ public class HistoryController {
     public HistoryDTO getHistory(@PathVariable("id") long id){
         return historyService.getHistoryById(id);
     }
+
+    @RequestMapping(path = "/history", method = RequestMethod.GET)
+    public List<HistoryDTO> getHistoryForUser(@RequestParam long userID){
+        return historyService.getHistoryForUserID(userID);
+    }
+
+//    @RequestMapping(path = "/performance", method = RequestMethod.GET)
+//    public PerformanceDTO getPerformanceForUser(@RequestParam long userID){
+//        return performanceService.getPerformanceForUserID(userID);
+//    }
 
     @RequestMapping(path="/history", method=RequestMethod.POST)
     public void saveHistory(@RequestBody HistoryDTO historyDTO){

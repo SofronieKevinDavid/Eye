@@ -1,23 +1,28 @@
 package com.kevin.dto;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class HistoryDTO {
     private long ID;
 
     private double result;
-    private String date;
+
+    private LocalDateTime date;
 
     private RunnedGameDTO runnedGameDTO;
 
 
-    private String getDate(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private LocalDateTime getDate() {
         LocalDateTime dateTime = LocalDateTime.now();
-        String formattedDateTime = dateTime.format(formatter);
-        return formattedDateTime;
+        return dateTime;
+    }
+
+    public void setDate(LocalDateTime date){this.date=date;
+    }
+
+    public LocalDateTime getDatePublic(){
+        return date;
     }
 
     public long getRunnedGameId(){
@@ -30,6 +35,20 @@ public class HistoryDTO {
 
     public void setRunnedGameDTO(RunnedGameDTO runnedGameDTO) {
         this.runnedGameDTO = runnedGameDTO;
+    }
+
+    private UserDTO historyUserDTO;
+
+    public UserDTO getHistoryUserDTO() {
+        return historyUserDTO;
+    }
+
+    public void setHistoryUserDTO(UserDTO historyUserDTO) {
+        this.historyUserDTO = historyUserDTO;
+    }
+
+    public long getHistoryUserDTOId(){
+        return historyUserDTO.getID();
     }
 
     public HistoryDTO() {
@@ -51,23 +70,6 @@ public class HistoryDTO {
         this.result = result;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getDatePublic(){
-        return date;
-    }
-
-    @Override
-   public String toString() {
-        return "HistoryDTO{" +
-                "ID=" + ID +
-                ", result=" + result +
-                ", date='" + date + '\'' +
-                ", runnedGameDTO=" + runnedGameDTO +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -77,11 +79,23 @@ public class HistoryDTO {
         return ID == that.ID &&
                 Double.compare(that.result, result) == 0 &&
                 Objects.equals(date, that.date) &&
-                Objects.equals(runnedGameDTO, that.runnedGameDTO);
+                Objects.equals(runnedGameDTO, that.runnedGameDTO) &&
+                Objects.equals(historyUserDTO, that.historyUserDTO);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, result, date, runnedGameDTO);
+        return Objects.hash(ID, result, date, runnedGameDTO, historyUserDTO);
+    }
+
+    @Override
+    public String toString() {
+        return "HistoryDTO{" +
+                "ID=" + ID +
+                ", result=" + result +
+                ", date=" + date +
+                ", runnedGameDTO=" + runnedGameDTO +
+                ", historyUserDTO=" + historyUserDTO +
+                '}';
     }
 }

@@ -1,9 +1,10 @@
 
 package com.kevin.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Entity
@@ -23,7 +24,8 @@ public class History {
     private double result;
 
     @Column(name = "date")
-    private String date;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a z")
+    private LocalDateTime date;
 
     @JoinColumn(name = "runned_Game_Id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -41,23 +43,32 @@ public class History {
         return this.result;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(LocalDateTime date){this.date=date;
     }
 
-    private String getDate() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private LocalDateTime getDate() {
         LocalDateTime dateTime = LocalDateTime.now();
-        String formattedDateTime = dateTime.format(formatter);
-        return formattedDateTime;
+        return dateTime;
     }
 
-    public String getDatePublic(){
+    public LocalDateTime getDatePublic(){
         return date;
     }
 
     public History() {
         this.date = getDate();
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "histories_user_Id_fk")
+    private User historyUser;
+
+    public User getHistoryUser() {
+        return historyUser;
+    }
+
+    public void setHistoryUser(User historyUser) {
+        this.historyUser = historyUser;
     }
 
     public long getId() {
@@ -73,16 +84,6 @@ public class History {
     }
 
     @Override
-    public String toString() {
-        return "History{" +
-                "id=" + id +
-                ", result=" + result +
-                ", date='" + date + '\'' +
-                ", runnedGame=" + runnedGame +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -90,12 +91,24 @@ public class History {
         return id == history.id &&
                 Double.compare(history.result, result) == 0 &&
                 Objects.equals(date, history.date) &&
-                Objects.equals(runnedGame, history.runnedGame);
+                Objects.equals(runnedGame, history.runnedGame) &&
+                Objects.equals(historyUser, history.historyUser);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, result, date, runnedGame);
+        return Objects.hash(id, result, date, runnedGame, historyUser);
+    }
+
+    @Override
+    public String toString() {
+        return "History{" +
+                "id=" + id +
+                ", result=" + result +
+                ", date=" + date +
+                ", runnedGame=" + runnedGame +
+                ", historyUser=" + historyUser +
+                '}';
     }
 }
 

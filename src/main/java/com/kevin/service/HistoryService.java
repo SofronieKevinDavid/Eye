@@ -14,6 +14,7 @@ import com.kevin.dto.RunnedGameDTO;
 import com.kevin.dto.UserDTO;
 import com.kevin.persistance.HistoryRepository;
 import com.kevin.persistance.RunnedGameRepository;
+import com.kevin.persistance.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,23 +32,40 @@ public class HistoryService {
     @Autowired
     private RunnedGameRepository runnedGameRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
 
     public void saveHistory(HistoryDTO historyDTO){
 
         if(historyDTO.getResult()==-1){
             throw new IllegalArgumentException("Result not valid.");
         }
+
+        long userId=historyDTO.getHistoryUserDTOId();
+        User user=userRepository.findOne(userId);
+
+
         long runnedGameId=historyDTO.getRunnedGameId();
         RunnedGame runnedGame=runnedGameRepository.findOne(runnedGameId);
 
         History historyObject=convert(historyDTO);
         historyObject.setRunnedGame(runnedGame);
-
+        historyObject.setHistoryUser(user);
         try {
             historyRepository.save(historyObject);
         }catch (Exception e){
             System.out.println("Error in saving user "+e);
         }
+    }
+
+    public List<HistoryDTO> getHistoryForUserID(long userID){
+        List<HistoryDTO> listDTO=new ArrayList<>();
+        List<History> list=historyRepository.findByHistoryUserId(userID);
+        for(int i=0;i<list.size();i++){
+            listDTO.add(convertToDto(list.get(i)));
+        }
+        return listDTO;
     }
 
 
@@ -79,6 +97,7 @@ public class HistoryService {
         historyDTO.setResult(history.getResult());
         historyDTO.setDate(history.getDatePublic());
         historyDTO.setID(history.getId());
+        historyDTO.setHistoryUserDTO(convertUserToDto(history.getHistoryUser()));
         historyDTO.setRunnedGameDTO(convertRunnedGameToDTO(history.getRunnedGame()));
         return historyDTO;
     }
@@ -128,6 +147,7 @@ public class HistoryService {
         history.setResult(historyDTO.getResult());
         history.setDate(historyDTO.getDatePublic());
         history.setId(historyDTO.getID());
+        history.setHistoryUser(convertUser(historyDTO.getHistoryUserDTO()));
         history.setRunnedGame(convertRunnedGame(historyDTO.getRunnedGameDTO()));
         return history;
     }
@@ -156,6 +176,7 @@ public class HistoryService {
         History history=historyRepository.findOne(id);
         history.setResult(dto.getResult());
         history.setDate(dto.getDatePublic());
+        history.setHistoryUser(convertUser(dto.getHistoryUserDTO()));
 
         History savedObject= historyRepository.save(history);
 
