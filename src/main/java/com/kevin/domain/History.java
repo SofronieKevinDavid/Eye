@@ -25,7 +25,6 @@ public class History {
     private double result;
 
     @Column(name = "date")
-
     private Date date;
 
     @JoinColumn(name = "runned_Game_Id")
@@ -47,7 +46,11 @@ public class History {
     public void setDate(Date date){this.date=date;
     }
 
-    public Date getDate() {
+    private Date getDate() {
+        return date;
+    }
+
+    public Date getDatePublic(){
         return date;
     }
 
