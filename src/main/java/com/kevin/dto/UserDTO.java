@@ -5,6 +5,7 @@ import java.util.Objects;
 public class UserDTO {
     private long ID;
     private String name;
+    private String password;
 
     public UserDTO() {
     }
@@ -29,12 +30,12 @@ public class UserDTO {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "ID=" + ID +
-                ", name='" + name + '\'' +
-                '}';
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -43,11 +44,21 @@ public class UserDTO {
         if (o == null || getClass() != o.getClass()) return false;
         UserDTO userDTO = (UserDTO) o;
         return ID == userDTO.ID &&
-                Objects.equals(name, userDTO.name);
+                Objects.equals(name, userDTO.name) &&
+                Objects.equals(password, userDTO.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, name);
+        return Objects.hash(ID, name, password);
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

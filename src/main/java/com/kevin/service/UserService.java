@@ -48,13 +48,6 @@ public class UserService {
          listDTO.add(convertToDto(list.get(i)));
         }
         return listDTO;
-//        List<UserDTO> list=getUsers();
-//        for(int i=0;i<list.size();i++){
-//            if(list.get(i).getName()==name){
-//                return list.get(i);
-//            }
-//        }
-//        return null;
     }
 
     @Transactional
@@ -71,6 +64,7 @@ public class UserService {
             UserDTO userDTO = new UserDTO("UserDTO");
             userDTO.setName(user.getName());
             userDTO.setID(user.getId());
+            userDTO.setPassword(user.getPassword());
 
 
             list.add(userDTO);
@@ -83,6 +77,7 @@ public class UserService {
         UserDTO userDTO = new UserDTO();
         userDTO.setName(user.getName());
         userDTO.setID(user.getId());
+        userDTO.setPassword(user.getPassword());
         return userDTO;
     }
 
@@ -90,6 +85,7 @@ public class UserService {
         User user = new User();
         user.setName(userDTO.getName());
         user.setId(userDTO.getID());
+        user.setPassword(userDTO.getPassword());
         return user;
     }
 
@@ -104,7 +100,7 @@ public class UserService {
     public UserDTO updateUser(long id,UserDTO dto) {
         User user=userRepository.findOne(id);
         user.setName(dto.getName());
-
+        user.setPassword(dto.getPassword());
         User savedObject= userRepository.save(user);
 
         return convertToDto(savedObject);

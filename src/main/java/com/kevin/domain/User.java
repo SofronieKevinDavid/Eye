@@ -17,18 +17,9 @@ public class User {
     private long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "age")
-    private int age;
+    @Column(name = "password")
+    private String password;
 
-    public User(){
-        this.name="defaultConstructor";
-        this.age=0;
-    }
-
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
 
     public long getId() {
         return id;
@@ -46,21 +37,12 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -69,12 +51,21 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id &&
-                age == user.age &&
-                Objects.equals(name, user.name);
+                Objects.equals(name, user.name) &&
+                Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, age);
+        return Objects.hash(id, name, password);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
