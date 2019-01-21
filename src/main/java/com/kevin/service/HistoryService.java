@@ -132,31 +132,6 @@ public class HistoryService {
         return history;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private HistoryDTO convertToDto(History history) {
         HistoryDTO historyDTO = new HistoryDTO();
         historyDTO.setResult(history.getResult());

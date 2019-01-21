@@ -21,9 +21,8 @@ public class UserController {
     }
 
 
-    //NU FUNCTIONEAZA GET-UL DE MAI SUS DACA NU AM COMENTATA METODA ASTA:
     @RequestMapping(path = "/user", method = RequestMethod.GET)
-    public List<UserDTO> getUser(@RequestParam("name") String name){
+    public UserDTO getUser(@RequestParam("name") String name){
         return userService.getUserByName(name);
     }
 

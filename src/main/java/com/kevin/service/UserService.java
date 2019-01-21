@@ -32,13 +32,18 @@ public class UserService {
             }
     }
 
-    public List<UserDTO> getUserByName(String name){
-        List<User> list= userRepository.findByName(name);
-        List<UserDTO> listDTO =new ArrayList<>();
-        for(int i=0;i<list.size();i++){
-         listDTO.add(convertToDto(list.get(i)));
-        }
-        return listDTO;
+//    public List<UserDTO> getUserByName(String name){
+//        List<User> list= userRepository.findByName(name);
+//        List<UserDTO> listDTO =new ArrayList<>();
+//        for(int i=0;i<list.size();i++){
+//         listDTO.add(convertToDto(list.get(i)));
+//        }
+//        return listDTO;
+//    }
+
+    public UserDTO getUserByName(String name){
+        User user= userRepository.findByName(name);
+        return convertToDto(user);
     }
 
     @Transactional
