@@ -168,7 +168,6 @@ public class HistoryService {
         historyDTO.setID(history.getId());
 
         historyDTO.setUserId(history.getHistoryUser().getId());
-        historyDTO.setUsername(history.getHistoryUser().getName());
         historyDTO.setRunnedGameId(history.getRunnedGame().getId());
         return historyDTO;
     }

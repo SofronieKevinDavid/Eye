@@ -39,7 +39,6 @@ public class RunnedGameService {
         User user = userRepository.findOne(userId);
         if (gameDefinition == null) {
             throw new IllegalArgumentException("Game definition id invalid");
-
         }
         if (user == null) {
             throw new IllegalArgumentException("userId invalid");
@@ -109,8 +108,8 @@ public class RunnedGameService {
         runnedGameDTO.setId(runnedGame.getId());
         runnedGameDTO.setGameDefinitionId(runnedGame.getGameDefinition().getId());
         runnedGameDTO.setUserId(runnedGame.getUser().getId());
-        runnedGameDTO.setUsername(runnedGame.getUser().getName());
-        runnedGameDTO.setGameName(runnedGame.getGameDefinition().getName());
+        //runnedGameDTO.setUsername(runnedGame.getUser().getName());
+        //runnedGameDTO.setGameName(runnedGame.getGameDefinition().getName());
         return runnedGameDTO;
     }
 }

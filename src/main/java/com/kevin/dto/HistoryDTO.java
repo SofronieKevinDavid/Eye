@@ -14,7 +14,7 @@ public class HistoryDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date date;
 
-    private long gameId;
+    //private long gameId;
 
 
     private long userId;
@@ -52,13 +52,13 @@ public class HistoryDTO {
         this.result = result;
     }
 
-    public long getGameId() {
-        return gameId;
-    }
+    //public long getGameId() {
+        //return gameId;
+    //}
 
-    public void setGameId(long gameId) {
-        this.gameId = gameId;
-    }
+    //public void setGameId(long gameId) {
+        //this.gameId = gameId;
+    //}
 
     public long getUserId() {
         return userId;
@@ -76,10 +76,6 @@ public class HistoryDTO {
         this.runnedGameId = runnedGameId;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -91,13 +87,15 @@ public class HistoryDTO {
         HistoryDTO that = (HistoryDTO) o;
         return ID == that.ID &&
                 Double.compare(that.result, result) == 0 &&
-                gameId == that.gameId &&
+                //gameId == that.gameId &&
                 date.equals(that.date) &&
                 userId == that.userId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, result, date, gameId, userId);
+        return Objects.hash(ID, result, date,
+                //gameId,
+                userId);
     }
 }

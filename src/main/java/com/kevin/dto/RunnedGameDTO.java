@@ -8,8 +8,8 @@ public class RunnedGameDTO {
 
     private long gameDefinitionId;
     private long userId;
-    private String username;
-    private String gameName;
+    //private String username;
+    //private String gameName;
 
     public long getId() {
         return id;
@@ -39,13 +39,13 @@ public class RunnedGameDTO {
         this.userId = userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    //public void setUsername(String username) {
+        //this.username = username;
+    //}
 
-    public void setGameName(String gameName) {
-        this.gameName = gameName;
-    }
+    //public void setGameName(String gameName) {
+        //this.gameName = gameName;
+    //}
 
     public int getLevel() {
         return level;
@@ -62,8 +62,8 @@ public class RunnedGameDTO {
         sb.append(", level=").append(level);
         sb.append(", gameDefinitionId=").append(gameDefinitionId);
         sb.append(", userId=").append(userId);
-        sb.append(", username='").append(username).append('\'');
-        sb.append(", gameName='").append(gameName).append('\'');
+        //sb.append(", username='").append(username).append('\'');
+        //sb.append(", gameName='").append(gameName).append('\'');
         sb.append('}');
         return sb.toString();
     }

@@ -29,11 +29,6 @@ public class HistoryController {
         return historyService.getHistoryForUserID(userID);
     }
 
-//    @RequestMapping(path = "/performance", method = RequestMethod.GET)
-//    public PerformanceDTO getPerformanceForUser(@RequestParam long userID){
-//        return performanceService.getPerformanceForUserID(userID);
-//    }
-
     @RequestMapping(path="/history", method=RequestMethod.POST)
     public void saveHistory(@RequestBody HistoryDTO historyDTO){
         historyService.saveHistory(historyDTO);
