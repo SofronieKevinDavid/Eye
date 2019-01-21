@@ -1,12 +1,10 @@
 package com.kevin.service;
 
 
-import com.kevin.domain.GameDefinition;
 import com.kevin.dto.UserDTO;
 import com.kevin.domain.User;
 import com.kevin.persistance.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,14 +24,7 @@ public class UserService {
             throw new IllegalArgumentException("Name can not be null.");
         }
 
-
-
-
             User userObject = convert(userDTO);
-
-            //if(user.getId()==0){
-            //throw new IllegalArgumentException("ID can not be 0.");
-            //}
             try {
                 userRepository.save(userObject);
             } catch (Exception e) {

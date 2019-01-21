@@ -11,9 +11,6 @@ public class HistoryDTO {
 
     private double result;
 
-    //DTO urile se convertesc in json cu Jackson nu modelul!
-    //DTOurile sunt expuse pe api, nu modelul
-    //annotarea de jackson trebuie sa fie aici in dto ca sa stie jackson cum sa converteasca acest date cand creaza jsonul
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date date;
 

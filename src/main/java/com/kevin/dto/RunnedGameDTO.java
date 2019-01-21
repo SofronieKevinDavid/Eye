@@ -39,24 +39,12 @@ public class RunnedGameDTO {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getGameName() {
-        return gameName;
-    }
-
     public void setGameName(String gameName) {
         this.gameName = gameName;
-    }
-
-    public RunnedGameDTO(int level) {
-        this.level = level;
     }
 
     public int getLevel() {

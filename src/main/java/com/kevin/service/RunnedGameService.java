@@ -52,38 +52,6 @@ public class RunnedGameService {
             System.out.println("Error in saving user " + e);
         }
     }
-
-    private RunnedGameDTO convertToDto(RunnedGame runnedGame) {
-        RunnedGameDTO runnedGameDTO = new RunnedGameDTO();
-        runnedGameDTO.setLevel(runnedGame.getLevel());
-        runnedGameDTO.setId(runnedGame.getId());
-        runnedGameDTO.setGameDefinitionId(runnedGame.getGameDefinition().getId());
-        runnedGameDTO.setUserId(runnedGame.getUser().getId());
-        runnedGameDTO.setUsername(runnedGame.getUser().getName());
-        return runnedGameDTO;
-    }
-
-
-    @Transactional
-    public List<RunnedGameDTO> getRunnedGames() {
-        Iterator<RunnedGame> iterator =
-                runnedGameRepository.findAll().iterator();
-
-
-        List<RunnedGameDTO> list = new ArrayList<>();
-
-        while (iterator.hasNext()) {
-            RunnedGame runnedGame = iterator.next();
-
-            RunnedGameDTO runnedGameDTO = convertToDto(runnedGame);
-
-            list.add(runnedGameDTO);
-        }
-
-        return list;
-    }
-
-
     private RunnedGame convert(RunnedGameDTO runnedGameDTO, User user, GameDefinition game) {
         RunnedGame runnedGame = new RunnedGame();
         runnedGame.setLevel(runnedGameDTO.getLevel());
@@ -92,22 +60,6 @@ public class RunnedGameService {
         runnedGame.setUser(user);
         return runnedGame;
     }
-
-    private GameDefinition convertGameDefinition(GameDefinitionDTO gameDefinitionDTO) {
-        GameDefinition gameDefinition = new GameDefinition();
-        gameDefinition.setName(gameDefinitionDTO.getName());
-        gameDefinition.setId(gameDefinitionDTO.getID());
-        gameDefinition.setDescription(gameDefinitionDTO.getDescription());
-        return gameDefinition;
-    }
-
-    private User convertUser(UserDTO userDTO) {
-        User user = new User();
-        user.setName(userDTO.getName());
-        user.setId(userDTO.getID());
-        return user;
-    }
-
     public RunnedGameDTO getRunnedGameById(long id) {
         RunnedGame runnedGame = runnedGameRepository.findOne(id);
         if (runnedGame == null) {
@@ -131,6 +83,35 @@ public class RunnedGameService {
             return true;
         }
         return false;
+    }
+    @Transactional
+    public List<RunnedGameDTO> getRunnedGames() {
+        Iterator<RunnedGame> iterator =
+                runnedGameRepository.findAll().iterator();
+
+
+        List<RunnedGameDTO> list = new ArrayList<>();
+
+        while (iterator.hasNext()) {
+            RunnedGame runnedGame = iterator.next();
+
+            RunnedGameDTO runnedGameDTO = convertToDto(runnedGame);
+
+            list.add(runnedGameDTO);
+        }
+
+        return list;
+    }
+
+    private RunnedGameDTO convertToDto(RunnedGame runnedGame) {
+        RunnedGameDTO runnedGameDTO = new RunnedGameDTO();
+        runnedGameDTO.setLevel(runnedGame.getLevel());
+        runnedGameDTO.setId(runnedGame.getId());
+        runnedGameDTO.setGameDefinitionId(runnedGame.getGameDefinition().getId());
+        runnedGameDTO.setUserId(runnedGame.getUser().getId());
+        runnedGameDTO.setUsername(runnedGame.getUser().getName());
+        runnedGameDTO.setGameName(runnedGame.getGameDefinition().getName());
+        return runnedGameDTO;
     }
 }
 
