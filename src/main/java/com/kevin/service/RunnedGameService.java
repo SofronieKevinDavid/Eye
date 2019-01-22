@@ -83,24 +83,6 @@ public class RunnedGameService {
         }
         return false;
     }
-    @Transactional
-    public List<RunnedGameDTO> getRunnedGames() {
-        Iterator<RunnedGame> iterator =
-                runnedGameRepository.findAll().iterator();
-
-
-        List<RunnedGameDTO> list = new ArrayList<>();
-
-        while (iterator.hasNext()) {
-            RunnedGame runnedGame = iterator.next();
-
-            RunnedGameDTO runnedGameDTO = convertToDto(runnedGame);
-
-            list.add(runnedGameDTO);
-        }
-
-        return list;
-    }
 
     private RunnedGameDTO convertToDto(RunnedGame runnedGame) {
         RunnedGameDTO runnedGameDTO = new RunnedGameDTO();
