@@ -90,8 +90,6 @@ public class RunnedGameService {
         runnedGameDTO.setId(runnedGame.getId());
         runnedGameDTO.setGameDefinitionId(runnedGame.getGameDefinition().getId());
         runnedGameDTO.setUserId(runnedGame.getUser().getId());
-        //runnedGameDTO.setUsername(runnedGame.getUser().getName());
-        //runnedGameDTO.setGameName(runnedGame.getGameDefinition().getName());
         return runnedGameDTO;
     }
 }
