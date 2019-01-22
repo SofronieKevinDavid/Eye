@@ -18,55 +18,103 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    //@Transactional
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void saveUser(UserDTO userDTO){
-        if(userDTO.getName()==null){
+        String username=userDTO.getName();
+        if(username==null){
             throw new IllegalArgumentException("Name can not be null.");
         }
-
+        boolean a=false;
+        try{
+            getUserByName(username);
+        }catch(Exception e){
             User userObject = convert(userDTO);
             try {
                 userRepository.save(userObject);
-            } catch (Exception e) {
-                System.out.println("Error in saving user " + e);
+            } catch (Exception e2) {
+                System.out.println("Error in saving user " + e2);
             }
+            a=true;
+        }
+        if(a==false){
+            throw new IllegalArgumentException("Name already taken.");
+        }
     }
 
-//    public List<UserDTO> getUserByName(String name){
-//        List<User> list= userRepository.findByName(name);
-//        List<UserDTO> listDTO =new ArrayList<>();
-//        for(int i=0;i<list.size();i++){
-//         listDTO.add(convertToDto(list.get(i)));
-//        }
-//        return listDTO;
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public UserDTO getUserByName(String name){
         User user= userRepository.findByName(name);
         return convertToDto(user);
-    }
-
-    @Transactional
-    public List<UserDTO> getUsers() {
-        Iterator<User> iterator =
-                userRepository.findAll().iterator();
-
-
-        List<UserDTO> list = new ArrayList<>();
-
-        while (iterator.hasNext()) {
-            User user = iterator.next();
-
-            UserDTO userDTO = new UserDTO("UserDTO");
-            userDTO.setName(user.getName());
-            userDTO.setID(user.getId());
-            userDTO.setPassword(user.getPassword());
-
-
-            list.add(userDTO);
-        }
-
-        return list;
     }
 
     private UserDTO convertToDto(User user) {
