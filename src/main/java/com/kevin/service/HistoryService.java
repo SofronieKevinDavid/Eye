@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -98,29 +97,6 @@ public class HistoryService {
         return listDTO;
     }
 
-    @Transactional
-    public List<HistoryDTO> getHistories() {
-        Iterator<History> iterator =
-                historyRepository.findAll().iterator();
-
-
-        List<HistoryDTO> list = new ArrayList<>();
-
-        while (iterator.hasNext()) {
-            History history = iterator.next();
-
-            HistoryDTO historyDTO = new HistoryDTO();
-
-            historyDTO.setResult(history.getResult());
-            historyDTO.setDate(history.getDate());
-            historyDTO.setID(history.getId());
-
-
-            list.add(historyDTO);
-        }
-
-        return list;
-    }
 
     private History convert(HistoryDTO historyDTO, RunnedGame game, User user) {
         History history = new History();
@@ -146,9 +122,5 @@ public class HistoryService {
         historyDTO.setRunnedGameId(history.getRunnedGame().getId());
         return historyDTO;
     }
-
-
-
-
 }
 

@@ -13,48 +13,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void saveUser(UserDTO userDTO){
         String username=userDTO.getName();
         if(username==null){
@@ -76,36 +34,6 @@ public class UserService {
             throw new IllegalArgumentException("Name already taken.");
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public UserDTO getUserByName(String name){
         User user= userRepository.findByName(name);
