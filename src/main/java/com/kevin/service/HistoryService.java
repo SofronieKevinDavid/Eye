@@ -115,9 +115,10 @@ public class HistoryService {
             throw new IllegalArgumentException("Invalid history object" +
                     " that is not linked to a user directly");
         }
+        historyDTO.setRunnedGameLevel(history.getRunnedGame().getLevel());
         historyDTO.setDate(history.getDate());
         historyDTO.setID(history.getId());
-
+        historyDTO.setGameName(history.getRunnedGame().getGameDefinition().getName());
         historyDTO.setUserId(history.getHistoryUser().getId());
         historyDTO.setRunnedGameId(history.getRunnedGame().getId());
         return historyDTO;

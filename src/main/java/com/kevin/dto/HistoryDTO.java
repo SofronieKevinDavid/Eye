@@ -14,11 +14,11 @@ public class HistoryDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date date;
 
-    //private long gameId;
+    private int runnedGameLevel;
+    private String gameName;
 
 
     private long userId;
-    private String username;
 
     private long runnedGameId;
 
@@ -52,13 +52,21 @@ public class HistoryDTO {
         this.result = result;
     }
 
-    //public long getGameId() {
-        //return gameId;
-    //}
+    public String getGameName() {
+        return gameName;
+    }
 
-    //public void setGameId(long gameId) {
-        //this.gameId = gameId;
-    //}
+    public int getRunnedGameLevel() {
+        return runnedGameLevel;
+    }
+
+    public void setRunnedGameLevel(int runnedGameLevel) {
+        this.runnedGameLevel = runnedGameLevel;
+    }
+
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
+    }
 
     public long getUserId() {
         return userId;
@@ -74,10 +82,6 @@ public class HistoryDTO {
 
     public void setRunnedGameId(long runnedGameId) {
         this.runnedGameId = runnedGameId;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     @Override
