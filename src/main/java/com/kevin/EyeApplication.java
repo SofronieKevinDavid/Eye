@@ -15,7 +15,7 @@ public class EyeApplication {
 
         SpringApplication.run(EyeApplication.class, args);
     }
-    
+
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {
