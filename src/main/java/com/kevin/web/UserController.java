@@ -24,8 +24,10 @@ public class UserController {
     }
 
     @RequestMapping(path="/user", method=RequestMethod.POST)
-    public void saveUser(@RequestBody UserDTO userDTO){
+    public UserDTO saveUser(@RequestBody UserDTO userDTO){
+        System.out.println("aaaa"+userDTO);
         userService.saveUser(userDTO);
+        return userDTO;
     }
 
     @RequestMapping(path="/user/{id}", method=RequestMethod.PUT)
