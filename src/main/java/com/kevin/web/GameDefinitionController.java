@@ -27,8 +27,9 @@ public class GameDefinitionController {
     }
 
     @RequestMapping(path="/gamedefinition", method=RequestMethod.POST)
-    public void saveGameDefinition(@RequestBody GameDefinitionDTO gameDefinitionDTO){
+    public GameDefinitionDTO saveGameDefinition(@RequestBody GameDefinitionDTO gameDefinitionDTO){
         gameDefinitionService.saveGameDefinition(gameDefinitionDTO);
+        return gameDefinitionDTO;
     }
 
     @RequestMapping(path="/gamedefinition/{id}", method=RequestMethod.PUT)

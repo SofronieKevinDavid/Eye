@@ -22,8 +22,9 @@ public class RunnedGameController {
 
 
     @RequestMapping(path="/runnedgame", method=RequestMethod.POST)
-    public void saveRunnedGame(@RequestBody RunnedGameDTO runnedGameDTO){
+    public RunnedGameDTO saveRunnedGame(@RequestBody RunnedGameDTO runnedGameDTO){
         runnedGameService.saveRunnedGame(runnedGameDTO);
+        return runnedGameDTO;
     }
 
 
