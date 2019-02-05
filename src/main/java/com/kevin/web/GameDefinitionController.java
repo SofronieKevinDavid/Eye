@@ -15,7 +15,6 @@ public class GameDefinitionController {
     @Autowired
     private GameDefinitionService gameDefinitionService;
 
-
     @RequestMapping(path = "/gamedefinition/{id}", method =RequestMethod.GET)
     public GameDefinitionDTO getGameDefinition(@PathVariable("id") long id){
         return gameDefinitionService.getGameDefinitionById(id);
