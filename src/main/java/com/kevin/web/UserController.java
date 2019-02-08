@@ -18,9 +18,13 @@ public class UserController {
     }
 
 
+    @ResponseBody
     @RequestMapping(path = "/user", method = RequestMethod.GET)
     public UserDTO getUser(@RequestParam("name") String name){
-        return userService.getUserByName(name);
+
+        UserDTO userDTO = userService.getUserByName(name);
+        System.out.println("aaaa"+userDTO);
+        return userDTO;
     }
 
     @RequestMapping(path="/user", method=RequestMethod.POST)
