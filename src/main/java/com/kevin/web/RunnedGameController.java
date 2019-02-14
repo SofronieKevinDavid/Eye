@@ -21,11 +21,10 @@ public class RunnedGameController {
         return runnedGameService.getRunnedGameById(id);
     }
 
-
+    @ResponseBody
     @RequestMapping(path="/runnedgame", method=RequestMethod.POST)
-    public RunnedGame saveRunnedGame(@RequestBody RunnedGameDTO runnedGameDTO){
-        RunnedGame runnedGame=runnedGameService.saveRunnedGame(runnedGameDTO);
-        return runnedGame;
+    public long saveRunnedGame(@RequestBody RunnedGameDTO runnedGameDTO){
+        return runnedGameService.saveRunnedGame(runnedGameDTO);
     }
 
 

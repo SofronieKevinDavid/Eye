@@ -31,9 +31,8 @@ public class HistoryController {
     }
 
     @RequestMapping(path="/history", method=RequestMethod.POST)
-    public History saveHistory(@RequestBody HistoryDTO historyDTO){
-        History history=historyService.saveHistory(historyDTO);
-        return history;
+    public long saveHistory(@RequestBody HistoryDTO historyDTO){
+        return historyService.saveHistory(historyDTO);
     }
 
     @RequestMapping(path="/history/{id}", method=RequestMethod.PUT)

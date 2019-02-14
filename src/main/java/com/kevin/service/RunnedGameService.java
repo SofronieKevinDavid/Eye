@@ -29,7 +29,7 @@ public class RunnedGameService {
     @Autowired
     private UserRepository userRepository;
 
-    public RunnedGame saveRunnedGame(RunnedGameDTO dto) {
+    public long saveRunnedGame(RunnedGameDTO dto) {
         if (dto.getLevel() == 0) {
             throw new IllegalArgumentException("Level can not be 0.");
         }
@@ -47,10 +47,10 @@ public class RunnedGameService {
         RunnedGame runnedGame = convert(dto, user, gameDefinition);
         try {
             runnedGameRepository.save(runnedGame);
-            return runnedGame;
+            return runnedGame.getId();
         } catch (Exception e) {
             System.out.println("Error in saving user " + e);
-            return null;
+            return -1;
         }
     }
     private RunnedGame convert(RunnedGameDTO runnedGameDTO, User user, GameDefinition game) {
