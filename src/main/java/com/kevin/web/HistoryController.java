@@ -2,6 +2,7 @@ package com.kevin.web;
 
 
 
+import com.kevin.domain.History;
 import com.kevin.dto.HistoryDTO;
 import com.kevin.service.HistoryService;
 
@@ -30,10 +31,9 @@ public class HistoryController {
     }
 
     @RequestMapping(path="/history", method=RequestMethod.POST)
-    public HistoryDTO saveHistory(@RequestBody HistoryDTO historyDTO){
-
-        historyService.saveHistory(historyDTO);
-        return historyDTO;
+    public History saveHistory(@RequestBody HistoryDTO historyDTO){
+        History history=historyService.saveHistory(historyDTO);
+        return history;
     }
 
     @RequestMapping(path="/history/{id}", method=RequestMethod.PUT)

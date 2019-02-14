@@ -32,7 +32,7 @@ public class HistoryService {
     @Autowired
     private GameDefinitionRepository gameDefinitionRepository;
 
-    public void saveHistory(HistoryDTO historyDTO) {
+    public History saveHistory(HistoryDTO historyDTO) {
 
         if (historyDTO.getResult() == -1) {
             throw new IllegalArgumentException("Result not valid.");
@@ -52,8 +52,10 @@ public class HistoryService {
         History historyObject = convert(historyDTO, runnedGame, userById);
         try {
             historyRepository.save(historyObject);
+            return historyObject;
         } catch (Exception e) {
             System.out.println("Error in saving user " + e);
+            return null;
         }
     }
 

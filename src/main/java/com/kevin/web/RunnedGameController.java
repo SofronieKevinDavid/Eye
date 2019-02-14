@@ -2,6 +2,7 @@ package com.kevin.web;
 
 
 
+import com.kevin.domain.RunnedGame;
 import com.kevin.dto.RunnedGameDTO;
 import com.kevin.service.RunnedGameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,9 @@ public class RunnedGameController {
 
 
     @RequestMapping(path="/runnedgame", method=RequestMethod.POST)
-    public RunnedGameDTO saveRunnedGame(@RequestBody RunnedGameDTO runnedGameDTO){
-        runnedGameService.saveRunnedGame(runnedGameDTO);
-        return runnedGameDTO;
+    public RunnedGame saveRunnedGame(@RequestBody RunnedGameDTO runnedGameDTO){
+        RunnedGame runnedGame=runnedGameService.saveRunnedGame(runnedGameDTO);
+        return runnedGame;
     }
 
 
