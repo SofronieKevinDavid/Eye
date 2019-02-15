@@ -41,7 +41,7 @@ public class GameDefinitionIntegrationTest {
     public void deleteUserByName(){
         service.deleteGameDefinitionById(8);
     }
-
+    
     private GameDefinition getGameDefinition(String name, String description){
         GameDefinition gameDefinition=new GameDefinition();
         gameDefinition.setName(name);
