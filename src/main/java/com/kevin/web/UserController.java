@@ -21,9 +21,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping(path = "/user", method = RequestMethod.GET)
     public UserDTO getUser(@RequestParam("name") String name){
-
         UserDTO userDTO = userService.getUserByName(name);
-        System.out.println("aaaa"+userDTO);
         return userDTO;
     }
 
@@ -43,3 +41,4 @@ public class UserController {
         userService.deleteUserById(id);
     }
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////

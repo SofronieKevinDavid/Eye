@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "runnedgames")
-public class RunnedGame {
+@Table(name = "rangames")
+public class RanGame {
     @Id
     @Column(name="id")
-    @GeneratedValue(generator = "runnedGame_generator")
+    @GeneratedValue(generator = "ranGame_generator")
     @SequenceGenerator(
-            name = "runnedGame_generator",
-            sequenceName = "runnedGame_sequence",
+            name = "ranGame_generator",
+            sequenceName = "ranGame_sequence",
             initialValue = 1
     )
     private long id;
@@ -51,7 +51,7 @@ public class RunnedGame {
         this.user = user;
     }
 
-    public RunnedGame() {
+    public RanGame() {
 
     }
 
@@ -74,7 +74,7 @@ public class RunnedGame {
 
     @Override
     public String toString() {
-        return "RunnedGame{" +
+        return "RanGame{" +
                 "id=" + id +
                 ", level=" + level +
                 ", gameDefinition=" + gameDefinition +
@@ -86,7 +86,7 @@ public class RunnedGame {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RunnedGame that = (RunnedGame) o;
+        RanGame that = (RanGame) o;
         return id == that.id &&
                 level == that.level &&
                 Objects.equals(gameDefinition, that.gameDefinition) &&
@@ -98,4 +98,4 @@ public class RunnedGame {
         return Objects.hash(id, level, gameDefinition, user);
     }
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////

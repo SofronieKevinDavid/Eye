@@ -1,14 +1,13 @@
-
 package com.kevin.service;
 
 
-import com.kevin.domain.RunnedGame;
+import com.kevin.domain.RanGame;
 import com.kevin.domain.User;
 import com.kevin.dto.HistoryDTO;
 import com.kevin.domain.History;
 import com.kevin.persistance.GameDefinitionRepository;
 import com.kevin.persistance.HistoryRepository;
-import com.kevin.persistance.RunnedGameRepository;
+import com.kevin.persistance.RanGameRepository;
 import com.kevin.persistance.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class HistoryService {
     private HistoryRepository historyRepository;
 
     @Autowired
-    private RunnedGameRepository runnedGameRepository;
+    private RanGameRepository ranGameRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -38,18 +37,18 @@ public class HistoryService {
             throw new IllegalArgumentException("Result not valid.");
         }
 
-        long runnedGameId = historyDTO.getRunnedGameId();
-        RunnedGame runnedGame = runnedGameRepository.findOne(runnedGameId);
+        long ranGameId = historyDTO.getRanGameId();
+        RanGame ranGame = ranGameRepository.findOne(ranGameId);
 
         User userById = userRepository.findOne(historyDTO.getUserId());
         if (userById == null) {
             throw new IllegalArgumentException("Invalid userId " + historyDTO.getUserId());
         }
 
-        if (runnedGame != null && runnedGame.getUser().getId() != userById.getId()) {
-            throw new IllegalArgumentException("Yu are trying to save a history object for a runned game that is created for other user.");
+        if (ranGame != null && ranGame.getUser().getId() != userById.getId()) {
+            throw new IllegalArgumentException("Yu are trying to save a history object for a ran game that is created for other user.");
         }
-        History historyObject = convert(historyDTO, runnedGame, userById);
+        History historyObject = convert(historyDTO, ranGame, userById);
         try {
             historyRepository.save(historyObject);
             return historyObject.getId();
@@ -100,13 +99,13 @@ public class HistoryService {
     }
 
 
-    private History convert(HistoryDTO historyDTO, RunnedGame game, User user) {
+    private History convert(HistoryDTO historyDTO, RanGame game, User user) {
         History history = new History();
         history.setResult(historyDTO.getResult());
         history.setDate(historyDTO.getDate());
         history.setId(historyDTO.getID());
         history.setHistoryUser(user);
-        history.setRunnedGame(game);
+        history.setRanGame(game);
         return history;
     }
 
@@ -117,13 +116,13 @@ public class HistoryService {
             throw new IllegalArgumentException("Invalid history object" +
                     " that is not linked to a user directly");
         }
-        historyDTO.setRunnedGameLevel(history.getRunnedGame().getLevel());
+        historyDTO.setRanGameLevel(history.getRanGame().getLevel());
         historyDTO.setDate(history.getDate());
         historyDTO.setID(history.getId());
-        historyDTO.setGameName(history.getRunnedGame().getGameDefinition().getName());
+        historyDTO.setGameName(history.getRanGame().getGameDefinition().getName());
         historyDTO.setUserId(history.getHistoryUser().getId());
-        historyDTO.setRunnedGameId(history.getRunnedGame().getId());
+        historyDTO.setRanGameId(history.getRanGame().getId());
         return historyDTO;
     }
 }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////

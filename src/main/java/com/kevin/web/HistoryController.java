@@ -1,19 +1,12 @@
 package com.kevin.web;
 
-
-
-import com.kevin.domain.History;
 import com.kevin.dto.HistoryDTO;
 import com.kevin.service.HistoryService;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
-
 public class HistoryController {
 
 
@@ -45,3 +38,4 @@ public class HistoryController {
         historyService.deleteHistoryById(id);
     }
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////

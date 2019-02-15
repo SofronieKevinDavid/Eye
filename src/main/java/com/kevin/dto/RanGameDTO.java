@@ -2,7 +2,7 @@ package com.kevin.dto;
 
 import java.util.Objects;
 
-public class RunnedGameDTO {
+public class RanGameDTO {
     private long id;
     private int level;
 
@@ -17,7 +17,7 @@ public class RunnedGameDTO {
         this.id = id;
     }
 
-    public RunnedGameDTO() {
+    public RanGameDTO() {
 
     }
 
@@ -47,7 +47,7 @@ public class RunnedGameDTO {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("RunnedGameDTO{");
+        final StringBuilder sb = new StringBuilder("RanGameDTO{");
         sb.append("id=").append(id);
         sb.append(", level=").append(level);
         sb.append(", gameDefinitionId=").append(gameDefinitionId);
@@ -60,7 +60,7 @@ public class RunnedGameDTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RunnedGameDTO that = (RunnedGameDTO) o;
+        RanGameDTO that = (RanGameDTO) o;
         return id == that.id &&
                 level == that.level &&
                 gameDefinitionId == that.gameDefinitionId &&
@@ -72,3 +72,4 @@ public class RunnedGameDTO {
         return Objects.hash(id, level, gameDefinitionId, userId);
     }
 }
+//////////////////////////////////////////////////////////////////////////////////////////

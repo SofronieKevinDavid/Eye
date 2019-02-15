@@ -1,4 +1,3 @@
-
 package com.kevin.domain;
 
 import javax.persistence.*;
@@ -24,16 +23,17 @@ public class History {
     @Column(name = "date")
     private Date date;
 
-    @JoinColumn(name = "runned_Game_Id")
+    ////////////////////////
+    @JoinColumn(name = "ran_Game_Id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private RunnedGame runnedGame;
+    private RanGame ranGame;
 
-    public RunnedGame getRunnedGame() {
-        return runnedGame;
+    public RanGame getRanGame() {
+        return ranGame;
     }
 
-    public void setRunnedGame(RunnedGame runnedGame) {
-        this.runnedGame = runnedGame;
+    public void setRanGame(RanGame ranGame) {
+        this.ranGame = ranGame;
     }
 
     public double getResult() {
@@ -87,13 +87,13 @@ public class History {
         return id == history.id &&
                 Double.compare(history.result, result) == 0 &&
                 Objects.equals(date, history.date) &&
-                Objects.equals(runnedGame, history.runnedGame) &&
+                Objects.equals(ranGame, history.ranGame) &&
                 Objects.equals(historyUser, history.historyUser);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, result, date, runnedGame, historyUser);
+        return Objects.hash(id, result, date, ranGame, historyUser);
     }
 
     @Override
@@ -102,9 +102,9 @@ public class History {
                 "id=" + id +
                 ", result=" + result +
                 ", date=" + date +
-                ", runnedGame=" + runnedGame +
+                ", ranGame=" + ranGame +
                 ", historyUser=" + historyUser +
                 '}';
     }
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////
