@@ -6,4 +6,3 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface GameDefinitionRepository extends
         PagingAndSortingRepository<GameDefinition, Long> {
 }
-///////////////////////////////////////////////////////////////////////////////////

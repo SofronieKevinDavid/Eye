@@ -23,7 +23,6 @@ public class History {
     @Column(name = "date")
     private Date date;
 
-    ////////////////////////
     @JoinColumn(name = "ran_Game_Id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private RanGame ranGame;
@@ -107,4 +106,3 @@ public class History {
                 '}';
     }
 }
-////////////////////////////////////////////////////////////////////////////////////////////////
