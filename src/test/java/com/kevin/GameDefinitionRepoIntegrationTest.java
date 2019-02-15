@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes = EyeApplication.class,
         loader = SpringApplicationContextLoader.class,
         initializers = ConfigFileApplicationContextInitializer.class)
-public class GameDefinitionIntegrationTest {
+public class GameDefinitionRepoIntegrationTest {
 
     @Autowired
     private GameDefinitionRepository repository;
@@ -33,15 +33,15 @@ public class GameDefinitionIntegrationTest {
     }
 
     @Test
-    public void testGetByName(){
+    public void testGetById(){
         System.out.print(service.getGameDefinitionById(1));
     }
 
     @Test
-    public void deleteUserByName(){
+    public void deleteUserById(){
         service.deleteGameDefinitionById(8);
     }
-    
+
     private GameDefinition getGameDefinition(String name, String description){
         GameDefinition gameDefinition=new GameDefinition();
         gameDefinition.setName(name);
