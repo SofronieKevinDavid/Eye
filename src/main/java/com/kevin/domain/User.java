@@ -15,8 +15,10 @@ public class User {
     )
     @Column(name="id")
     private long id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "password")
     private String password;
 

@@ -15,8 +15,8 @@ public class RanGame {
             initialValue = 1
     )
     private long id;
-    @Column(name="level")
 
+    @Column(name="level")
     private int level;
 
     @ManyToOne(fetch = FetchType.LAZY)

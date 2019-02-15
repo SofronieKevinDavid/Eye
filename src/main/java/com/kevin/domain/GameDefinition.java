@@ -16,11 +16,12 @@ public class GameDefinition {
             initialValue = 1
     )
     private long id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name="description")
     private String description;
-
 
 
     public String getDescription() {
