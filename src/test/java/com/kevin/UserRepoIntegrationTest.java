@@ -1,6 +1,5 @@
 package com.kevin;
 
-
 import com.kevin.domain.User;
 import com.kevin.persistance.UserRepository;
 import com.kevin.service.UserService;
@@ -26,23 +25,22 @@ public class UserRepoIntegrationTest {
 
     @Test
     public void testSave(){
-        User user=getUser("andrei44","parola");
+        User user=getUser("andrei45","parola");
         repository.save(user);
 
-        User user2=getUser("andrei44","parola2");
+        User user2=getUser("andrei45","parola2");
         repository.save(user2);
     }
 
     @Test
     public void testGetByName(){
-        System.out.print(service.getUserByName("alex"));
+        System.out.print(service.getUserByName("andrei44"));
     }
 
     @Test
     public void deleteUserByName(){
-        service.deleteUserById(8);
+        service.deleteUserById(11);
     }
-
 
     private User getUser(String name, String password){
         User user=new User();

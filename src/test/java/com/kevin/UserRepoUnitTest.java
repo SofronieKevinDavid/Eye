@@ -1,6 +1,5 @@
 package com.kevin;
 
-
 import com.kevin.domain.User;
 import com.kevin.dto.UserDTO;
 import com.kevin.persistance.UserRepository;
@@ -18,7 +17,6 @@ public class UserRepoUnitTest {
 
     @Mock
     private UserRepository repository;
-
 
     @InjectMocks
     private UserService service;
@@ -38,5 +36,4 @@ public class UserRepoUnitTest {
         Assert.assertEquals("a",userDTO.getName());
         Assert.assertEquals(5L, userDTO.getID());
     }
-
 }
