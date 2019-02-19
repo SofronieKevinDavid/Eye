@@ -21,14 +21,14 @@ public class GameDefinitionService {
 
     public void saveGameDefinition(GameDefinitionDTO gameDefinitionDTO){
         if(gameDefinitionDTO.getName()==null){
-            throw new IllegalArgumentException("Name can not be null.");
+            throw new IllegalArgumentException("Game definition error.");
         }
         GameDefinition gameDefinitionObject=convert(gameDefinitionDTO);
 
         try {
             gameDefinitionRepository.save(gameDefinitionObject);
         }catch (Exception e){
-            System.out.println("Error in saving user "+e);
+            System.out.println("Error in saving game definition "+e);
         }
     }
 
