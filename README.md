@@ -18,6 +18,7 @@ The tests from the java part of the exam have to coincide with the DB fields in 
 ## Built With
 
 * [Spring]- The "framework of frameworks" for the backend
+* [Spring Boot]- To just "run" a project as a standalone app
 * [JQuery]- The web framework used
 * [Maven]- Dependency Management
 
